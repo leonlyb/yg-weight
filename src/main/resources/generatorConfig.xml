@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <properties url="file:///D:/Work/idea/yg-weight/src/main/resources/generatorConfig.properties" />
+<!--    <properties resource="generatorConfig.properties" />-->
+
+    <classPathEntry location="${ojdbc.path}" />
+
+    <context id="tables" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="addRemarkComments" value="true"></property>
+        </commentGenerator>
+
+
+        <jdbcConnection driverClass="${db.driverClass}"
+                        connectionURL="${db.connectionURL}"
+                        userId="${db.userId}" password="${db.password}" />
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 实体类 -->
+        <javaModelGenerator targetPackage="com.example.dechuan.model.order"
+                            targetProject="${project.baseDir}\src\main\java">
+            <property name="constructorBased" value="false"  />
+            <!--<property name="rootClass" value="com.ccic.gzh.common.entity.BaseEntity" />-->
+
+        </javaModelGenerator>
+        <!-- 映射文件 -->
+        <sqlMapGenerator targetPackage="mybatis.mapper.order"
+                         targetProject="${project.baseDir}\src\main\resources" />
+        <!-- dao类 -->
+        <javaClientGenerator targetPackage="com.example.dechuan.mapper.order"
+                             targetProject="${project.baseDir}\src\main\java" type="XMLMAPPER">
+        </javaClientGenerator>
+
+        <!--生成映射表-->
+        <table tableName="TBEH_DC_USER" domainObjectName="UserManage"
+               schema=""
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>
