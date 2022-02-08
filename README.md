@@ -23,11 +23,11 @@ controller层
    >该层模块存放一些服务层逻辑，以jar包方式，开发多个业务模块
 
 待补充  
->dao层 com.dechuan.mapper
-|- dao  
->|- mapper  
-3.1 由于管理端和web都会使用dao层，所有的mapper和dao接口都放于该层  
-3.2 尽量让实体 extends BaseEntity， mapper接口继承AbstractSingleMapper  
+>dao层 com.dechuan.mapper  
+>>|- dao  
+|- mapper  
+1 由于管理端和web都会使用dao层，所有的mapper和dao接口都放于该层  
+2 尽量让实体 extends BaseEntity， mapper接口继承AbstractSingleMapper  
 
 接着手动编写manage包下的数据访问类（该层可做一些通用的数据访问处理,以便后续独立成数据访问微服务）
 但不强制次规范
