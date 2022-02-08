@@ -2,7 +2,7 @@ package com.example.dechuan.service.impl.usermanage;
 
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
-import com.example.dechuan.mapper.usermanage.UserManageMapper;
+import com.example.dechuan.mapper.first.usermanage.UserManageMapper;
 import com.example.dechuan.model.usermanage.UserManage;
 import com.example.dechuan.service.usermanage.UserManageService;
 import com.example.dechuan.utils.PageUtils;

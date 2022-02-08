@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.dechuan.mapper.usermanage.UserManageMapper">
+<mapper namespace="com.example.dechuan.mapper.first.usermanage.UserManageMapper">
   <resultMap id="BaseResultMap" type="com.example.dechuan.model.usermanage.UserManage">
     <!--
       WARNING - @mbg.generated
@@ -25,7 +25,7 @@
       USER_NAME,
       MOBILE_PHONE,
       EMAIL
-      FROM [tbeh_dc_user] WHERE 1=1
+      FROM tbeh_dc_user WHERE 1=1
       <if test="userName != null and userName != ''">
           AND USER_NAME like concat('%', #{userName}, '%')
       </if>

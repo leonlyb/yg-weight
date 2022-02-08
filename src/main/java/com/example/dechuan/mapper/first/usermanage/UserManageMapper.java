@@ -1,4 +1,4 @@
-package com.example.dechuan.mapper.usermanage;
+package com.example.dechuan.mapper.first.usermanage;
 
 import com.example.dechuan.model.usermanage.UserManage;
 import org.apache.ibatis.annotations.Mapper;
