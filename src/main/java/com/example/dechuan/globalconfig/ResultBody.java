@@ -27,10 +27,10 @@ public class ResultBody {
     public ResultBody() {
     }
 
-//    public ResultBody(BaseErrorInfoInterface errorInfo) {
-//        this.code = errorInfo.getResultCode();
-//        this.message = errorInfo.getResultMsg();
-//    }
+    public ResultBody(BaseErrorInfoInterface errorInfo) {
+        this.code = errorInfo.getResultCode();
+        this.message = errorInfo.getResultMsg();
+    }
 
     public String getCode() {
         return code;
@@ -70,24 +70,24 @@ public class ResultBody {
      * @param data
      * @return
      */
-//    public static ResultBody success(Object data) {
-//        ResultBody rb = new ResultBody();
-//        rb.setCode(CommonEnum.SUCCESS.getResultCode());
-//        rb.setMessage(CommonEnum.SUCCESS.getResultMsg());
-//        rb.setResult(data);
-//        return rb;
-//    }
+    public static ResultBody success(Object data) {
+        ResultBody rb = new ResultBody();
+        rb.setCode(CommonEnum.SUCCESS.getResultCode());
+        rb.setMessage(CommonEnum.SUCCESS.getResultMsg());
+        rb.setResult(data);
+        return rb;
+    }
 
     /**
      * 失败
      */
-//    public static ResultBody error(BaseErrorInfoInterface errorInfo) {
-//        ResultBody rb = new ResultBody();
-//        rb.setCode(errorInfo.getResultCode());
-//        rb.setMessage(errorInfo.getResultMsg());
-//        rb.setResult(null);
-//        return rb;
-//    }
+    public static ResultBody error(BaseErrorInfoInterface errorInfo) {
+        ResultBody rb = new ResultBody();
+        rb.setCode(errorInfo.getResultCode());
+        rb.setMessage(errorInfo.getResultMsg());
+        rb.setResult(null);
+        return rb;
+    }
 
     /**
      * 失败

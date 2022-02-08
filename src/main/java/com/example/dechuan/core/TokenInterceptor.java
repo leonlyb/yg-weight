@@ -1,10 +1,10 @@
 package com.example.dechuan.core;
 
-//import com.alibaba.fastjson.JSONObject;
-//import com.auth0.jwt.JWT;
-//import com.auth0.jwt.JWTVerifier;
-//import com.auth0.jwt.algorithms.Algorithm;
-//import com.auth0.jwt.interfaces.DecodedJWT;
+import com.alibaba.fastjson.JSONObject;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 @Component
 public class TokenInterceptor implements HandlerInterceptor {
-   /* private static final String TOKEN_SECRET="txdy";  //密钥盐
+    private static final String TOKEN_SECRET="txdy";  //密钥盐
 	private static final Logger log = LoggerFactory.getLogger(TokenInterceptor.class);
 	
 	 @Override
@@ -69,6 +69,6 @@ public class TokenInterceptor implements HandlerInterceptor {
 	            return false;
 	        }
 	        return false;
-	    }*/
+	    }
 
 }

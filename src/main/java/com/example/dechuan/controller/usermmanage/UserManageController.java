@@ -35,10 +35,8 @@ public class UserManageController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ResultBody getALibrarianInfo(UserManage um, QueryDt qt) {
-        ResultBody dataResult = new ResultBody();
-        dataResult.setResult( userManageService.doGetUserManageList(um,qt));
-        return dataResult;
+    public ResultBody list(UserManage um, QueryDt qt) {
+        return ResultBody.success(userManageService.doGetUserManageList(um,qt));
     }
 
 }

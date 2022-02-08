@@ -21,18 +21,22 @@
     UPDATE_TIME
   </sql>
   <select id="listuser" resultType="com.example.dechuan.model.usermanage.UserManage" >
-      SELECT USER_KY,
-      USER_NAME,
-      MOBILE_PHONE,
-      EMAIL
-      FROM tbeh_dc_user WHERE 1=1
-      <if test="userName != null and userName != ''">
-          AND USER_NAME like concat('%', #{userName}, '%')
-      </if>
-      <if test="mobilePhone != null and mobilePhone != ''">
-          AND MOBILE_PHONE = #{mobilePhone}
-      </if>
-      ORDER BY USER_KY DESC
+      SELECT  USER_KY,
+              USER_CODE,
+              USER_NAME,
+              TELEPHONE,
+              MOBILE_PHONE,
+              EMAIL,
+              INSERT_TIME,
+              UPDATE_TIME
+              FROM tbeh_dc_user WHERE 1=1
+              <if test="userName != null and userName != ''">
+                  AND USER_NAME like concat('%', #{userName}, '%')
+              </if>
+              <if test="mobilePhone != null and mobilePhone != ''">
+                  AND MOBILE_PHONE = #{mobilePhone}
+              </if>
+              ORDER BY USER_KY DESC
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
