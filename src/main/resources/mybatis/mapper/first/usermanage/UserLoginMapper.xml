@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dechuan.mapper.first.usermanage.UserLoginMapper">
+    <resultMap id="BaseResultMap" type="com.example.dechuan.model.usermanage.User">
+        <id column="USER_KY" jdbcType="INTEGER" property="userKy" />
+        <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    </resultMap>
+<!--        <select id="doGetUserList" resultType="com.dechuan.yfybase.model.user.User">
+            select *from [TBEH_YFY_USER]
+        </select>-->
+
+        <select id="doGetUserSelect"  resultType="com.example.dechuan.model.usermanage.User">
+            SELECT USER_KY,USER_NAME FROM tbeh_dc_user WHERE USER_NAME=#{userName} AND PASSWORD=#{password}
+        </select>
+
+
+
+</mapper>

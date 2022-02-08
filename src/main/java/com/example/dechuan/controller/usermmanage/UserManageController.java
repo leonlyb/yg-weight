@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author eden
  * @description:
- * @menu
+ * @menu 用户管理
  * @date 2022/1/30 10:02
  */
 @RestController

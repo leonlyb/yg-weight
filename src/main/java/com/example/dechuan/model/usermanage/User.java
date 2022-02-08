@@ -6,7 +6,7 @@ public class User implements Serializable{
 	
 	private String userName;
 	private String password;
-	private Integer ususid;
+	private Integer userKy;
 
 	public User(String userName, String password) {
 		this.userName=userName;
@@ -29,16 +29,11 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public Integer getUsusid() {
-		return ususid;
-	}
+    public Integer getUserKy() {
+        return userKy;
+    }
 
-	public void setUsusid(Integer ususid) {
-		this.ususid = ususid;
-	}
-
-
-	
-	
-
+    public void setUserKy(Integer userKy) {
+        this.userKy = userKy;
+    }
 }
