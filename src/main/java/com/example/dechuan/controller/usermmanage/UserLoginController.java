@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author eden
@@ -33,7 +35,7 @@ public class UserLoginController {
      * @return
      * @Author eden
      * @Description 登录
-     * @Date 2021/5/27 23:20
+     * @Date 2022/02/09 23:20
      * @status done
      */
 
@@ -57,21 +59,46 @@ public class UserLoginController {
             return dataResult;
         }else{
             dataResult.setCode(200);
-            dataResult.setData(UserMessage.LOGIN_SUCCES);
             dataResult.setUserKy(list.get(0).getUserKy());
             dataResult.setUserName(list.get(0).getUserName());
             List<Role> listRole = userLoginService.doGetRole(list.get(0).getUserKy());
-            if(listRole.get(0).getRoleKy() == null ){
+            if(listRole.size() <= 0 ){
                 dataResult.setCode(200);
                 dataResult.setUserName(user.getUserName());
-                dataResult.setData("管理员未对该用户分配任何权限");
+                dataResult.setData(UserMessage.ASSIGN_PERMISSIONS);
                 return dataResult;
             }
+            dataResult.setData(listRole);
         }
         // 设置toke
         String token= TokenUtil.sign(new User(user.getUserName(),user.getPassword()));
         dataResult.setToken(token);
         return dataResult;
+    }
+
+    /**
+     * @param
+     * @return
+     * @Author eden
+     * @Description 退出
+     * @Date 2022/02/09 23:20
+     * @status done
+     */
+    @RequestMapping(value = "/loginout")
+    @ResponseBody
+    public Map<String, Object> loginout(User user) throws Exception{
+        Map<String, Object> params = new HashMap<>();
+        String name = user.getUserName();
+        if (!name.equals("admin")){
+            params.put("code", 200);
+            params.put("errMsg", "成功退出");
+        }else{
+            // 设置toke
+            String token= TokenUtil.sign(new User(user.getUserName(),user.getPassword()));
+            params.put("code", 200);
+            params.put("msg", "成功退出");
+        }
+        return params;
     }
 
 }

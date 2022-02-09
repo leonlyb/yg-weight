@@ -9,10 +9,10 @@ http://202.196.192.225:3001
 
 controller层  
 >|- A 前端和controller类的接口实体类存放在各自目录下的dechuan中  
-   > >B 方法返回各自业务对象即可，框架层会拦截，统一处理返回结果，切记返回基本类型！！  
+   > >B 方法返回各自业务对象即可，框架层会拦截，统一处理返回结果，切记返回基本类型！！      
       C 对于前端传过来的数据，使用校验框架valid校验数据基本格式  
    具体可参考 RegisterController#registerBySms(public void registerBySms(@RequestBody @Validated SmsRegisterReq registerReq))  
-   D 关于api权限控制的使用方法
+    D 关于api权限控制的使用方法
    在controller类上添加注解CustomerApiAuth，如果不加或者NONE,说明该方法对外开放，无需登录即可访问，如浏览产品信息  
    参考示例 DemoController#auth  
    @CustomerApiAuth(value = {EUserType.NORMAL_CUST})
