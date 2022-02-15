@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,6 +71,10 @@ public class UserLoginController {
             }
             dataResult.setData(listRole);
         }
+        //创建session对象
+        HttpSession session = req.getSession();
+        //把用户数据保存在session域对象中
+        session.setAttribute("loginName", user.getUserName());
         // 设置toke
         String token= TokenUtil.sign(new User(user.getUserName(),user.getPassword()));
         dataResult.setToken(token);
@@ -86,18 +91,12 @@ public class UserLoginController {
      */
     @RequestMapping(value = "/loginout")
     @ResponseBody
-    public Map<String, Object> loginout(User user) throws Exception{
+    public Map<String, Object> loginout(HttpServletRequest req){
         Map<String, Object> params = new HashMap<>();
-        String name = user.getUserName();
-        if (!name.equals("admin")){
-            params.put("code", 200);
-            params.put("errMsg", "成功退出");
-        }else{
-            // 设置toke
-            String token= TokenUtil.sign(new User(user.getUserName(),user.getPassword()));
-            params.put("code", 200);
-            params.put("msg", "成功退出");
-        }
+        HttpSession session = req.getSession();
+        session.removeAttribute("loginName");
+         params.put("code", 200);
+         params.put("msg", "成功退出");
         return params;
     }
 

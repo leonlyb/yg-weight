@@ -1,5 +1,6 @@
 package com.example.dechuan.dataconfig;
 
+import org.apache.ibatis.session.LocalCacheScope;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -52,11 +53,16 @@ public class FirstDataSourceConfig {
                 // 设置mybatis的xml所在位置
                 new PathMatchingResourcePatternResolver().getResources("classpath*:mybatis/mapper/first/*/*.xml"));
         bean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
+        /**
+         * 关闭一级缓存
+         */
+//        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+//        configuration.setLocalCacheScope(LocalCacheScope.STATEMENT);
+//        bean.setConfiguration(configuration);
         return bean.getObject();
     }
 
     // 创建事务管理器
-
     @Bean("firstTransactionManger")
     @Primary
     public DataSourceTransactionManager firstTransactionManger(@Qualifier("firstDS") DataSource dataSource){
@@ -64,7 +70,6 @@ public class FirstDataSourceConfig {
     }
 
     // 创建SqlSessionTemplate
-
     @Bean(name = "firstSqlSessionTemplate")
     @Primary
     public SqlSessionTemplate firstSqlSessionTemplate(@Qualifier("firstSqlSessionFactory") SqlSessionFactory sqlSessionFactory){

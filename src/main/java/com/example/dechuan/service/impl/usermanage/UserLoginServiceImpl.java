@@ -30,6 +30,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public List<Role> doGetRole(Integer userKy) {
+//        int value = (int) (1 + Math.random() * (10 - 1 + 1));
         return userLoginMapper.doGetRole(userKy);
     }
 }

@@ -3,6 +3,7 @@ package com.example.dechuan.service.usermanage;
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.model.usermanage.UserManage;
+import com.example.dechuan.model.usermanage.UserRole;
 
 /**
  * @author eden
@@ -19,4 +20,14 @@ public interface UserManageService {
      * @return PageResult 自定义，统一分页查询结果
      */
     PageResult doGetUserManageList(UserManage um, QueryDt qt);
+
+    int doGetAddUserManage(UserManage um);
+
+    int doGetEditUserManage(UserManage userManage);
+
+    int doDeleteUserRole(Integer userKy);
+
+    int doAddUserRole(UserRole userRole);
+
+    int doDeleteUserManage(Integer userKy);
 }
