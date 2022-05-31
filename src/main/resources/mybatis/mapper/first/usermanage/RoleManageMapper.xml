@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dechuan.mapper.first.usermanage.RoleManageMapper">
+  <resultMap id="BaseResultMap" type="com.example.dechuan.model.usermanage.RoleManage">
+    <id column="ROLE_KY" jdbcType="INTEGER" property="roleKy" />
+    <result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
+    <result column="ROLE_CODE" jdbcType="VARCHAR" property="roleCode" />
+    <result column="INSET_TIME" jdbcType="TIMESTAMP" property="insetTime" />
+  </resultMap>
+
+    <!-- 查询 -->
+  <select id="doGetRole" resultType="com.example.dechuan.model.usermanage.RoleManage">
+    SELECT
+         ROLE_KY,
+         ROLE_NAME,
+         ROLE_CODE,
+         INSET_TIME
+    FROM tbeh_dc_role
+  </select>
+
+    <!-- 新增 -->
+    <insert id="doAddRoleManage" parameterType="com.example.dechuan.model.usermanage.RoleManage">
+        insert into tbeh_dc_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleName != null">
+                ROLE_NAME,
+            </if>
+            <if test="roleCode != null">
+                ROLE_CODE,
+            </if>
+            <if test="insetTime != null">
+                INSET_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleName != null">
+                #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="roleCode != null">
+                #{roleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="insetTime != null">
+                #{insetTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 修改 -->
+    <update id="doUpdateRoleManage" parameterType="com.example.dechuan.model.usermanage.RoleManage">
+        update tbeh_dc_role
+        <set>
+            <if test="roleName != null">
+                ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="roleCode != null">
+                ROLE_CODE = #{roleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="insetTime != null">
+                INSET_TIME = #{insetTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ROLE_KY = #{roleKy,jdbcType=INTEGER}
+    </update>
+
+    <!-- 删除 -->
+  <delete id="doDeleteRoleManage" parameterType="java.lang.Integer">
+    delete from tbeh_dc_role
+    where ROLE_KY = #{roleKy,jdbcType=INTEGER}
+  </delete>
+
+
+
+
+</mapper>
