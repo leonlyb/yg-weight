@@ -39,7 +39,7 @@
         </javaClientGenerator>
 
         <!--生成映射表-->
-        <table tableName="TBEH_DC_USER" domainObjectName="UserManage"
+        <table tableName="tbeh_dc_role" domainObjectName="RoleManage"
                schema=""
                enableCountByExample="false"
                enableUpdateByExample="false"

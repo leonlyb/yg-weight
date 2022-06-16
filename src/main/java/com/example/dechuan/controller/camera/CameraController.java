@@ -1,0 +1,74 @@
+package com.example.dechuan.controller.camera;
+import com.example.dechuan.service.camera.CustomMultiThreadingService;
+import com.example.dechuan.utils.camera.CameraInfo;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @description 摄像头控制类
+ * @Date: 2020/10/31 9:11
+ * @Version: 1.0
+ */
+@Controller
+//@RequestMapping(value = "/index")
+public class CameraController {
+
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(CameraController.class);
+
+    @Autowired
+    private CustomMultiThreadingService customMultiThreadingService;
+
+
+    @RequestMapping(value = "/index")
+    public String index(){
+        System.out.println("我来了");
+        return "index";
+
+    }
+
+    @RequestMapping("/healthy")
+    @ResponseBody
+    public String healthy() throws InterruptedException {
+        return "启动成功";
+
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/dotask")
+    public String doTask() throws InterruptedException{
+        Thread thread1 = new Thread(new Runnable1());
+        thread1.run();
+//        Thread thread2 = new Thread(new Runnable2());
+//        thread2.run();
+        return "success";
+    }
+
+    class Runnable1 implements Runnable{
+        @Override
+        public void run() {
+            try {
+                customMultiThreadingService.executeAysncTask1(CameraInfo.cameraInfo[0][0]);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+//    class Runnable2 implements Runnable{
+//        @Override
+//        public void run() {
+//            try {
+//                customMultiThreadingService.executeAysncTask1(CameraInfo.cameraInfo[1][0]);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+
+}
