@@ -122,6 +122,74 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>2.0.1.RELEASE</version>
         </dependency>
+        <!-- 车牌识别jar包   -->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>opencv-platform</artifactId>
+            <version>4.5.1-1.5.5</version><!-- 4.3.0-1.5.3 -->
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv</artifactId>
+            <version>1.5.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>1.5.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.tensorflow/tensorflow -->
+        <dependency>
+            <groupId>org.tensorflow</groupId>
+            <artifactId>tensorflow</artifactId>
+            <version>1.15.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.tensorflow/libtensorflow_jni_gpu -->
+        <dependency>
+            <groupId>org.tensorflow</groupId>
+            <artifactId>libtensorflow_jni_gpu</artifactId>
+            <version>1.15.0</version>
+        </dependency>
+        <!-- DJL -->
+        <dependency>
+            <groupId>ai.djl</groupId>
+            <artifactId>api</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <!-- pytorch -->
+        <dependency>
+            <groupId>ai.djl.pytorch</groupId>
+            <artifactId>pytorch-model-zoo</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ai.djl.pytorch</groupId>
+            <artifactId>pytorch-engine</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ai.djl.pytorch</groupId>
+            <artifactId>pytorch-native-auto</artifactId>
+            <version>1.8.1</version>
+        </dependency>
+
+        <!-- paddle -->
+        <dependency>
+            <groupId>ai.djl.paddlepaddle</groupId>
+            <artifactId>paddlepaddle-model-zoo</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ai.djl.paddlepaddle</groupId>
+            <artifactId>paddlepaddle-engine</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ai.djl.paddlepaddle</groupId>
+            <artifactId>paddlepaddle-native-auto</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+
 	</dependencies>
 	<build>
         <resources>
