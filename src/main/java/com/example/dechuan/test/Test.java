@@ -39,5 +39,6 @@ public class Test {
 
         value = "aa11aa11"; // 数字字母组合
         System.out.println(value.matches(regex));
+
     }
 }
