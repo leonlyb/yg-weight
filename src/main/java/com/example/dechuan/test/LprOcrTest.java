@@ -17,11 +17,7 @@ import static org.bytedeco.opencv.global.opencv_imgcodecs.imread;
  */
 public class LprOcrTest {
     public static void main(String[] args) {
-        String model = "lpr/10086.pt";
-        InputStream path = Thread.currentThread().getContextClassLoader().getResourceAsStream(model);
-        System.out.println(path);
-
-/*        LPR lpr = new LPR(false, "");
+        LPR lpr = new LPR(false, "");
         Mat src = imread("D:\\java\\worktest\\20220720\\MZE120.jpg");
         List<PlateId> ids =lpr.find(src);
         if (ids != null && ids.size() > 0) {
@@ -29,7 +25,7 @@ public class LprOcrTest {
                 String car_id = ids.get(i).getId();
                 System.out.println("id=" + car_id + "  val=" + ids.get(i).getProbabilitie());
             }
-        }*/
+        }
     }
 
 }

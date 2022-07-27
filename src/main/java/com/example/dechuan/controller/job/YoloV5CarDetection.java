@@ -33,7 +33,7 @@ import static org.bytedeco.opencv.global.opencv_imgproc.*;
  */
 public class YoloV5CarDetection extends BaseDetection {
 	private static String model_path = "lpr/car_detection_640.torchscript.pt";
-	private static String name_path = "lib/coco.names";
+	private static String name_path = "lpr/coco.names";
 	private static String car_path = "lpr/car.jpg";
 
 	private static ZooModel<Image, DetectedObjects> model = null;
