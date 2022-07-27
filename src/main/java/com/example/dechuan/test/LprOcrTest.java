@@ -24,6 +24,7 @@ public class LprOcrTest {
 //        outTem = new FileOutputStream(model);
 //        System.out.println(outTem);
 
+
         LPR lpr = new LPR(false, "");
         Mat src = imread("D:\\java\\worktest\\20220720\\MZE120.jpg");
         List<PlateId> ids =lpr.find(src);
