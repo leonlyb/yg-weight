@@ -25,7 +25,7 @@ import static org.bytedeco.opencv.global.opencv_core.minMaxLoc;
  *
  */
 public class TensorflowDnnNumClassification extends BaseDetection {
-	private static String model = "lpr/car_id_num.pb";
+	private static String model = "car_id_num.pb";
 	private static Map<String, Net> dnn_net_pool = new Hashtable<String, Net>();
 
 	private synchronized static Net getNet(String name) {

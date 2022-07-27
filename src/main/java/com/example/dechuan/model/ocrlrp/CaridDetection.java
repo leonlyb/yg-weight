@@ -32,9 +32,9 @@ import static org.bytedeco.opencv.global.opencv_imgproc.*;
  * @author xiaoming
  */
 public class CaridDetection extends BaseDetection {
-	private static String model_path = "lpr/carid.torchscript.pt";
-	private static String name_path = "lpr/carid.names";
-	private static String car_path = "lpr/id.jpg";
+	private static String model_path = "carid.torchscript.pt";
+	private static String name_path = "carid.names";
+	private static String car_path = "id.jpg";
 
 	private static ZooModel<Image, DetectedObjects> model = null;
 
