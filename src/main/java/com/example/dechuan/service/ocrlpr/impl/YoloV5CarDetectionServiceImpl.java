@@ -1,7 +1,8 @@
 package com.example.dechuan.service.ocrlpr.impl;
 
-import cn.daming.java.lpr.cars.YoloV5CarDetection;
-import cn.daming.java.lpr.djl.carid.CarService;
+import com.example.dechuan.controller.job.YoloV5CarDetection;
+import com.example.dechuan.model.ocrlrp.Object;
+import com.example.dechuan.service.ocrlpr.CarService;
 import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.util.List;
