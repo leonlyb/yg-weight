@@ -1,5 +1,6 @@
 package com.example.dechuan.core;
 
+import com.example.dechuan.utils.DateUtils;
 import org.apache.coyote.Request;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ConcurrentTaskExecutor;
@@ -26,7 +27,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\java\\worktest\\newimage\\20220728\\");
+        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\java\\carno\\newimage\\"+ DateUtils.getyymmdd()+"\\");
     }
 
 
