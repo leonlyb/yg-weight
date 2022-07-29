@@ -128,13 +128,11 @@ public class DateUtils {
         return format;
     }
    //获取昨天
-    public static String getYesterday(){
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+    public static String getyymmdd(){
         Date date = new Date();
-        Calendar now = Calendar.getInstance();
-        now.setTime(date);
-        now.add(Calendar.DAY_OF_MONTH, -1);
-        return sdf.format(now.getTime());
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+        String format = sdf.format(date);
+        return format;
     }
 
     /**

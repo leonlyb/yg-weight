@@ -3,10 +3,7 @@ package com.example.dechuan.core;
 import org.apache.coyote.Request;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ConcurrentTaskExecutor;
-import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +22,13 @@ public class WebConfiguration implements WebMvcConfigurer {
     public WebConfiguration(TokenInterceptor tokenInterceptor){
         this.tokenInterceptor = tokenInterceptor;
     }
+
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\java\\worktest\\newimage\\20220728\\");
+    }
+
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -59,18 +63,8 @@ public class WebConfiguration implements WebMvcConfigurer {
         excludePath.add("/**");
         excludePath.add("/static/**");  //静态资源
         excludePath.add("/assets/**");  //静态资源
-        excludePath.add("/swagger-ui.html");
-        excludePath.add("/swagger**/**");
-        excludePath.add("/swagger-resources/**");
-        excludePath.add("/swagger-resources/**");
-        excludePath.add("/swagger-ui.html/**");
         excludePath.add("/js");
         excludePath.add("/webjars/**");
-        excludePath.add("/v2/api-docs/**");
-        excludePath.add("/v2/api-docs/**");
-        excludePath.add("/v2/api-docs-ext/**");
-        excludePath.add("/docs.html");
-        excludePath.add("/doc.html");
         excludePath.add("/error");
         excludePath.add("/");
         excludePath.add("/favicon.ico");

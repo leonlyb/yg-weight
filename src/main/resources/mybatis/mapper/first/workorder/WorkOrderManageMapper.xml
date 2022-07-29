@@ -46,7 +46,7 @@
     where woKy = #{woKy,jdbcType=INTEGER}
   </delete>
 
-  <insert id="doAddWorkOrderManage" parameterType="com.example.dechuan.model.workorder.WorkOrderManage">
+  <insert id="doAddWorkOrderManage" parameterType="com.example.dechuan.model.workorder.WorkOrderManage"  useGeneratedKeys = "true"   keyProperty = "woKy">
     insert into truckinout_workorder
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="entranceLoadCellNumber != null">

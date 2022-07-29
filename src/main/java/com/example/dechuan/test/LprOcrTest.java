@@ -26,7 +26,7 @@ public class LprOcrTest {
 
 
         LPR lpr = new LPR(false, "");
-        Mat src = imread("D:\\java\\worktest\\20220720\\MZE120.jpg");
+        Mat src = imread("D:\\java\\worktest\\newimage\\20220728\\20220719235957878.jpg");
         List<PlateId> ids =lpr.find(src);
         if (ids != null && ids.size() > 0) {
             for (int i = 0; i < ids.size(); i++) {

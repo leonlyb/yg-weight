@@ -39,7 +39,7 @@
         </javaClientGenerator>
 
         <!--生成映射表-->
-        <table tableName="truckinout_workorder" domainObjectName="WorkOrderManage"
+        <table tableName="truckinout_image" domainObjectName="CarImage"
                schema=""
                enableCountByExample="false"
                enableUpdateByExample="false"

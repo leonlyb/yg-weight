@@ -1,5 +1,8 @@
 package com.example.dechuan.model.workorder;
 
+import com.example.dechuan.utils.DateUtils;
+import freemarker.template.utility.DateUtil;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -110,20 +113,22 @@ public class WorkOrderManage {
         this.exitLoadCellNumber = exitLoadCellNumber;
     }
 
-    public Timestamp getEntranceDateTime() {
-        return entranceDateTime;
+    public String getEntranceDateTime() {
+    return DateUtils.formatDate(entranceDateTime, "yyyy-MM-dd HH:mm:ss");
+}
+
+
+    public void setEntranceDateTime(String entranceDateTime) {
+        this.entranceDateTime = Timestamp.valueOf(entranceDateTime);
     }
 
-    public void setEntranceDateTime(Timestamp entranceDateTime) {
-        this.entranceDateTime = entranceDateTime;
-    }
+   public String getExitDateTime() {
+    return DateUtils.formatDate(exitDateTime, "yyyy-MM-dd HH:mm:ss");
+}
 
-    public Timestamp getExitDateTime() {
-        return exitDateTime;
-    }
 
-    public void setExitDateTime(Timestamp exitDateTime) {
-        this.exitDateTime = exitDateTime;
+    public void setExitDateTime(String exitDateTime) {
+        this.exitDateTime = Timestamp.valueOf(exitDateTime);
     }
 
     public String getCarNo() {
