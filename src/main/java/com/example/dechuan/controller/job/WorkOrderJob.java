@@ -1,7 +1,9 @@
 package com.example.dechuan.controller.job;
 
+import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.ocrlrp.PlateId;
 import com.example.dechuan.model.workorder.WorkOrderManage;
+import com.example.dechuan.service.carimage.CarImageService;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.DateUtils;
 import org.bytedeco.opencv.opencv_core.Mat;
@@ -32,15 +34,18 @@ public class WorkOrderJob {
 
     @Autowired
      WorkOrderManageService workOrderManageService;
+     @Autowired
+     CarImageService carImageService;
 
     /**
      * 每五秒轮询一次
      */
      @Scheduled(cron="0/5 * * * * ?") //每个5秒执行一次
     public  void workorderjob() {
-         String carname =null;
+//         String carname =null,nocarname=null;
         //循环文件夹。获取图片
         WorkOrderManage wom = new WorkOrderManage();
+         CarImage ci = new CarImage();
         try{
             File file = new File(begin_path);
             File[] listFiles = file.listFiles();
@@ -62,7 +67,7 @@ public class WorkOrderJob {
                     //图片名字
                     File startFile = new File(begin_path+"\\"+fs.getName());
                     if(fs.getName().substring(0, 2).equals("车牌")){
-                        carname = "\\carno" + fs.getName().substring(2) + ".jpg";
+                        ci.setCarnoimage("http://202.196.192.111:8083\\view\\image\\carno" + fs.getName().substring(2) + ".jpg");
                         if (startFile.renameTo(new File(end_path+"\\carno"+fs.getName().substring(2)+".jpg"))) {
                                 log.info("文件移动成功！文件名：{"+fs.getName()+"} 目标路径：{"+end_path+"}");
                             } else {
@@ -70,6 +75,7 @@ public class WorkOrderJob {
                         }
                     }else{
                         //无车牌图片
+                        ci.setVormalvehicleimage("http://202.196.192.111:8083\\view\\image\\" + startFile.getName());
                         startFile.renameTo(new File(end_path+"/"+startFile.getName()));
                         //根据图片新路径，获取车牌号生成工作单
                         LPR lpr = new LPR(false, "");
@@ -82,18 +88,20 @@ public class WorkOrderJob {
                                log.info("id=" + car_id + "  val=" + ids.get(0).getProbabilitie());
                                wom.setCarNo(car_id);
                                workOrderManageService.doAddWorkOrderManage(wom);
-                            System.out.println(wom.getWoKy());
+                               ci.setWoky(wom.getWoKy());
                         }else{
                             //识别未成功，生成工单
                             wom.setCarNo("未识别车牌");
                             workOrderManageService.doAddWorkOrderManage(wom);
+                            ci.setWoky(wom.getWoKy());
                         }
                     }
                     //存储图片路径
-                    System.out.println(carname);
+//                    System.out.println(carname);
+                    carImageService.doAddImageUrl(ci);
                 }
             }
-
+//
         }
         }catch (Exception e){
             e.printStackTrace();
