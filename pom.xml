@@ -102,14 +102,14 @@
             <artifactId>jna</artifactId><!--jar包名字-->
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/jna.jar</systemPath><!--路径-->
+            <systemPath>${pom.basedir}/src/main/resources/lib/jna.jar</systemPath><!--路径-->
         </dependency>
         <dependency>
             <groupId>com</groupId><!--随便填的-->
             <artifactId>examples</artifactId><!--jar包名字-->
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/examples.jar</systemPath><!-- ${project.basedir}  路径-->
+            <systemPath>${pom.basedir}/src/main/resources/lib/examples.jar</systemPath><!-- ${project.basedir}  路径-->
         </dependency>
         <dependency>
             <groupId>org.freemarker</groupId>
