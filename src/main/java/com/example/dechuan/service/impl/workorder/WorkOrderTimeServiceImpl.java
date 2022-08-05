@@ -34,4 +34,9 @@ public class WorkOrderTimeServiceImpl implements WorkOrderTimeService {
         List<WorkTempo> list = workTempoMapper.listWorkTempo(wt);
         return PageUtils.getPageResult(qt, new PageInfo<WorkTempo>(list));
     }
+
+    @Override
+    public int doGetEditWorkOrderTime(WorkTempo wt) {
+        return workTempoMapper.doEditWorkOrderTime(wt);
+    }
 }

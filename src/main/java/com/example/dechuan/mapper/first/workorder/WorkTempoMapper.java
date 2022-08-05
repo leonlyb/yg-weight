@@ -13,6 +13,6 @@ public interface WorkTempoMapper {
 
     List<WorkTempo> listWorkTempo(WorkTempo wt);
 
-    int updateByPrimaryKeySelective(WorkTempo record);
 
+    int doEditWorkOrderTime(WorkTempo wt);
 }

@@ -15,7 +15,7 @@
   </select>
 
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.dechuan.model.workorder.WorkTempo">
+  <update id="doEditWorkOrderTime" parameterType="com.example.dechuan.model.workorder.WorkTempo">
     update work_tempo
     <set>
       <if test="tempo != null">

@@ -43,6 +43,17 @@ public class WorkOrderTimeJob {
         }
         return ResultBody.success(workOrderTimeService.doGetWorkOrderTimeList(wt,qt));
     }
-
+    /**
+     * @Author eden
+     * @Description 工单时修改
+     * @Date  2022/08/05 14:18
+     * @status doney
+     * @return
+     */
+    @RequestMapping("/edit")
+    @ResponseBody
+    public ResultBody edit(WorkTempo wt) {
+        return ResultBody.success(workOrderTimeService.doGetEditWorkOrderTime(wt));
+    }
 
 }
