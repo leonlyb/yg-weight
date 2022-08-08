@@ -2,9 +2,11 @@ package com.example.dechuan.service.impl.workorder;
 
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
+import com.example.dechuan.mapper.first.workorder.WorkTempoLogMapper;
 import com.example.dechuan.mapper.first.workorder.WorkTempoMapper;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.model.workorder.WorkTempo;
+import com.example.dechuan.model.workorder.WorkTempoLog;
 import com.example.dechuan.service.workorder.WorkOrderTimeService;
 import com.example.dechuan.utils.PageUtils;
 import com.github.pagehelper.PageHelper;
@@ -26,6 +28,9 @@ import java.util.List;
 public class WorkOrderTimeServiceImpl implements WorkOrderTimeService {
 
     @Autowired
+    WorkTempoLogMapper workTempoLogMapper;
+
+    @Autowired
     WorkTempoMapper workTempoMapper;
 
     @Override
@@ -38,5 +43,18 @@ public class WorkOrderTimeServiceImpl implements WorkOrderTimeService {
     @Override
     public int doGetEditWorkOrderTime(WorkTempo wt) {
         return workTempoMapper.doEditWorkOrderTime(wt);
+    }
+
+    @Override
+    public List<WorkTempo> doGetWorkOrderJobTimeList() {
+        WorkTempo wt = new WorkTempo();
+        return workTempoMapper.listWorkTempo(wt);
+    }
+
+    @Override
+    public PageResult doGetWorkOrderTimeLogList(WorkTempoLog wtl, QueryDt qt) {
+        PageHelper.startPage(qt.getPageNum(), qt.getPageSize());
+        List<WorkTempoLog> list = workTempoLogMapper.doGetWorkOrderTimeLogList(wtl);
+        return PageUtils.getPageResult(qt, new PageInfo<WorkTempoLog>(list));
     }
 }

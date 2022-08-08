@@ -4,6 +4,8 @@ import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 
+import java.util.List;
+
 /**
  * @author eden
  * @date 2022/7/8
@@ -17,4 +19,6 @@ public interface WorkOrderManageService {
     int doEditWorkOrderManage(WorkOrderManage wom);
 
     int doDeleteWorkOrderManage(Integer woKy);
+
+    List<WorkOrderManage> doGetWorkOrderManageTimeList(WorkOrderManage wom);
 }

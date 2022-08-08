@@ -6,7 +6,7 @@ public class WorkTempo {
 
     private Integer id;
 
-    private String tempo;
+    private Integer tempo;
 
     public Integer getId() {
         return id;
@@ -17,12 +17,11 @@ public class WorkTempo {
     }
 
 
-    public String getTempo() {
+    public Integer getTempo() {
         return tempo;
     }
 
-
-    public void setTempo(String tempo) {
+    public void setTempo(Integer tempo) {
         this.tempo = tempo;
     }
 }

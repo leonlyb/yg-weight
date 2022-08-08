@@ -38,6 +38,9 @@
       <if test="tracingNo != null and tracingNo != ''">
           AND tracingNo = #{tracingNo}
       </if>
+      <if test="completionStatus != null and completionStatus != ''">
+          AND completionStatus = #{completionStatus}
+      </if>
   </select>
 
 

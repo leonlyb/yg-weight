@@ -87,7 +87,19 @@ public class WorkOrderManage {
      *   司磅员姓名
      */
     private String weighmanName;
+    /**
+     *   工单完成状态
+     */
+    private Integer completionStatus;
 
+
+    public Integer getCompletionStatus() {
+        return completionStatus;
+    }
+
+    public void setCompletionStatus(Integer completionStatus) {
+        this.completionStatus = completionStatus;
+    }
 
     public Integer getWoKy() {
         return woKy;

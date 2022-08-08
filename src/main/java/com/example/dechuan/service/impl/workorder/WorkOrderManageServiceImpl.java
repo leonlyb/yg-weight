@@ -48,4 +48,9 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     public int doDeleteWorkOrderManage(Integer woKy) {
         return workOrderManageMapper.doDeleteWorkOrderManage(woKy);
     }
+
+    @Override
+    public List<WorkOrderManage> doGetWorkOrderManageTimeList(WorkOrderManage wom) {
+        return workOrderManageMapper.doGetWorkOrderManageList(wom);
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.dechuan.mapper.first.workorder;
 
 import com.example.dechuan.model.workorder.WorkTempo;
+import com.example.dechuan.model.workorder.WorkTempoLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,5 @@ public interface WorkTempoMapper {
 
 
     int doEditWorkOrderTime(WorkTempo wt);
+
 }
