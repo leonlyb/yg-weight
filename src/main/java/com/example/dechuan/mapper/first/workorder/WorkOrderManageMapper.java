@@ -17,4 +17,6 @@ public interface WorkOrderManageMapper {
     int doEditWorkOrderManage(WorkOrderManage wom);
 
     int doDeleteWorkOrderManage(Integer woKy);
+
+    List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy);
 }

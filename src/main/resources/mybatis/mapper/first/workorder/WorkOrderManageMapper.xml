@@ -43,6 +43,13 @@
       </if>
   </select>
 
+    <select id="doGetWorkOrderManageTimeStatusList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from truckinout_workorder
+        where woKy = #{woKy,jdbcType=INTEGER}
+    </select>
+
 
   <delete id="doDeleteWorkOrderManage" parameterType="java.lang.Integer">
     delete from truckinout_workorder

@@ -5,6 +5,7 @@ import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.globalconfig.ResultBody;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.model.workorder.WorkTempo;
+import com.example.dechuan.model.workorder.WorkTempoLog;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.service.workorder.WorkOrderTimeService;
 import com.example.dechuan.utils.DateUtils;
@@ -60,41 +61,48 @@ public class WorkOrderTimeJob {
         List<WorkOrderManage> list = workOrderManageService.doGetWorkOrderManageTimeList(wom);
         if(list.size() >0){
             for (WorkOrderManage workOrderManage : list) {
-//                String entranceDateTime = workOrderManage.getEntranceDateTime();
-                Date date = new Date();//当前时间
-                String entranceDateTime = workOrderManage.getEntranceDateTime(); //获取进入时间
-                SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date time = sf.parse(entranceDateTime);
-               // 当前时间与其他时间相差的毫秒数
-                long diff = date.getTime() - time.getTime();
-                long hours = (diff) / (1000 * 60 * 60);
-                long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
-                if(hours > tempo ){
-                    //查询的时间大于设置时间，为超时
-                    //记录，存入数据库
+                List<WorkTempoLog> listw = workOrderTimeService.doGetWorkOrderTimeLogJobList(workOrderManage.getWoKy());
+                if(listw.size() >0){//存在
+                    WorkTempoLog wtl = new WorkTempoLog();
+                    wtl.setWtKy(listw.get(0).getWtKy());
+                    //1.状态不为0
+                    if(listw.get(0).getTimeStatus() != 0){
+                        //根据ky去去查询工单是否关闭
+                        List<WorkOrderManage> listtime = workOrderManageService.doGetWorkOrderManageTimeStatusList(workOrderManage.getWoKy());
+                        //1为关闭，拿出出门时间重新计算超时时间
+                        if(listtime.get(0).getCompletionStatus() == 1){//获取出门时间
+                            wtl.setTimeStatus(0);
+                            wtl.setTimeStatusDesc(DateUtils.getDistanceTime(listtime.get(0).getExitDateTime()));
+                            workOrderTimeService.doGetWorkOrderTimeLogEdit(wtl);
+                        }else {
+                            //2未关闭
+                            wtl.setTimeStatusDesc(DateUtils.getDistanceTime(listtime.get(0).getEntranceDateTime()));
+                            workOrderTimeService.doGetWorkOrderTimeLogEdit(wtl);
+                        }
+                    }
+                }else{//不存在
+                    //判断是否超时，超时则存入log表
+                    Date date = new Date();//当前时间
+                    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date time = sf.parse(workOrderManage.getEntranceDateTime());
+                    // 当前时间与其他时间相差的毫秒数
+                    long diff = date.getTime() - time.getTime();
+                    long hours = (diff) / (1000 * 60 * 60);
+                    long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
+                    log.info("时间差为:"+hours+"小时"+minutes+"分");
+                    if(hours > tempo ){
+                        //查询的时间大于设置时间，为超时
+                        //记录，存入数据库
+                        WorkTempoLog wtl = new WorkTempoLog();
+                        wtl.setWoKy(workOrderManage.getWoKy());
+                        wtl.setTimeStatus(1);
+                        wtl.setTimeStatusDesc(hours+"小时"+minutes+"分");
+                        workOrderTimeService.doGetWorkOrderTimeLogAdd(wtl);
+                    }
                 }
+
             }
         }
 
     }
-
-
-
-    public static void main(String[] args) throws ParseException {
-//        Date date = new Date();//当前时间
-//        String otherTime = "2022-08-08 14:00:00";
-//        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        Date time = sf.parse(otherTime);
-////      当前时间与其他时间相差的毫秒数
-//        long diff = date.getTime() - time.getTime();
-////        long min = diff / 60 / 1000;
-////        long hours = diff / 60 / 60 / 1000;
-//        long hours = (diff) / (1000 * 60 * 60);
-//        long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
-//        System.out.println("相差多少分钟" + minutes);
-//        System.out.println("相差多少小时" + hours);
-
-    }
-
-
 }

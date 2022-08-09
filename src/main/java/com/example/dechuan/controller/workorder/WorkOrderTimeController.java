@@ -74,4 +74,31 @@ public class WorkOrderTimeController {
         return ResultBody.success(workOrderTimeService.doGetWorkOrderTimeLogList(wtl,qt));
     }
 
+    /**
+     * @Author eden
+     * @Description 工单时效log新增
+     * @Date  2022/08/05 14:18
+     * @status doney
+     * @return
+     */
+    @RequestMapping("/log/add")
+    @ResponseBody
+    public ResultBody addlog(WorkTempoLog wtl) {
+        return ResultBody.success(workOrderTimeService.doGetWorkOrderTimeLogAdd(wtl));
+    }
+
+    /**
+     * @Author eden
+     * @Description 工单时效log修改
+     * @Date  2022/08/05 14:18
+     * @status doney
+     * @return
+     */
+    @RequestMapping("/log/edit")
+    @ResponseBody
+    public ResultBody editlog(WorkTempoLog wtl) {
+        return ResultBody.success(workOrderTimeService.doGetWorkOrderTimeLogEdit(wtl));
+    }
+
+
 }

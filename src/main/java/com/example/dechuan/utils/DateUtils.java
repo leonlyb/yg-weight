@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -145,17 +144,27 @@ public class DateUtils {
         return dateString;
     }
 
-    public static String getDistanceTime() throws ParseException {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static String getDistanceTime(String dateTime) throws ParseException {
+        Date date = new Date();//当前时间
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date time = sf.parse(dateTime);
+        // 当前时间与其他时间相差的毫秒数
+        long diff = date.getTime() - time.getTime();
+        long hours = (diff) / (1000 * 60 * 60);
+        long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
+        log.info("时间差为:"+hours+"小时"+minutes+"分");
+        return hours+"小时"+minutes+"分";
+    }
 
-            Date d1 = df.parse("2004-03-26 13:31:40");
-            Date d2 = df.parse("2004-01-02 11:30:24");
-            long diff = d1.getTime() - d2.getTime();//这样得到的差值是微秒级别
-            long days = diff / (1000 * 60 * 60 * 24);
-
-            long hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
-            long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
-            System.out.println("" + days + "天" + hours + "小时" + minutes + "分");
-            return "" + days + "天" + hours + "小时" + minutes + "分";
+    public static long getHours(String dateTime) throws ParseException {
+        Date date = new Date();//当前时间
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date time = sf.parse(dateTime);
+        // 当前时间与其他时间相差的毫秒数
+        long diff = date.getTime() - time.getTime();
+        long hours = (diff) / (1000 * 60 * 60);
+        long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
+        log.info("时间差为:"+hours+"小时"+minutes+"分");
+        return hours;
     }
 }

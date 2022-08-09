@@ -21,4 +21,10 @@ public interface WorkOrderTimeService {
     List<WorkTempo> doGetWorkOrderJobTimeList();
 
     PageResult doGetWorkOrderTimeLogList(WorkTempoLog wtl, QueryDt qt);
+
+    int doGetWorkOrderTimeLogAdd(WorkTempoLog wtl);
+
+    List<WorkTempoLog> doGetWorkOrderTimeLogJobList(Integer woKy);
+
+    int doGetWorkOrderTimeLogEdit(WorkTempoLog wtl);
 }

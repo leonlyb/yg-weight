@@ -11,9 +11,10 @@ import java.util.List;
 public interface WorkTempoLogMapper {
 
 
-    int insertSelective(WorkTempoLog record);
-
-    int updateByPrimaryKeySelective(WorkTempoLog record);
 
     List<WorkTempoLog> doGetWorkOrderTimeLogList(WorkTempoLog wtl);
+
+    int doGetWorkOrderTimeLogAdd(WorkTempoLog wtl);
+
+    int doGetWorkOrderTimeLogEdit(WorkTempoLog wtl);
 }

@@ -21,4 +21,6 @@ public interface WorkOrderManageService {
     int doDeleteWorkOrderManage(Integer woKy);
 
     List<WorkOrderManage> doGetWorkOrderManageTimeList(WorkOrderManage wom);
+
+    List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy);
 }

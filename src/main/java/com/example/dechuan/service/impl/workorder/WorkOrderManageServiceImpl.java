@@ -53,4 +53,9 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     public List<WorkOrderManage> doGetWorkOrderManageTimeList(WorkOrderManage wom) {
         return workOrderManageMapper.doGetWorkOrderManageList(wom);
     }
+
+    @Override
+    public List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy) {
+        return workOrderManageMapper.doGetWorkOrderManageTimeStatusList(woKy);
+    }
 }

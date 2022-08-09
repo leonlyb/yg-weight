@@ -57,4 +57,21 @@ public class WorkOrderTimeServiceImpl implements WorkOrderTimeService {
         List<WorkTempoLog> list = workTempoLogMapper.doGetWorkOrderTimeLogList(wtl);
         return PageUtils.getPageResult(qt, new PageInfo<WorkTempoLog>(list));
     }
+
+    @Override
+    public int doGetWorkOrderTimeLogAdd(WorkTempoLog wtl) {
+        return workTempoLogMapper.doGetWorkOrderTimeLogAdd(wtl);
+    }
+
+    @Override
+    public List<WorkTempoLog> doGetWorkOrderTimeLogJobList(Integer woKy) {
+        WorkTempoLog wtl = new WorkTempoLog();
+        wtl.setWoKy(woKy);
+        return workTempoLogMapper.doGetWorkOrderTimeLogList(wtl);
+    }
+
+    @Override
+    public int doGetWorkOrderTimeLogEdit(WorkTempoLog wtl) {
+        return workTempoLogMapper.doGetWorkOrderTimeLogEdit(wtl);
+    }
 }
