@@ -12,6 +12,7 @@ import com.example.dechuan.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,7 +46,7 @@ public class WorkOrderTimeJob {
      * @status doney
      * @return
      */
-//     @Scheduled(cron="0/5 * * * * ?") //每个5秒执行一次
+     @Scheduled(cron="0/5 * * * * ?") //每个5秒执行一次
     public void list() throws ParseException {
         int tempo=0;
         // 轮询查询是否满足条件的工单
@@ -72,11 +73,11 @@ public class WorkOrderTimeJob {
                         //1为关闭，拿出出门时间重新计算超时时间
                         if(listtime.get(0).getCompletionStatus() == 1){//获取出门时间
                             wtl.setTimeStatus(0);
-                            wtl.setTimeStatusDesc(DateUtils.getDistanceTime(listtime.get(0).getExitDateTime()));
+                            wtl.setTimeStatusDesc(DateUtils.getDistanceTime(listtime.get(0).getEntranceDateTime(),listtime.get(0).getExitDateTime()));
                             workOrderTimeService.doGetWorkOrderTimeLogEdit(wtl);
                         }else {
                             //2未关闭
-                            wtl.setTimeStatusDesc(DateUtils.getDistanceTime(listtime.get(0).getEntranceDateTime()));
+                            wtl.setTimeStatusDesc(DateUtils.getDistanceTime(listtime.get(0).getEntranceDateTime(),null));
                             workOrderTimeService.doGetWorkOrderTimeLogEdit(wtl);
                         }
                     }

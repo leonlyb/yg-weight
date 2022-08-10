@@ -21,11 +21,12 @@
     <result column="tracingNo" jdbcType="INTEGER" property="tracingNo" />
     <result column="productListStatus" jdbcType="INTEGER" property="productListStatus" />
     <result column="weighmanName" jdbcType="VARCHAR" property="weighmanName" />
+    <result column="completionStatus" jdbcType="INTEGER" property="completionStatus" />
   </resultMap>
   <sql id="Base_Column_List">
     woKy,entranceLoadCellNumber, exitLoadCellNumber, entranceDateTime, exitDateTime,
     carNo, supplierId, driverId, driverInfo, entranceWeight, exitWeight, netWeight, tracingNo, 
-    productListStatus, weighmanName
+    productListStatus, weighmanName,completionStatus
   </sql>
   <select id="doGetWorkOrderManageList" resultMap="BaseResultMap">
     SELECT
@@ -38,7 +39,7 @@
       <if test="tracingNo != null and tracingNo != ''">
           AND tracingNo = #{tracingNo}
       </if>
-      <if test="completionStatus != null and completionStatus != ''">
+      <if test="completionStatus != null">
           AND completionStatus = #{completionStatus}
       </if>
   </select>

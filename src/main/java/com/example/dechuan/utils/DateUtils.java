@@ -144,27 +144,23 @@ public class DateUtils {
         return dateString;
     }
 
-    public static String getDistanceTime(String dateTime) throws ParseException {
-        Date date = new Date();//当前时间
+    public static String getDistanceTime(String inDateTime,String outDateTime) throws ParseException {
+        long diff;
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date time = sf.parse(dateTime);
-        // 当前时间与其他时间相差的毫秒数
-        long diff = date.getTime() - time.getTime();
+        Date time = sf.parse(inDateTime);
+        if(outDateTime == null){
+            Date date = new Date();//当前时间
+            // 当前时间与其他时间相差的毫秒数
+            diff = date.getTime() - time.getTime();
+        }else{
+            Date date = sf.parse(outDateTime);
+            diff = date.getTime() - time.getTime();
+        }
+
         long hours = (diff) / (1000 * 60 * 60);
         long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
         log.info("时间差为:"+hours+"小时"+minutes+"分");
         return hours+"小时"+minutes+"分";
     }
 
-    public static long getHours(String dateTime) throws ParseException {
-        Date date = new Date();//当前时间
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date time = sf.parse(dateTime);
-        // 当前时间与其他时间相差的毫秒数
-        long diff = date.getTime() - time.getTime();
-        long hours = (diff) / (1000 * 60 * 60);
-        long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
-        log.info("时间差为:"+hours+"小时"+minutes+"分");
-        return hours;
-    }
 }
