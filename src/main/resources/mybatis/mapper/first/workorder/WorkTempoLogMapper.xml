@@ -14,10 +14,14 @@
   <select id="doGetWorkOrderTimeLogList"  resultMap="BaseResultMap">
     SELECT
       wtKy,
-      woKy,
+      l.woKy,
+      carNo,
+      entranceDateTime,
+      exitDateTime,
       timeStatus,
       timeStatusDesc
-    FROM work_tempo_log
+    FROM work_tempo_log l
+    LEFT JOIN truckinout_workorder w on l.woKy = w.woKy
     WHERE  1=1
     <if test="timeStatus != null and timeStatus != ''">
       AND timeStatus = #{timeStatus}
