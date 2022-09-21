@@ -46,6 +46,7 @@ public class WorkOrderTimeJob {
      * @status doney
      * @return
      */
+//    https://pan.baidu.com/s/1VrxqfAIwPnlpw2lUmouaIg?pwd=9wa8
 //     @Scheduled(cron="0/5 * * * * ?") //每个5秒执行一次
     public void list() throws ParseException {
         int tempo=0;
