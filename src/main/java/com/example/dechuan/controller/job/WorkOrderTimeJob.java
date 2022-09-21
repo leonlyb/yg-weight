@@ -46,7 +46,7 @@ public class WorkOrderTimeJob {
      * @status doney
      * @return
      */
-     @Scheduled(cron="0/5 * * * * ?") //每个5秒执行一次
+//     @Scheduled(cron="0/5 * * * * ?") //每个5秒执行一次
     public void list() throws ParseException {
         int tempo=0;
         // 轮询查询是否满足条件的工单
