@@ -20,7 +20,7 @@ public class ConnectDatabase {
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/ulhf_weighbridg?useUnicode=true&serverTimezone=Asia/Shanghai");
 		dataSource.setUsername("root");
-		dataSource.setPassword("123456");
+		dataSource.setPassword("root");
 		return new JdbcTemplate(dataSource);
 	}
 

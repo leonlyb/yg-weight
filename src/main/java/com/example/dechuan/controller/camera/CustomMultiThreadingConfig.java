@@ -15,7 +15,7 @@ import java.util.concurrent.Executor;
  * @Version: 1.0
  */
 @Configuration
-@ComponentScan("com.danger.vehicle")
+@ComponentScan("com.example.dechuan")
 @EnableAsync//利用@EnableAsync注解开启异步任务支持
 public class CustomMultiThreadingConfig implements AsyncConfigurer {
 

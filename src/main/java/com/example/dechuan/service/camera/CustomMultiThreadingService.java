@@ -31,10 +31,16 @@ public class CustomMultiThreadingService {
         hikVisionService.initMemberFlowUpload(m_ip, 100);
         logger.info("<------------" + m_ip + "启动-------->");
     }
-//    @Async
-//    public void executeAsyncTask2(String m_ip)throws InterruptedException{
-//        HikVisionService hikVisionService = new HikVisionService();
-//        hikVisionService.initMemberFlowUpload(m_ip, 100);
-//        logger.info("<------------"+m_ip+"启动-------->");
-//    }
+    @Async
+    public void executeAsyncTask2(String m_ip)throws InterruptedException{
+        HikVisionService hikVisionService = new HikVisionService();
+        hikVisionService.initMemberFlowUpload(m_ip, 100);
+        logger.info("<------------"+m_ip+"启动-------->");
+    }
+    @Async
+    public void executeAsyncTask3(String m_ip)throws InterruptedException{
+        HikVisionService hikVisionService = new HikVisionService();
+        hikVisionService.initMemberFlowUpload(m_ip, 100);
+        logger.info("<------------"+m_ip+"启动-------->");
+    }
 }

@@ -169,8 +169,8 @@ public class HikVisionService {
                             sAlarmType ="是否危化品："+byDangerousVehicles+"-->"+ sAlarmType + ",车辆类型："+ CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()) + ",交通抓拍上传，车牌："+ srt3;
                             Map<String,String> paramMap = new HashMap<String,String>();
                             paramMap.put("type", CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()));////车辆类型
-                            String filename = "D:\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";
-                            String carFileName = "D:\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";
+                            String filename = "D:\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车牌
+                            String carFileName = "D:\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车辆原始图
                             String imgName =sf.format(new Date())+".jpg";
                             String clImgName ="cl"+imgName;
                             String imgPath ="/resource/null/customImages/"+imgName;
@@ -221,8 +221,10 @@ public class HikVisionService {
 
                                     }
                                 }
-                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",filename+imgName);
-                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",carFileName+clImgName);
+                                //上传到服务器
+//                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",filename+imgName);
+//                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",carFileName+clImgName);
+                                //保存到数据库
                                 ConnectDatabase.insertClsb(paramMap,imgPath,clImgPath);
                             }
                         }
