@@ -2,6 +2,8 @@ package com.example.dechuan.hktv.basics;
 
 
 import com.example.dechuan.hktv.ClientDemo.HCNetSDK;
+import com.example.dechuan.model.workorder.WorkOrderManage;
+import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.camera.BreakRulesType;
 import com.example.dechuan.utils.camera.CarType;
 import com.example.dechuan.utils.camera.ConnectDatabase;
@@ -10,6 +12,7 @@ import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,6 +40,11 @@ public class HikVisionService {
     public NativeLong RemoteConfig;
     public boolean callback;
     public static int code = 5;
+
+
+    @Autowired
+    WorkOrderManageService workOrderManageService;
+
     //撤防
     public void CloseAlarmChan(NativeLong  lAlarmHandle) {
         //报警撤防
@@ -108,7 +116,7 @@ public class HikVisionService {
 
         //启动监听----------------------------------------------
         int iListenPort = 8000;
-        String m_sListenIP = "172.172.1.1";
+        String m_sListenIP = "172.0.0.1";
 
         lListenHandle = hCNetSDK.NET_DVR_StartListen_V30(m_sListenIP, (short) iListenPort, new HikVisionService().new FMSGCallBack(), null);
         if(lListenHandle < 0) {
@@ -169,14 +177,17 @@ public class HikVisionService {
                             sAlarmType ="是否危化品："+byDangerousVehicles+"-->"+ sAlarmType + ",车辆类型："+ CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()) + ",交通抓拍上传，车牌："+ srt3;
                             Map<String,String> paramMap = new HashMap<String,String>();
                             paramMap.put("type", CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()));////车辆类型
-                            String filename = "D:\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车牌
-                            String carFileName = "D:\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车辆原始图
+                            String filename = "C:\\java\\hkdll\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车牌
+                            String carFileName = "C:\\java\\hkdll\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车辆原始图
                             String imgName =sf.format(new Date())+".jpg";
                             String clImgName ="cl"+imgName;
                             String imgPath ="/resource/null/customImages/"+imgName;
                             String clImgPath ="/resource/null/customImages/"+clImgName;
-                            if(byDangerousVehicles==2){
-                                paramMap.put("plateNumber", srt3.substring(1, srt3.length()).trim());//车牌号
+                            System.out.println(srt3.substring(1,srt3.length()).trim());
+                            if("黄".equals(srt3.substring(0,1).trim())){
+//                            if(byDangerousVehicles==2){
+                                String carno = srt3.substring(1, srt3.length()).trim();
+                                paramMap.put("plateNumber", carno);//车牌号
                                 paramMap.put("byCountry",srt3.substring(1, 2).trim());//省份
                                 paramMap.put("byColor",srt3.substring(0, 1).trim());//车牌颜色
                                 paramMap.put("cameraIp",new String(pAlarmer.sDeviceIP).trim());//ip地址
@@ -221,11 +232,14 @@ public class HikVisionService {
 
                                     }
                                 }
+                                WorkOrderManage wom = new WorkOrderManage();
+                                wom.setCarNo(carno);
+                                workOrderManageService.doAddWorkOrderManage(wom);
                                 //上传到服务器
 //                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",filename+imgName);
 //                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",carFileName+clImgName);
                                 //保存到数据库
-                                ConnectDatabase.insertClsb(paramMap,imgPath,clImgPath);
+//                                ConnectDatabase.insertClsb(paramMap,imgPath,clImgPath);
                             }
                         }
                         catch (UnsupportedEncodingException e1) {
