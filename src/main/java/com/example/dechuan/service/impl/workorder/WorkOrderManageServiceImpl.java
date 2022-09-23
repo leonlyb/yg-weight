@@ -56,13 +56,13 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     }
 
     @Override
-    public int doAutomaticWorkorder(String carno, String clImgName, String imgName) {
+    public int doAutomaticWorkorder(String carno, String clImgName, String imgName,int isPass) {
         WorkOrderManage wo = new WorkOrderManage();
         CarImage ci = new CarImage();
         wo.setCarNo(carno);
         wo.setEntranceLoadCellNumber(100000);
         wo.setEntranceDateTime(DateUtils.getCurrentDate());
-        wo.setIsPass(0);
+        wo.setIsPass(isPass);
         workOrderManageMapper.doAddWorkOrderManage(wo);
         //存储图片路径
         ci.setWoKy(wo.getWoKy());

@@ -27,9 +27,9 @@ public class CarNoImage {
         carNoImage.workOrderManageService= this.workOrderManageService;
     }
 
-    public static void getcarno(String carno, String clImgName, String imgName) {
+    public static void getcarno(String carno, String clImgName, String imgName,int isPass) {
 
-        carNoImage.workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName);
+        carNoImage.workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName,isPass);
 
     }
 }
