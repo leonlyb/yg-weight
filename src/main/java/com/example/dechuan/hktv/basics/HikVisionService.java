@@ -175,9 +175,10 @@ public class HikVisionService {
                             String srt3=new String(strItsPlateResult.struPlateInfo.sLicense,"GBK");
                             sAlarmType ="是否危化品："+byDangerousVehicles+"-->"+ sAlarmType + ",车辆类型："+ CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()) + ",交通抓拍上传，车牌："+ srt3;
                             Map<String,String> paramMap = new HashMap<String,String>();
+                            String date = DateUtils.getyymmdd();
                             paramMap.put("type", CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()));////车辆类型
-                            String filename = "D:\\ITCP Web\\hkimg\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\"+DateUtils.getyymmdd()+"\\";//车牌
-                            String carFileName = "D:\\ITCP Web\\hkimg\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\"+DateUtils.getyymmdd()+"\\";//车辆原始图
+                            String filename = "D:\\ITCP Web\\hkimg\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\"+date+"\\";//车牌
+                            String carFileName = "D:\\ITCP Web\\hkimg\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\"+date+"\\";//车辆原始图
                             String imgName =sf.format(new Date())+".jpg";
                             String clImgName ="cl"+imgName;//原始图片
                             String imgPath ="/resource/null/customImages/"+imgName;
@@ -235,7 +236,7 @@ public class HikVisionService {
                                 //进厂摄像头
                                 if(ip.equals("192.168.1.244")){
 //                                    workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName);
-                                    CarNoImage.getcarno(carno,clImgName,imgName);
+                                    CarNoImage.getcarno(carno,"\\"+date+"\\"+clImgName,"\\"+date+"\\"+imgName);
                                 }
 
 
@@ -263,11 +264,6 @@ public class HikVisionService {
         }
     }
 
-
-
-//    public void getcarno(String carno, String clImgName, String imgName){
-//
-//    }
 }
 
 
