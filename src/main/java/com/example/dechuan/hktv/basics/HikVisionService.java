@@ -179,8 +179,8 @@ public class HikVisionService {
                             sAlarmType ="是否危化品："+byDangerousVehicles+"-->"+ sAlarmType + ",车辆类型："+ CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()) + ",交通抓拍上传，车牌："+ srt3;
                             Map<String,String> paramMap = new HashMap<String,String>();
                             paramMap.put("type", CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()));////车辆类型
-                            String filename = "D:\\ITCP Web\\hkimg\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+DateUtils.getyymmdd()+"\\";//车牌
-                            String carFileName = "D:\\ITCP Web\\hkimg\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+DateUtils.getyymmdd()+"\\";//车辆原始图
+                            String filename = "D:\\ITCP Web\\hkimg\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\"+DateUtils.getyymmdd()+"\\";//车牌
+                            String carFileName = "D:\\ITCP Web\\hkimg\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\"+DateUtils.getyymmdd()+"\\";//车辆原始图
                             String imgName =sf.format(new Date())+".jpg";
                             String clImgName ="cl"+imgName;//原始图片
                             String imgPath ="/resource/null/customImages/"+imgName;
