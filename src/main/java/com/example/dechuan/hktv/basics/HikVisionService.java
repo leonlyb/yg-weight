@@ -235,14 +235,14 @@ public class HikVisionService {
                                 }
                                 //进厂摄像头
                                 if(ip.equals("192.168.1.244")){
-                                    String imagurl = "\\view\\carimage\\244\\"+date+"\\";
-                                    String climagurl = "\\view\\image\\244\\"+date+"\\";
+                                    String imagurl = "/view/carimage/244/"+date+"/";
+                                    String climagurl = "/view/image/244/"+date+"/";
                                     CarNoImage.getcarno(carno,climagurl+clImgName,imagurl+imgName);
                                 }
                                 //直通摄像头
                                 if(ip.equals("192.168.1.247")){
-                                    String imagurl = "\\view\\carimage\\247\\"+date+"\\";
-                                    String climagurl = "\\view\\image\\247\\"+date+"\\";
+                                    String imagurl = "/view/carimage/247/"+date+"/";
+                                    String climagurl = "/view/image/247/"+date+"/";
                                     CarNoImage.getcarno(carno,climagurl+clImgName,imagurl+imgName);
                                 }
 
