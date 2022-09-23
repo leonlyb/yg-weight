@@ -20,6 +20,8 @@ public interface WorkOrderManageService {
 
     int doDeleteWorkOrderManage(Integer woKy);
 
+    int doAutomaticWorkorder(String carno,String clImgName,String imgName);
+
     List<WorkOrderManage> doGetWorkOrderManageTimeList(WorkOrderManage wom);
 
     List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy);

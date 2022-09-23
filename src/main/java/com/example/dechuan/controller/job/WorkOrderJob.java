@@ -2,7 +2,6 @@ package com.example.dechuan.controller.job;
 
 import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.carimage.ConfigurationInformation;
-import com.example.dechuan.model.ocrlrp.PlateId;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.carimage.CarImageService;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
@@ -82,23 +81,23 @@ public class WorkOrderJob {
                         ci.setVormalvehicleimage("http://"+WorkOrderJob.getHostIp()+ConfigurationInformation.IMAGE_URL + startFile.getName());
                         startFile.renameTo(new File(ConfigurationInformation.end_path+"/"+startFile.getName()));
                         //根据图片新路径，获取车牌号生成工作单
-                        LPR lpr = new LPR(false, "");
-                        Mat src = imread(ConfigurationInformation.end_path+"\\"+startFile.getName());
-                        List<PlateId> ids =lpr.find(src);
+//                        LPR lpr = new LPR(false, "");
+//                        Mat src = imread(ConfigurationInformation.end_path+"\\"+startFile.getName());
+//                        List<PlateId> ids =lpr.find(src);
                         wom.setEntranceDateTime(DateUtils.getCurrentDate());
-                        if (ids != null && ids.size() > 0) {
+//                        if (ids != null && ids.size() > 0) {
                             //识别成功，生成工单
-                                String car_id = ids.get(0).getId();
-                               log.info("id=" + car_id + "  val=" + ids.get(0).getProbabilitie());
-                               wom.setCarNo(car_id);
+//                                String car_id = ids.get(0).getId();
+//                               log.info("id=" + car_id + "  val=" + ids.get(0).getProbabilitie());
+//                               wom.setCarNo(car_id);
                                workOrderManageService.doAddWorkOrderManage(wom);
                                ci.setWoky(wom.getWoKy());
-                        }else{
-                            //识别未成功，生成工单
-                            wom.setCarNo("未识别车牌");
-                            workOrderManageService.doAddWorkOrderManage(wom);
-                            ci.setWoky(wom.getWoKy());
-                        }
+//                        }else{
+//                            //识别未成功，生成工单
+//                            wom.setCarNo("未识别车牌");
+//                            workOrderManageService.doAddWorkOrderManage(wom);
+//                            ci.setWoky(wom.getWoKy());
+//                        }
                     }
 
                 }

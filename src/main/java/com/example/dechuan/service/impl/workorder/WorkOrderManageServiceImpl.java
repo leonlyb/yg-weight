@@ -2,9 +2,12 @@ package com.example.dechuan.service.impl.workorder;
 
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
+import com.example.dechuan.mapper.carimage.CarImageMapper;
 import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
+import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
+import com.example.dechuan.utils.DateUtils;
 import com.example.dechuan.utils.PageUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,6 +30,9 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     @Autowired
     private WorkOrderManageMapper workOrderManageMapper;
 
+    @Autowired
+    CarImageMapper carImageMapper;
+
     @Override
     public PageResult doGetWorkOrderManageList(WorkOrderManage wom, QueryDt qt) {
         PageHelper.startPage(qt.getPageNum(), qt.getPageSize());
@@ -47,6 +53,23 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     @Override
     public int doDeleteWorkOrderManage(Integer woKy) {
         return workOrderManageMapper.doDeleteWorkOrderManage(woKy);
+    }
+
+    @Override
+    public int doAutomaticWorkorder(String carno, String clImgName, String imgName) {
+        WorkOrderManage wo = new WorkOrderManage();
+        CarImage ci = new CarImage();
+        wo.setCarNo(carno);
+        wo.setEntranceLoadCellNumber(100000);
+        wo.setEntranceDateTime(DateUtils.getCurrentDate());
+        wo.setIsPass(0);
+        workOrderManageMapper.doAddWorkOrderManage(wo);
+        //存储图片路径
+        ci.setWoky(wo.getWoKy());
+        ci.setCarnoimage(imgName);
+        ci.setVormalvehicleimage(clImgName);
+        carImageMapper.doAddImageUrl(ci);
+        return 1;
     }
 
     @Override

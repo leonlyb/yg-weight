@@ -91,7 +91,19 @@ public class WorkOrderManage {
      *   工单完成状态
      */
     private Integer completionStatus;
+    /**
+     *   是否直通 1-直通 0-非直通
+     */
+    private Integer isPass;
 
+
+    public Integer getIsPass() {
+        return isPass;
+    }
+
+    public void setIsPass(Integer isPass) {
+        this.isPass = isPass;
+    }
 
     public Integer getCompletionStatus() {
         return completionStatus;

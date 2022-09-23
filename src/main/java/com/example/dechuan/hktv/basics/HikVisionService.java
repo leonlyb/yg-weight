@@ -2,8 +2,10 @@ package com.example.dechuan.hktv.basics;
 
 
 import com.example.dechuan.hktv.ClientDemo.HCNetSDK;
+import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
+import com.example.dechuan.utils.DateUtils;
 import com.example.dechuan.utils.camera.BreakRulesType;
 import com.example.dechuan.utils.camera.CarType;
 import com.example.dechuan.utils.camera.ConnectDatabase;
@@ -177,20 +179,21 @@ public class HikVisionService {
                             sAlarmType ="是否危化品："+byDangerousVehicles+"-->"+ sAlarmType + ",车辆类型："+ CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()) + ",交通抓拍上传，车牌："+ srt3;
                             Map<String,String> paramMap = new HashMap<String,String>();
                             paramMap.put("type", CarType.getCarType(strItsPlateResult.byVehicleType+"".trim()));////车辆类型
-                            String filename = "C:\\java\\hkdll\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车牌
-                            String carFileName = "C:\\java\\hkdll\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\";//车辆原始图
+                            String filename = "D:\\ITCP Web\\hkimg\\imgUpload\\"+new String(pAlarmer.sDeviceIP).trim()+DateUtils.getyymmdd()+"\\";//车牌
+                            String carFileName = "D:\\ITCP Web\\hkimg\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+DateUtils.getyymmdd()+"\\";//车辆原始图
                             String imgName =sf.format(new Date())+".jpg";
-                            String clImgName ="cl"+imgName;
+                            String clImgName ="cl"+imgName;//原始图片
                             String imgPath ="/resource/null/customImages/"+imgName;
                             String clImgPath ="/resource/null/customImages/"+clImgName;
                             System.out.println(srt3.substring(1,srt3.length()).trim());
                             if("黄".equals(srt3.substring(0,1).trim())){
 //                            if(byDangerousVehicles==2){
                                 String carno = srt3.substring(1, srt3.length()).trim();
+                                String ip = new String(pAlarmer.sDeviceIP).trim();
                                 paramMap.put("plateNumber", carno);//车牌号
                                 paramMap.put("byCountry",srt3.substring(1, 2).trim());//省份
                                 paramMap.put("byColor",srt3.substring(0, 1).trim());//车牌颜色
-                                paramMap.put("cameraIp",new String(pAlarmer.sDeviceIP).trim());//ip地址
+                                paramMap.put("cameraIp",ip);//ip地址
                                 paramMap.put("picTime",dateFormat.format(new Date()));//当前时间
                                 paramMap.put("wSpeed",String.valueOf(new Random().nextInt(55-5)+5));//速度
                                 paramMap.put("byIllegalType", BreakRulesType.getBreakRulesType(strItsPlateResult.wIllegalType));
@@ -232,9 +235,12 @@ public class HikVisionService {
 
                                     }
                                 }
-                                WorkOrderManage wom = new WorkOrderManage();
-                                wom.setCarNo(carno);
-                                workOrderManageService.doAddWorkOrderManage(wom);
+                                //进厂摄像头
+                                if(ip.equals("192.168.1.244")){
+                                    workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName);
+                                }
+
+
                                 //上传到服务器
 //                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",filename+imgName);
 //                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",carFileName+clImgName);
