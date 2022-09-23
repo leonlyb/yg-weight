@@ -27,7 +27,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\java\\carno\\newimage\\"+ DateUtils.getyymmdd()+"\\");
+        registry.addResourceHandler("/view/carimage/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\imgUpload\\192.168.1.240"+"\\");
+        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\carImg\\192.168.1.240"+"\\");
     }
 
 

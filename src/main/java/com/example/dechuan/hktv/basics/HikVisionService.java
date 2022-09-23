@@ -235,8 +235,9 @@ public class HikVisionService {
                                 }
                                 //进厂摄像头
                                 if(ip.equals("192.168.1.244")){
-                                    String imagurl = "\\view\\image\\"+date+"\\";
-                                    CarNoImage.getcarno(carno,imagurl+"\\"+clImgName,imagurl+"\\"+imgName);
+                                    String imagurl = "\\view\\carimage\\"+date+"\\";
+                                    String climagurl = "\\view\\image\\"+date+"\\";
+                                    CarNoImage.getcarno(carno,climagurl+"\\"+clImgName,imagurl+"\\"+imgName);
                                 }
 
 
