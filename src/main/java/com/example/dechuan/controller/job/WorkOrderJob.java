@@ -70,7 +70,7 @@ public class WorkOrderJob {
                     //图片名字
                     File startFile = new File(ConfigurationInformation.begin_path+"\\"+fs.getName());
                     if(fs.getName().substring(0, 2).equals(ConfigurationInformation.CAR_NO)){
-                        ci.setCarnoimage("http://"+WorkOrderJob.getHostIp()+ConfigurationInformation.IMAGE_URL+"carno" + fs.getName().substring(2));
+                        ci.setCarNoImage("http://"+WorkOrderJob.getHostIp()+ConfigurationInformation.IMAGE_URL+"carno" + fs.getName().substring(2));
                         if (startFile.renameTo(new File(ConfigurationInformation.end_path+"\\carno"+fs.getName().substring(2)))) {
                                 log.info("文件移动成功！文件名：{"+fs.getName()+"} 目标路径：{"+ConfigurationInformation.end_path+"}");
                             } else {
@@ -78,7 +78,7 @@ public class WorkOrderJob {
                         }
                     }else{
                         //无车牌图片
-                        ci.setVormalvehicleimage("http://"+WorkOrderJob.getHostIp()+ConfigurationInformation.IMAGE_URL + startFile.getName());
+                        ci.setVormalVehicleImage("http://"+WorkOrderJob.getHostIp()+ConfigurationInformation.IMAGE_URL + startFile.getName());
                         startFile.renameTo(new File(ConfigurationInformation.end_path+"/"+startFile.getName()));
                         //根据图片新路径，获取车牌号生成工作单
 //                        LPR lpr = new LPR(false, "");
@@ -91,7 +91,7 @@ public class WorkOrderJob {
 //                               log.info("id=" + car_id + "  val=" + ids.get(0).getProbabilitie());
 //                               wom.setCarNo(car_id);
                                workOrderManageService.doAddWorkOrderManage(wom);
-                               ci.setWoky(wom.getWoKy());
+                               ci.setWoKy(wom.getWoKy());
 //                        }else{
 //                            //识别未成功，生成工单
 //                            wom.setCarNo("未识别车牌");

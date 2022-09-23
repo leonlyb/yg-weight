@@ -5,68 +5,65 @@ public class CarImage {
     /**
      *   主键
      */
-    private Integer imky;
+    private Integer imKy;
 
     /**
      *   进出单主键
      */
-    private Integer woky;
+    private Integer woKy;
 
     /**
      *   车牌号图片
      */
-    private String carnoimage;
+    private String carNoImage;
 
     /**
      *   正常图片
      */
-    private String vormalvehicleimage;
+    private String vormalVehicleImage;
 
     /**
      *   水印图片
      */
-    private String watermarkimage;
+    private String watermarkImage;
 
-
-    public Integer getImky() {
-        return imky;
+    public Integer getImKy() {
+        return imKy;
     }
 
-
-    public void setImky(Integer imky) {
-        this.imky = imky;
+    public void setImKy(Integer imKy) {
+        this.imKy = imKy;
     }
 
-    public Integer getWoky() {
-        return woky;
+    public Integer getWoKy() {
+        return woKy;
     }
 
-
-    public void setWoky(Integer woky) {
-        this.woky = woky;
+    public void setWoKy(Integer woKy) {
+        this.woKy = woKy;
     }
 
-    public String getCarnoimage() {
-        return carnoimage;
+    public String getCarNoImage() {
+        return carNoImage;
     }
 
-    public void setCarnoimage(String carnoimage) {
-        this.carnoimage = carnoimage;
+    public void setCarNoImage(String carNoImage) {
+        this.carNoImage = carNoImage;
     }
 
-    public String getVormalvehicleimage() {
-        return vormalvehicleimage;
+    public String getVormalVehicleImage() {
+        return vormalVehicleImage;
     }
 
-    public void setVormalvehicleimage(String vormalvehicleimage) {
-        this.vormalvehicleimage = vormalvehicleimage;
+    public void setVormalVehicleImage(String vormalVehicleImage) {
+        this.vormalVehicleImage = vormalVehicleImage;
     }
 
-    public String getWatermarkimage() {
-        return watermarkimage;
+    public String getWatermarkImage() {
+        return watermarkImage;
     }
 
-    public void setWatermarkimage(String watermarkimage) {
-        this.watermarkimage = watermarkimage;
+    public void setWatermarkImage(String watermarkImage) {
+        this.watermarkImage = watermarkImage;
     }
 }

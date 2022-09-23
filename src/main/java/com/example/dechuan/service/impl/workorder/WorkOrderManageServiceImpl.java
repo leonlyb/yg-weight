@@ -65,9 +65,9 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
         wo.setIsPass(0);
         workOrderManageMapper.doAddWorkOrderManage(wo);
         //存储图片路径
-        ci.setWoky(wo.getWoKy());
-        ci.setCarnoimage(imgName);
-        ci.setVormalvehicleimage(clImgName);
+        ci.setWoKy(wo.getWoKy());
+        ci.setCarNoImage(imgName);
+        ci.setVormalVehicleImage(clImgName);
         carImageMapper.doAddImageUrl(ci);
         return 1;
     }
