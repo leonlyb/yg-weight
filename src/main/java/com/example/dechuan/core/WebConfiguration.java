@@ -27,8 +27,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/view/carimage/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\imgUpload\\192.168.1.240"+"\\");
-        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\carImg\\192.168.1.240"+"\\");
+        registry.addResourceHandler("/view/carimage/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\imgUpload\\192.168.1.244"+"\\");
+        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\carImg\\192.168.1.244"+"\\");
     }
 
 
@@ -68,7 +68,9 @@ public class WebConfiguration implements WebMvcConfigurer {
         excludePath.add("/js");
         excludePath.add("/webjars/**");
         excludePath.add("/error");
-        excludePath.add("/");
+        excludePath.add("/error");
+//        excludePath.add("/view/carimage/**");
+//        excludePath.add("/view/image/**");
         excludePath.add("/favicon.ico");
 
 
