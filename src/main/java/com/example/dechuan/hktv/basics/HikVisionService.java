@@ -6,10 +6,7 @@ import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.DateUtils;
-import com.example.dechuan.utils.camera.BreakRulesType;
-import com.example.dechuan.utils.camera.CarType;
-import com.example.dechuan.utils.camera.ConnectDatabase;
-import com.example.dechuan.utils.camera.HTTPClientUtils;
+import com.example.dechuan.utils.camera.*;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import org.slf4j.Logger;
@@ -237,7 +234,8 @@ public class HikVisionService {
                                 }
                                 //进厂摄像头
                                 if(ip.equals("192.168.1.244")){
-                                    workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName);
+//                                    workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName);
+                                    CarNoImage.getcarno(carno,clImgName,imgName);
                                 }
 
 
@@ -264,6 +262,12 @@ public class HikVisionService {
             }
         }
     }
+
+
+
+//    public void getcarno(String carno, String clImgName, String imgName){
+//
+//    }
 }
 
 
