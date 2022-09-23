@@ -27,8 +27,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/view/carimage/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\imgUpload\\192.168.1.244"+"\\");
-        registry.addResourceHandler("/view/image/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\carImg\\192.168.1.244"+"\\");
+        registry.addResourceHandler("/view/carimage/244/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\imgUpload\\192.168.1.244"+"\\");
+        registry.addResourceHandler("/view/image/244/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\carImg\\192.168.1.244"+"\\");
+        registry.addResourceHandler("/view/carimage/247/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\imgUpload\\192.168.1.247"+"\\");
+        registry.addResourceHandler("/view/image/247/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\carImg\\192.168.1.247"+"\\");
     }
 
 
