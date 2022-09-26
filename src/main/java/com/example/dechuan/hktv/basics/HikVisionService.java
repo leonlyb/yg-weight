@@ -115,7 +115,7 @@ public class HikVisionService {
 
         //启动监听----------------------------------------------
         int iListenPort = 8000;
-        String m_sListenIP = "172.0.0.1";
+        String m_sListenIP = "172.16.67.19";
 
         lListenHandle = hCNetSDK.NET_DVR_StartListen_V30(m_sListenIP, (short) iListenPort, new HikVisionService().new FMSGCallBack(), null);
         if(lListenHandle < 0) {
@@ -184,7 +184,7 @@ public class HikVisionService {
                             String imgPath ="/resource/null/customImages/"+imgName;
                             String clImgPath ="/resource/null/customImages/"+clImgName;
                             System.out.println(srt3.substring(1,srt3.length()).trim());
-                            if("黄".equals(srt3.substring(0,1).trim())){
+                            if("黄".equals(srt3.substring(0,1).trim()) || "蓝".equals(srt3.substring(0,1).trim())){
 //                            if(byDangerousVehicles==2){
                                 String carno = srt3.substring(1, srt3.length()).trim();
                                 String ip = new String(pAlarmer.sDeviceIP).trim();
@@ -246,6 +246,10 @@ public class HikVisionService {
                                     String climagurl = "/view/image/247/"+date+"/"+clImgName;
                                     int isPass =1;//直通
                                     CarNoImage.getcarno(carno,climagurl,imagurl,isPass);
+                                }
+                                //出厂摄像头
+                                if(ip.equals("192.168.1.240")){
+                                //根据车牌去查询工单并关闭工单
                                 }
 
 
