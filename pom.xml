@@ -215,6 +215,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+                    <includeSystemScope>true</includeSystemScope>
 				</configuration>
 			</plugin>
             <plugin>

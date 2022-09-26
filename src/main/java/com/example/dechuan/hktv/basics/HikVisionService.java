@@ -116,7 +116,7 @@ public class HikVisionService {
         //启动监听----------------------------------------------
         int iListenPort = 8000;
         String m_sListenIP = "172.16.67.19";
-
+       //测试什么东西
         lListenHandle = hCNetSDK.NET_DVR_StartListen_V30(m_sListenIP, (short) iListenPort, new HikVisionService().new FMSGCallBack(), null);
         if(lListenHandle < 0) {
             System.out.println("启动监听失败，错误号:" +  hCNetSDK.NET_DVR_GetLastError());
