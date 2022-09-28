@@ -52,6 +52,16 @@
         where woKy = #{woKy,jdbcType=INTEGER}
     </select>
 
+    <select id="doGetWorkOrderStatusList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+            tw.woKy,
+            carNo,
+            completionStatus,
+            vormalVehicleImage
+        FROM truckinout_workorder tw
+        LEFT JOIN truckinout_image ti on tw.woKy = ti.woKy
+        WHERE carNo = #{carNo,jdbcType=VARCHAR} AND completionStatus =0 ORDER BY woKy DESC limit 1;
+    </select>
 
   <delete id="doDeleteWorkOrderManage" parameterType="java.lang.Integer">
     delete from truckinout_workorder

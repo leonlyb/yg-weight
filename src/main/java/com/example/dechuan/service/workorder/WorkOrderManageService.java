@@ -25,4 +25,6 @@ public interface WorkOrderManageService {
     List<WorkOrderManage> doGetWorkOrderManageTimeList(WorkOrderManage wom);
 
     List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy);
+
+    List<WorkOrderManage> doGetWorkOrderStatusList(String carno);
 }

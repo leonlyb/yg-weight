@@ -19,4 +19,6 @@ public interface WorkOrderManageMapper {
     int doDeleteWorkOrderManage(Integer woKy);
 
     List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy);
+
+    List doGetWorkOrderStatusList(String carno);
 }

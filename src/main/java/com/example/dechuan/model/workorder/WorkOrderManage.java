@@ -96,6 +96,18 @@ public class WorkOrderManage {
      */
     private Integer isPass;
 
+    /**
+     *   正常图片
+     */
+    private String vormalVehicleImage;
+
+    public String getVormalVehicleImage() {
+        return vormalVehicleImage;
+    }
+
+    public void setVormalVehicleImage(String vormalVehicleImage) {
+        this.vormalVehicleImage = vormalVehicleImage;
+    }
 
     public Integer getIsPass() {
         return isPass;

@@ -1,5 +1,7 @@
 package com.example.dechuan.utils;
 
+import com.example.dechuan.utils.camera.CarNoImage;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
@@ -150,9 +152,10 @@ public class ImageRemarkUtil {
     }
 
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         String srcImgPath = "D:/wallhaven-zml6vg.png";
-        String logoText = "复 印 无 效";
+//        String logoText = "复 印 无 效";
+        String logoText = "车牌号:10087  重量:2121 测试驱蚊器额";
 //        String iconPath = "d:/2.jpg";
 
         String targerTextPath = "d:/qie_text.jpg";
@@ -163,9 +166,9 @@ public class ImageRemarkUtil {
 
         System.out.println("给图片添加水印文字开始...");
         // 给图片添加水印文字
-        markImageByText(logoText, srcImgPath, targerTextPath);
+//        markImageByText(logoText, srcImgPath, targerTextPath);
         // 给图片添加水印文字,水印文字旋转-45
-//        markImageByText(logoText, srcImgPath, targerTextPath2, -45);
+        markImageByText(logoText, srcImgPath, targerTextPath, -45);
         System.out.println("给图片添加水印文字结束...");
 
 //        System.out.println("给图片添加水印图片开始...");
@@ -178,6 +181,11 @@ public class ImageRemarkUtil {
 
     }
 
-
+    public static void main(String[] args) {
+//        String a ="/view/image/244/1234";
+//        System.out.println(a.substring(16));
+//        System.out.println(a.substring(12,15));
+//        CarNoImage.closeworkorder("皖AG2701",DateUtils.getCurrentDate());
+    }
 
 }
