@@ -46,8 +46,8 @@ public class CameraController {
         Thread thread1 = new Thread(new Runnable1());
         thread1.run();
         //出厂192.168.1.240
-//        Thread thread2 = new Thread(new Runnable2());
-//        thread2.run();
+        Thread thread2 = new Thread(new Runnable2());
+        thread2.run();
         //直通192.168.1.247
         Thread thread3 = new Thread(new Runnable3());
         thread3.run();

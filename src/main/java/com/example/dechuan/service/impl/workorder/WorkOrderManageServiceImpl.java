@@ -31,7 +31,7 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     private WorkOrderManageMapper workOrderManageMapper;
 
     @Autowired
-    CarImageMapper carImageMapper;
+    private CarImageMapper carImageMapper;
 
     @Override
     public PageResult doGetWorkOrderManageList(WorkOrderManage wom, QueryDt qt) {

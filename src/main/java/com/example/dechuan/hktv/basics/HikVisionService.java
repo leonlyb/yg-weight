@@ -183,79 +183,77 @@ public class HikVisionService {
                             String carFileName = "D:\\ITCP Web\\hkimg\\carImg\\"+new String(pAlarmer.sDeviceIP).trim()+"\\"+date+"\\";//车辆原始图
                             String imgName =sf.format(new Date())+".jpg";
                             String clImgName ="cl"+imgName;//原始图片
-                            String imgPath ="/resource/null/customImages/"+imgName;
-                            String clImgPath ="/resource/null/customImages/"+clImgName;
-                            System.out.println(srt3.substring(1,srt3.length()).trim());
+//                            String imgPath ="/resource/null/customImages/"+imgName;
+//                            String clImgPath ="/resource/null/customImages/"+clImgName;
+                            logger.info(srt3.substring(1,srt3.length()).trim());
                             if("黄".equals(srt3.substring(0,1).trim()) || "蓝".equals(srt3.substring(0,1).trim())){
-//                            if(byDangerousVehicles==2){
                                 String carno = srt3.substring(1, srt3.length()).trim();
                                 String ip = new String(pAlarmer.sDeviceIP).trim();
-                                paramMap.put("plateNumber", carno);//车牌号
-                                paramMap.put("byCountry",srt3.substring(1, 2).trim());//省份
-                                paramMap.put("byColor",srt3.substring(0, 1).trim());//车牌颜色
-                                paramMap.put("cameraIp",ip);//ip地址
-                                paramMap.put("picTime",dateFormat.format(new Date()));//当前时间
-                                paramMap.put("wSpeed",String.valueOf(new Random().nextInt(55-5)+5));//速度
-                                paramMap.put("byIllegalType", BreakRulesType.getBreakRulesType(strItsPlateResult.wIllegalType));
-                                for(int i=0;i<strItsPlateResult.dwPicNum;i++) {
-                                    if(strItsPlateResult.struPicInfo[i].dwDataLen>0) {
-                                        FileOutputStream fout;
-                                        if(strItsPlateResult.struPicInfo[i].byType==0){
-                                            File file = new File(filename+imgName);
-                                            if (!file.getParentFile().exists()) {
-                                                file.getParentFile().mkdirs();
-                                            }
-                                            fout = new FileOutputStream(filename+imgName);
-                                            logger.info("文件路径"+filename+imgName);
-                                            //将字节写入文件
-                                            long offset = 0;
-                                            ByteBuffer buffers = strItsPlateResult.struPicInfo[i].pBuffer.getByteBuffer(offset, strItsPlateResult.struPicInfo[i].dwDataLen);
-                                            byte [] bytes = new byte[strItsPlateResult.struPicInfo[i].dwDataLen];
-                                            buffers.rewind();
-                                            buffers.get(bytes);
-                                            fout.write(bytes);
-                                            fout.close();
-                                        }
-                                        if(strItsPlateResult.struPicInfo[i].byType==1){
-                                            File file = new File(carFileName+clImgName);
-                                            if (!file.getParentFile().exists()) {
-                                                file.getParentFile().mkdirs();
-                                            }
-                                            fout = new FileOutputStream(carFileName+clImgName);
-                                            logger.info("文件路径"+carFileName+clImgName);
-                                            //将字节写入文件
-                                            long offset = 0;
-                                            ByteBuffer buffers = strItsPlateResult.struPicInfo[i].pBuffer.getByteBuffer(offset, strItsPlateResult.struPicInfo[i].dwDataLen);
-                                            byte [] bytes = new byte[strItsPlateResult.struPicInfo[i].dwDataLen];
-                                            buffers.rewind();
-                                            buffers.get(bytes);
-                                            fout.write(bytes);
-                                            fout.close();
-                                        }
-
-                                    }
-                                }
-                                //进厂摄像头
-                                if(ip.equals("192.168.1.244")){
-                                    String imagurl = "/view/carimage/244/"+date+"/"+imgName;
-                                    String climagurl = "/view/image/244/"+date+"/"+clImgName;
-                                    int isPass =0;//非直通
-                                    CarNoImage.getcarno(carno,climagurl,imagurl,isPass);
-                                }
-                                //直通摄像头
-                                if(ip.equals("192.168.1.247")){
-                                    String imagurl = "/view/carimage/247/"+date+"/"+imgName;
-                                    String climagurl = "/view/image/247/"+date+"/"+clImgName;
-                                    int isPass =1;//直通
-                                    CarNoImage.getcarno(carno,climagurl,imagurl,isPass);
-                                }
                                 //出厂摄像头
-                                if(ip.equals("192.168.1.240")){
-                                //根据车牌去查询工单并关闭工单
+                                if (ip.equals("192.168.1.240")) {
+                                    //根据车牌去查询工单并关闭工单
                                     logger.info("这是一个出厂摄像头");
 //                                    CarNoImage.closeworkorder(carno,date);
+                                    }else {
+                                        paramMap.put("plateNumber", carno);//车牌号
+                                        paramMap.put("byCountry", srt3.substring(1, 2).trim());//省份
+                                        paramMap.put("byColor", srt3.substring(0, 1).trim());//车牌颜色
+                                        paramMap.put("cameraIp", ip);//ip地址
+                                        paramMap.put("picTime", dateFormat.format(new Date()));//当前时间
+                                        paramMap.put("wSpeed", String.valueOf(new Random().nextInt(55 - 5) + 5));//速度
+                                        paramMap.put("byIllegalType", BreakRulesType.getBreakRulesType(strItsPlateResult.wIllegalType));
+                                        for (int i = 0; i < strItsPlateResult.dwPicNum; i++) {
+                                            if (strItsPlateResult.struPicInfo[i].dwDataLen > 0) {
+                                                FileOutputStream fout;
+                                                if (strItsPlateResult.struPicInfo[i].byType == 0) {
+                                                    File file = new File(filename + imgName);
+                                                    if (!file.getParentFile().exists()) {
+                                                        file.getParentFile().mkdirs();
+                                                    }
+                                                    fout = new FileOutputStream(filename + imgName);
+                                                    logger.info("文件路径" + filename + imgName);
+                                                    //将字节写入文件
+                                                    long offset = 0;
+                                                    ByteBuffer buffers = strItsPlateResult.struPicInfo[i].pBuffer.getByteBuffer(offset, strItsPlateResult.struPicInfo[i].dwDataLen);
+                                                    byte[] bytes = new byte[strItsPlateResult.struPicInfo[i].dwDataLen];
+                                                    buffers.rewind();
+                                                    buffers.get(bytes);
+                                                    fout.write(bytes);
+                                                    fout.close();
+                                                }
+                                                if (strItsPlateResult.struPicInfo[i].byType == 1) {
+                                                    File file = new File(carFileName + clImgName);
+                                                    if (!file.getParentFile().exists()) {
+                                                        file.getParentFile().mkdirs();
+                                                    }
+                                                    fout = new FileOutputStream(carFileName + clImgName);
+                                                    logger.info("文件路径" + carFileName + clImgName);
+                                                    //将字节写入文件
+                                                    long offset = 0;
+                                                    ByteBuffer buffers = strItsPlateResult.struPicInfo[i].pBuffer.getByteBuffer(offset, strItsPlateResult.struPicInfo[i].dwDataLen);
+                                                    byte[] bytes = new byte[strItsPlateResult.struPicInfo[i].dwDataLen];
+                                                    buffers.rewind();
+                                                    buffers.get(bytes);
+                                                    fout.write(bytes);
+                                                    fout.close();
+                                                }
+                                            }
+                                       }
+                                    //进厂摄像头
+                                    if (ip.equals("192.168.1.244")) {
+                                        String imagurl = "/view/carimage/244/" + date + "/" + imgName;
+                                        String climagurl = "/view/image/244/" + date + "/" + clImgName;
+                                        int isPass = 0;//非直通
+                                        CarNoImage.getcarno(carno, climagurl, imagurl, isPass);
+                                    }
+                                    //直通摄像头
+                                    if (ip.equals("192.168.1.247")) {
+                                        String imagurl = "/view/carimage/247/" + date + "/" + imgName;
+                                        String climagurl = "/view/image/247/" + date + "/" + clImgName;
+                                        int isPass = 1;//直通
+                                        CarNoImage.getcarno(carno, climagurl, imagurl, isPass);
+                                    }
                                 }
-
                                 //上传到服务器
 //                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",filename+imgName);
 //                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",carFileName+clImgName);
