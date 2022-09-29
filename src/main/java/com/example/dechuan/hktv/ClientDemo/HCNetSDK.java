@@ -35,7 +35,7 @@ import java.util.List;
 public interface HCNetSDK extends StdCallLibrary {
 //ClientDemo.DLL_PATH+D:\IdeaProjects\commander\src\main\resources\static
 String sep = File.separator;
-    HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary("D:"+sep+"Work" +sep+"test"+sep+"hikvision-danger-vehicle"+sep+"hkdll"+sep+"HCNetSDK", HCNetSDK.class);
+    HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary("C:"+sep+"java" +sep+"hkdll"+sep+"hkdll"+sep+"HCNetSDK", HCNetSDK.class);
     /***宏定义***/
     //常量
 
