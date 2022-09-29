@@ -12,8 +12,8 @@ import java.util.List;
  * @menu
  */
 public interface CarImageService {
-
-    int doAddImageUrl(CarImage ci);
-
     PageResult doGetCarImageList(CarImage ci, QueryDt qt);
+    int doAddImageUrl(CarImage ci);
+    int updateByPrimaryKey(CarImage ci);
+
 }

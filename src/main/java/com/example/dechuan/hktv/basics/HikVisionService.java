@@ -1,6 +1,7 @@
 package com.example.dechuan.hktv.basics;
 
 
+import com.example.dechuan.hktv.ClientDemo.ClientDemo;
 import com.example.dechuan.hktv.ClientDemo.HCNetSDK;
 import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
@@ -30,6 +31,7 @@ import static com.example.dechuan.hktv.ClientDemo.HCNetSDK.COMM_UPLOAD_PLATE_RES
 public class HikVisionService {
     private static Logger logger = LoggerFactory.getLogger(HikVisionService.class);
     static HCNetSDK hCNetSDK = HCNetSDK.INSTANCE;
+    static FMSGCallBack fMSFCallBack = null;  //回调函数应该定义在这里
     static String m_sUsername = "admin";//设备用户名
     static String m_sPassword = "mt123456";//设备密码,默认的好像是12345
     static short m_sPort = 8000;//端口号，这是默认的
@@ -40,9 +42,6 @@ public class HikVisionService {
     public boolean callback;
     public static int code = 5;
 
-
-    @Autowired
-    WorkOrderManageService workOrderManageService;
 
     //撤防
     public void CloseAlarmChan(NativeLong  lAlarmHandle) {
@@ -88,7 +87,10 @@ public class HikVisionService {
             hCNetSDK.NET_DVR_Cleanup();
             return;
         }
-        callback= hCNetSDK.NET_DVR_SetDVRMessageCallBack_V31(new HikVisionService().new FMSGCallBack(), null);
+        if (fMSFCallBack == null){
+            fMSFCallBack = new FMSGCallBack();
+        }
+        callback= hCNetSDK.NET_DVR_SetDVRMessageCallBack_V31(fMSFCallBack, null);
 
         //设置报警回调函数
         if (!callback){
@@ -253,7 +255,6 @@ public class HikVisionService {
                                     logger.info("这是一个出厂摄像头");
 //                                    CarNoImage.closeworkorder(carno,date);
                                 }
-
 
                                 //上传到服务器
 //                                HTTPClientUtils.imgUpload("http://172.172.1.21:8080/api/app/manager/images/uploadImages",filename+imgName);

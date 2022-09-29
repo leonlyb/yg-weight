@@ -24,6 +24,7 @@
       <if test="woKy != null and woKy != ''">
           AND woKy = #{woKy,jdbcType=INTEGER}
       </if>
+      ORDER BY imKy DESC
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -80,12 +81,14 @@
     </set>
     where imKy = #{imKy,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.example.dechuan.model.carimage.CarImage">
-    update truckinout_image
-    set woKy = #{woKy,jdbcType=INTEGER},
-      carNoImage = #{carNoImage,jdbcType=VARCHAR},
-      vormalVehicleImage = #{vormalVehicleImage,jdbcType=VARCHAR},
-      watermarkImage = #{watermarkImage,jdbcType=VARCHAR}
-    where imKy = #{imky,jdbcType=INTEGER}
+    UPDATE truckinout_image
+      <set>
+          <if test="watermarkImage != null">
+            watermarkImage = #{watermarkImage,jdbcType=VARCHAR},
+         </if>
+      </set>
+    where woKy = #{woKy,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,11 +1,16 @@
 package com.example.dechuan.utils.camera;
 
+import com.example.dechuan.controller.camera.CameraController;
+import com.example.dechuan.controller.carimage.AsyncImageTask;
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.model.workorder.WorkOrderManage;
+import com.example.dechuan.service.camera.CustomMultiThreadingService;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.DateUtils;
 import com.example.dechuan.utils.ImageRemarkUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +28,15 @@ import java.util.List;
  * @date 2022/9/23 11:07
  */
 //@Component
-@RestController
+//@RestController
 public class CarNoImage {
+    private Logger log = LoggerFactory.getLogger(CarNoImage.class);
 
     @Autowired
     WorkOrderManageService workOrderManageService;
+
+    @Autowired
+    private AsyncImageTask asyncImageTask;
 
     public static CarNoImage carNoImage;
 
@@ -36,6 +45,7 @@ public class CarNoImage {
     public void init() {
         carNoImage= this;
         carNoImage.workOrderManageService= this.workOrderManageService;
+        carNoImage.asyncImageTask= this.asyncImageTask;
     }
 
     public static void getcarno(String carno, String clImgName, String imgName,int isPass) {
@@ -44,11 +54,11 @@ public class CarNoImage {
 
     }
 
-    @RequestMapping("/test")
-    @ResponseBody
-    public void closeworkorder(String carno,String date){
+//    @RequestMapping("/test")
+//    @ResponseBody
+    public static  void closeworkorder(String carno,String date){
 //         carno ="皖AG2701";
-         date= DateUtils.getCurrentDate();
+//         date= DateUtils.getCurrentDate();
         WorkOrderManage wom = new WorkOrderManage();
         List<WorkOrderManage> list = carNoImage.workOrderManageService.doGetWorkOrderStatusList(carno);
         if(list.size() > 0){
@@ -59,29 +69,16 @@ public class CarNoImage {
             carNoImage.workOrderManageService.doEditWorkOrderManage(wom);
             //更新完成，打水印
             String vormalVehicleImage = list.get(0).getVormalVehicleImage();
-            if(vormalVehicleImage != null){
-               String imurl = vormalVehicleImage.substring(12,15);
-               if(imurl.equals("244")){
-                   String srcImgPath = "D:/ITCP Web/hkimg/carImg/192.168.1.244/"+ vormalVehicleImage.substring(16);
-                   String targerTextPath = "D:/ITCP Web/hkimg/watermark/192.168.1.244/"+ vormalVehicleImage.substring(16);
-                   File file = new File(targerTextPath);
-                   if (!file.getParentFile().exists()) {
-                       file.getParentFile().mkdirs();
-                   }
-                   ImageRemarkUtil.markImageByText(carno, srcImgPath, targerTextPath);
-
-               }else{
-                   String srcImgPath = "D:/ITCP Web/hkimg/carImg/192.168.1.247/"+ vormalVehicleImage.substring(16);
-                   String targerTextPath = "D:/ITCP Web/hkimg/watermark/192.168.1.247/"+ vormalVehicleImage.substring(16);
-                   File file = new File(targerTextPath);
-                   if (!file.getParentFile().exists()) {
-                       file.getParentFile().mkdirs();
-                   }
-                   ImageRemarkUtil.markImageByText(carno, srcImgPath, targerTextPath);
-               }
-            }
+            System.out.println("<------------ 要开启新开启新线程了 -------->");
+            long t1 = System.currentTimeMillis();
+            carNoImage.asyncImageTask.doTask(vormalVehicleImage,carno,list.get(0).getWoKy());
+            long t2 = System.currentTimeMillis();
+            System.out.println(t2-t1);
+            System.out.println("<------------ 线程结束啦 -------->");
+//            log.info("main cost {} ms", t2-t1);
 
         }
 
     }
+
 }
