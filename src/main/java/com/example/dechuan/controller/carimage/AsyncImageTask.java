@@ -2,6 +2,7 @@ package com.example.dechuan.controller.carimage;
 
 import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.service.carimage.CarImageService;
+import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.ImageRemarkUtil;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
@@ -25,9 +26,13 @@ public class AsyncImageTask {
     @Autowired
     CarImageService carImageService;
 
+    @Autowired
+    WorkOrderManageService workOrderManageService;
+
     @SneakyThrows
     @Async
     public void doTask(String vormalVehicleImage, String carno,int woKy) {
+       log.info("<------------ 要开启新开启新线程了 -------->");
         long t1 = System.currentTimeMillis();
         CarImage ci = new CarImage();
         ci.setWoKy(woKy);
@@ -55,5 +60,12 @@ public class AsyncImageTask {
         }
         long t2 = System.currentTimeMillis();
         log.info("task1 cost {} ms" , t2-t1);
+        log.info("<------------ 线程结束啦 -------->");
+    }
+
+    @SneakyThrows
+    @Async
+    public void dogetCarNoTask(String carno, String clImgName, String imgName, int isPass) {
+        workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName,isPass);
     }
 }

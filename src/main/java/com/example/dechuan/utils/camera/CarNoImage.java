@@ -27,7 +27,7 @@ import java.util.List;
  * @menu
  * @date 2022/9/23 11:07
  */
-//@Component
+@Component
 //@RestController
 public class CarNoImage {
     private Logger log = LoggerFactory.getLogger(CarNoImage.class);
@@ -49,33 +49,24 @@ public class CarNoImage {
     }
 
     public static void getcarno(String carno, String clImgName, String imgName,int isPass) {
-
-        carNoImage.workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName,isPass);
+        //开启异步操作
+        carNoImage.asyncImageTask.dogetCarNoTask(carno,clImgName,imgName,isPass);
 
     }
 
 //    @RequestMapping("/test")
 //    @ResponseBody
     public static  void closeworkorder(String carno,String date){
-//         carno ="皖AG2701";
-//         date= DateUtils.getCurrentDate();
         WorkOrderManage wom = new WorkOrderManage();
         List<WorkOrderManage> list = carNoImage.workOrderManageService.doGetWorkOrderStatusList(carno);
         if(list.size() > 0){
             //存在完成工单
             wom.setWoKy(list.get(0).getWoKy());
-//            wom.setCompletionStatus(1);
+            wom.setCompletionStatus(1);
             wom.setExitDateTime(date);
             carNoImage.workOrderManageService.doEditWorkOrderManage(wom);
             //更新完成，打水印
-            String vormalVehicleImage = list.get(0).getVormalVehicleImage();
-            System.out.println("<------------ 要开启新开启新线程了 -------->");
-            long t1 = System.currentTimeMillis();
-            carNoImage.asyncImageTask.doTask(vormalVehicleImage,carno,list.get(0).getWoKy());
-            long t2 = System.currentTimeMillis();
-            System.out.println(t2-t1);
-            System.out.println("<------------ 线程结束啦 -------->");
-//            log.info("main cost {} ms", t2-t1);
+            carNoImage.asyncImageTask.doTask(list.get(0).getVormalVehicleImage(),carno,list.get(0).getWoKy());
 
         }
 
