@@ -56,14 +56,14 @@ public class CarNoImage {
 
 //    @RequestMapping("/test")
 //    @ResponseBody
-    public static  void closeworkorder(String carno,String date){
+    public static  void closeworkorder(String carno){
         WorkOrderManage wom = new WorkOrderManage();
         List<WorkOrderManage> list = carNoImage.workOrderManageService.doGetWorkOrderStatusList(carno);
         if(list.size() > 0){
             //存在完成工单
             wom.setWoKy(list.get(0).getWoKy());
             wom.setCompletionStatus(1);
-            wom.setExitDateTime(date);
+            wom.setExitDateTime(DateUtils.getCurrentDate());
             carNoImage.workOrderManageService.doEditWorkOrderManage(wom);
             //更新完成，打水印
             carNoImage.asyncImageTask.doTask(list.get(0).getVormalVehicleImage(),carno,list.get(0).getWoKy());

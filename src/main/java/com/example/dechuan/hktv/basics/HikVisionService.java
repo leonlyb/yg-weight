@@ -193,7 +193,7 @@ public class HikVisionService {
                                 if (ip.equals("192.168.1.240")) {
                                     //根据车牌去查询工单并关闭工单
                                     logger.info("这是一个出厂摄像头");
-//                                    CarNoImage.closeworkorder(carno,date);
+//                                    CarNoImage.closeworkorder(carno);
                                     }else {
                                         paramMap.put("plateNumber", carno);//车牌号
                                         paramMap.put("byCountry", srt3.substring(1, 2).trim());//省份
