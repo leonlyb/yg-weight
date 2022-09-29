@@ -43,6 +43,7 @@
       <if test="completionStatus != null">
           AND completionStatus = #{completionStatus}
       </if>
+       ORDER BY woKy DESC
   </select>
 
     <select id="doGetWorkOrderManageTimeStatusList" parameterType="java.lang.Integer" resultMap="BaseResultMap">

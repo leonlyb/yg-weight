@@ -38,4 +38,9 @@ public class CarImageServiceImpl implements CarImageService {
     public int doAddImageUrl(CarImage ci) {
         return carImageMapper.doAddImageUrl(ci);
     }
+
+    @Override
+    public int updateByPrimaryKey(CarImage ci) {
+        return carImageMapper.updateByPrimaryKey(ci);
+    }
 }

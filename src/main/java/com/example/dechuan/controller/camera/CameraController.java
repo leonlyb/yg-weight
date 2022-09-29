@@ -1,6 +1,7 @@
 package com.example.dechuan.controller.camera;
 import com.example.dechuan.service.camera.CustomMultiThreadingService;
 import com.example.dechuan.utils.camera.CameraInfo;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 //@RequestMapping(value = "/index")
 public class CameraController {
 
-    private org.slf4j.Logger logger = LoggerFactory.getLogger(CameraController.class);
+    private Logger logger = LoggerFactory.getLogger(CameraController.class);
 
     @Autowired
     private CustomMultiThreadingService customMultiThreadingService;

@@ -182,9 +182,9 @@ public class ImageRemarkUtil {
     }
 
     public static void main(String[] args) {
-//        String a ="/view/image/244/1234";
-//        System.out.println(a.substring(16));
-//        System.out.println(a.substring(12,15));
+        String a ="/view/image/244/1234";
+        System.out.println(a.substring(16));
+        System.out.println(a.substring(12,15));
 //        CarNoImage.closeworkorder("皖AG2701",DateUtils.getCurrentDate());
     }
 
