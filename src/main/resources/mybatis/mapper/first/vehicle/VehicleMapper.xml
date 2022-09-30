@@ -3,6 +3,7 @@
 <mapper namespace="com.example.dechuan.mapper.first.vehicle.VehicleMapper">
   <resultMap id="BaseResultMap" type="com.example.dechuan.model.vehicle.Vehicle">
     <id column="vInKy" jdbcType="INTEGER" property="vInKy" />
+    <result column="woKy" jdbcType="VARCHAR" property="woKy" />
     <result column="carNo" jdbcType="VARCHAR" property="carNo" />
     <result column="viStatus" jdbcType="INTEGER" property="viStatus" />
     <result column="vehicleTime" jdbcType="TIMESTAMP" property="vehicleTime" />
@@ -32,6 +33,9 @@
   <insert id="insertSelective" parameterType="com.example.dechuan.model.vehicle.Vehicle">
     insert into vehicle_interaction
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="woKy != null">
+          woKy,
+      </if>
       <if test="carNo != null">
         carNo,
       </if>
@@ -43,6 +47,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="woKy != null">
+        #{woKy,jdbcType=INTEGER},
+      </if>
       <if test="carNo != null">
         #{carNo,jdbcType=VARCHAR},
       </if>
