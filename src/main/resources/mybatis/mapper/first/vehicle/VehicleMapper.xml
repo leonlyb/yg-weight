@@ -5,10 +5,10 @@
     <id column="vInKy" jdbcType="INTEGER" property="vInKy" />
     <result column="carNo" jdbcType="VARCHAR" property="carNo" />
     <result column="viStatus" jdbcType="INTEGER" property="viStatus" />
-    <result column="vehicleInTime" jdbcType="TIMESTAMP" property="vehicleInTime" />
+    <result column="vehicleTime" jdbcType="TIMESTAMP" property="vehicleTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    vInKy, carNo, viStatus, vehicleInTime
+    vInKy, carNo, viStatus, vehicleTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,9 +24,9 @@
   </delete>
   <insert id="insert" parameterType="com.example.dechuan.model.vehicle.Vehicle">
     insert into vehicle_interaction (vInKy, carNo, viStatus, 
-      vehicleInTime)
+      vehicleTime)
     values (#{vinky,jdbcType=INTEGER}, #{carno,jdbcType=VARCHAR}, #{vistatus,jdbcType=INTEGER}, 
-      #{vehicleintime,jdbcType=TIMESTAMP})
+      #{vehicleTime,jdbcType=TIMESTAMP})
   </insert>
 
   <insert id="insertSelective" parameterType="com.example.dechuan.model.vehicle.Vehicle">
@@ -38,8 +38,8 @@
       <if test="viStatus != null">
         viStatus,
       </if>
-      <if test="vehicleInTime != null">
-        vehicleInTime,
+      <if test="vehicleTime != null">
+          vehicleTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -49,8 +49,8 @@
       <if test="viStatus != null">
         #{viStatus,jdbcType=INTEGER},
       </if>
-      <if test="vehicleInTime != null">
-        #{vehicleInTime,jdbcType=TIMESTAMP},
+      <if test="vehicleTime != null">
+        #{vehicleTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -64,8 +64,8 @@
       <if test="vistatus != null">
         viStatus = #{vistatus,jdbcType=INTEGER},
       </if>
-      <if test="vehicleintime != null">
-        vehicleInTime = #{vehicleintime,jdbcType=TIMESTAMP},
+      <if test="vehicleTime != null">
+        vehicleTime = #{vehicleTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where vInKy = #{vinky,jdbcType=INTEGER}
@@ -74,7 +74,7 @@
     update vehicle_interaction
     set carNo = #{carno,jdbcType=VARCHAR},
       viStatus = #{vistatus,jdbcType=INTEGER},
-      vehicleInTime = #{vehicleintime,jdbcType=TIMESTAMP}
+      vehicleTime = #{vehicleTime,jdbcType=TIMESTAMP}
     where vInKy = #{vinky,jdbcType=INTEGER}
   </update>
 </mapper>
