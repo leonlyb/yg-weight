@@ -35,6 +35,9 @@ public class AsyncImageTask {
     @Autowired
     CarImageMapper carImageMapper;
 
+    @Autowired
+    VehicleMapper vehicleMapper;
+
 
     @SneakyThrows
     @Async
@@ -75,4 +78,17 @@ public class AsyncImageTask {
     public void dogetCarNoTask(String carno, String clImgName, String imgName, int isPass) {
         workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName,isPass);
     }
+
+    @SneakyThrows
+    @Async
+    public void dogetCarInfo( String carno,int woKy,String date) {
+        Vehicle vehicle = new Vehicle();
+        //存log记录
+        vehicle.setCarNo(carno);
+        vehicle.setWorkStatus(2);
+        vehicle.setWoKy(woKy);
+        vehicle.setVehicleTime(date);
+        vehicleMapper.insertSelective(vehicle);
+    }
+
 }

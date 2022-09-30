@@ -69,7 +69,7 @@ public class CarNoImage {
             carNoImage.workOrderManageService.doEditWorkOrderManage(wom);
             //更新完成，打水印
 //            carNoImage.asyncImageTask.doTask(list.get(0).getVormalVehicleImage(),carno,list.get(0).getWoKy());
-//            carNoImage.asyncImageTask.dogetCarInfo(carno,list.get(0).getWoKy(),date);
+            carNoImage.asyncImageTask.dogetCarInfo(carno,list.get(0).getWoKy(),date);
 
         }
 

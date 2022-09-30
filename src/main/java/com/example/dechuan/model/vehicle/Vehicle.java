@@ -31,7 +31,7 @@ public class Vehicle {
     /**
      * 车辆状态
      */
-    private Integer viStatus;
+    private Integer workStatus;
 
     /**
      * 车辆进入时间
@@ -63,13 +63,14 @@ public class Vehicle {
         this.carNo = carNo;
     }
 
-    public Integer getViStatus() {
-        return viStatus;
+    public Integer getWorkStatus() {
+        return workStatus;
     }
 
-    public void setViStatus(Integer viStatus) {
-        this.viStatus = viStatus;
+    public void setWorkStatus(Integer workStatus) {
+        this.workStatus = workStatus;
     }
+
     public String getVehicleTime() {
         return DateUtils.formatDate(vehicleTime, "yyyy-MM-dd HH:mm:ss");
     }

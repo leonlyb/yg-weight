@@ -5,11 +5,11 @@
     <id column="vInKy" jdbcType="INTEGER" property="vInKy" />
     <result column="woKy" jdbcType="VARCHAR" property="woKy" />
     <result column="carNo" jdbcType="VARCHAR" property="carNo" />
-    <result column="viStatus" jdbcType="INTEGER" property="viStatus" />
+    <result column="workStatus" jdbcType="INTEGER" property="workStatus" />
     <result column="vehicleTime" jdbcType="TIMESTAMP" property="vehicleTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    vInKy, carNo, viStatus, vehicleTime
+    vInKy, carNo, workStatus, vehicleTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,9 +24,9 @@
     where vInKy = #{vinky,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.example.dechuan.model.vehicle.Vehicle">
-    insert into vehicle_interaction (vInKy, carNo, viStatus, 
+    insert into vehicle_interaction (vInKy, carNo, workStatus, 
       vehicleTime)
-    values (#{vinky,jdbcType=INTEGER}, #{carno,jdbcType=VARCHAR}, #{vistatus,jdbcType=INTEGER}, 
+    values (#{vinky,jdbcType=INTEGER}, #{carno,jdbcType=VARCHAR}, #{workStatus,jdbcType=INTEGER}, 
       #{vehicleTime,jdbcType=TIMESTAMP})
   </insert>
 
@@ -39,8 +39,8 @@
       <if test="carNo != null">
         carNo,
       </if>
-      <if test="viStatus != null">
-        viStatus,
+      <if test="workStatus != null">
+        workStatus,
       </if>
       <if test="vehicleTime != null">
           vehicleTime,
@@ -53,8 +53,8 @@
       <if test="carNo != null">
         #{carNo,jdbcType=VARCHAR},
       </if>
-      <if test="viStatus != null">
-        #{viStatus,jdbcType=INTEGER},
+      <if test="workStatus != null">
+        #{workStatus,jdbcType=INTEGER},
       </if>
       <if test="vehicleTime != null">
         #{vehicleTime,jdbcType=TIMESTAMP},
@@ -68,8 +68,8 @@
       <if test="carno != null">
         carNo = #{carno,jdbcType=VARCHAR},
       </if>
-      <if test="vistatus != null">
-        viStatus = #{vistatus,jdbcType=INTEGER},
+      <if test="workStatus != null">
+        workStatus = #{workStatus,jdbcType=INTEGER},
       </if>
       <if test="vehicleTime != null">
         vehicleTime = #{vehicleTime,jdbcType=TIMESTAMP},
@@ -80,7 +80,7 @@
   <update id="updateByPrimaryKey" parameterType="com.example.dechuan.model.vehicle.Vehicle">
     update vehicle_interaction
     set carNo = #{carno,jdbcType=VARCHAR},
-      viStatus = #{vistatus,jdbcType=INTEGER},
+      workStatus = #{workStatus,jdbcType=INTEGER},
       vehicleTime = #{vehicleTime,jdbcType=TIMESTAMP}
     where vInKy = #{vinky,jdbcType=INTEGER}
   </update>

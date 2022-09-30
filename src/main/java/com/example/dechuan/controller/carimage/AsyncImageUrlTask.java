@@ -28,7 +28,7 @@ public class AsyncImageUrlTask {
     public void insertSelective(String carno, Integer woKy, String date) {
         Vehicle vehicle = new Vehicle();
         vehicle.setCarNo(carno);
-        vehicle.setViStatus(0);
+        vehicle.setWorkStatus(0);
         vehicle.setWoKy(woKy);
         vehicle.setVehicleTime(date);
         vehicleMapper.insertSelective(vehicle);
@@ -42,18 +42,6 @@ public class AsyncImageUrlTask {
         ci.setCarNoImage(imgName);
         ci.setVormalVehicleImage(clImgName);
         carImageMapper.doAddImageUrl(ci);
-    }
-
-    @SneakyThrows
-    @Async
-    public void dogetCarInfo( String carno,int woKy,String date) {
-        Vehicle vehicle = new Vehicle();
-        //存log记录
-        vehicle.setCarNo(carno);
-        vehicle.setViStatus(2);
-        vehicle.setWoKy(woKy);
-        vehicle.setVehicleTime(date);
-        vehicleMapper.insertSelective(vehicle);
     }
 
 }
