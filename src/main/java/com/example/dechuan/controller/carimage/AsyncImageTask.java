@@ -1,5 +1,6 @@
 package com.example.dechuan.controller.carimage;
 
+import com.example.dechuan.mapper.first.carimage.CarImageMapper;
 import com.example.dechuan.mapper.first.vehicle.VehicleMapper;
 import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.vehicle.Vehicle;
@@ -33,6 +34,8 @@ public class AsyncImageTask {
 
     @Autowired
     private VehicleMapper vehicleMapper;
+    @Autowired
+    private CarImageMapper carImageMapper;
 
 
     @SneakyThrows
@@ -84,5 +87,24 @@ public class AsyncImageTask {
         vehicle.setWoKy(woKy);
         vehicle.setVehicleinTime(date);
         vehicleMapper.insertSelective(vehicle);
+    }
+    @SneakyThrows
+    @Async
+    public void insertSelective(String carno, Integer woKy, String date) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setCarNo(carno);
+        vehicle.setViStatus(0);
+        vehicle.setWoKy(woKy);
+        vehicle.setVehicleinTime(date);
+        vehicleMapper.insertSelective(vehicle);
+    }
+    @SneakyThrows
+    @Async
+    public void doAddImageUrl(Integer woKy, String imgName, String clImgName) {
+        CarImage ci = new CarImage();
+        ci.setWoKy(woKy);
+        ci.setCarNoImage(imgName);
+        ci.setVormalVehicleImage(clImgName);
+        carImageMapper.doAddImageUrl(ci);
     }
 }

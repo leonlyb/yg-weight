@@ -1,5 +1,6 @@
 package com.example.dechuan.service.impl.workorder;
 
+import com.example.dechuan.controller.carimage.AsyncImageTask;
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.mapper.first.carimage.CarImageMapper;
@@ -33,9 +34,9 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     private WorkOrderManageMapper workOrderManageMapper;
     @Autowired
     private VehicleMapper vehicleMapper;
-
     @Autowired
-    private CarImageMapper carImageMapper;
+    private AsyncImageTask asyncImageTask;
+
 
     @Override
     public PageResult doGetWorkOrderManageList(WorkOrderManage wom, QueryDt qt) {
@@ -62,8 +63,8 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     @Override
     public int doAutomaticWorkorder(String carno, String clImgName, String imgName,int isPass) {
         WorkOrderManage wo = new WorkOrderManage();
-        Vehicle vehicle = new Vehicle();
-        CarImage ci = new CarImage();
+
+
         String date =DateUtils.getCurrentDate();
         wo.setCarNo(carno);
         wo.setEntranceLoadCellNumber(100000);
@@ -72,16 +73,9 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
         wo.setWorkStatus(0);
         workOrderManageMapper.doAddWorkOrderManage(wo);
         //存log记录
-        vehicle.setCarNo(carno);
-        vehicle.setViStatus(0);
-        vehicle.setWoKy(wo.getWoKy());
-        vehicle.setVehicleinTime(date);
-        vehicleMapper.insertSelective(vehicle);
+        asyncImageTask.insertSelective(carno,wo.getWoKy(),date);
         //存储图片路径
-        ci.setWoKy(wo.getWoKy());
-        ci.setCarNoImage(imgName);
-        ci.setVormalVehicleImage(clImgName);
-        carImageMapper.doAddImageUrl(ci);
+        asyncImageTask.doAddImageUrl(wo.getWoKy(),imgName,clImgName);
         return 1;
     }
 
