@@ -30,7 +30,7 @@ public class AsyncImageUrlTask {
         vehicle.setCarNo(carno);
         vehicle.setViStatus(0);
         vehicle.setWoKy(woKy);
-        vehicle.setVehicleinTime(date);
+        vehicle.setVehicleTime(date);
         vehicleMapper.insertSelective(vehicle);
     }
 
@@ -52,7 +52,7 @@ public class AsyncImageUrlTask {
         vehicle.setCarNo(carno);
         vehicle.setViStatus(2);
         vehicle.setWoKy(woKy);
-        vehicle.setVehicleinTime(date);
+        vehicle.setVehicleTime(date);
         vehicleMapper.insertSelective(vehicle);
     }
 
