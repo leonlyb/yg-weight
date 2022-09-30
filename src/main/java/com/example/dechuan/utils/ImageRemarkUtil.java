@@ -1,6 +1,10 @@
 package com.example.dechuan.utils;
 
+import com.example.dechuan.controller.carimage.AsyncImageTask;
 import com.example.dechuan.utils.camera.CarNoImage;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -22,6 +26,7 @@ import javax.swing.ImageIcon;
  * @author eden
  * @version 1.0
  */
+@Slf4j
 public class ImageRemarkUtil {
 
     // 水印透明度
@@ -125,13 +130,15 @@ public class ImageRemarkUtil {
                     alpha));
             // 8、第一参数->设置的内容，后面两个参数->文字在图片上的坐标位置(x,y)
             g.drawString(logoText, positionWidth, positionHeight);
+            g.drawString("测试:AAA", positionWidth+5, positionHeight+200);
+            g.drawString("毛重:345.56", positionWidth+5, positionHeight+400);
+            g.drawString("净重:10098", positionWidth+5, positionHeight+600);
             // 9、释放资源
             g.dispose();
             // 10、生成图片
             os = new FileOutputStream(targerPath);
             ImageIO.write(buffImg, "JPG", os);
-
-            System.out.println("图片完成添加水印文字");
+            log.info("<------------ 图片完成添加水印文字 -------->");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,10 +159,10 @@ public class ImageRemarkUtil {
     }
 
 
-    public static void main2(String[] args) {
+    public static void main(String[] args) {
         String srcImgPath = "D:/wallhaven-zml6vg.png";
 //        String logoText = "复 印 无 效";
-        String logoText = "车牌号:10087  重量:2121 测试驱蚊器额";
+        String logoText = "车牌号:10087";
 //        String iconPath = "d:/2.jpg";
 
         String targerTextPath = "d:/qie_text.jpg";
@@ -166,10 +173,10 @@ public class ImageRemarkUtil {
 
         System.out.println("给图片添加水印文字开始...");
         // 给图片添加水印文字
-//        markImageByText(logoText, srcImgPath, targerTextPath);
+        markImageByText(logoText, srcImgPath, targerTextPath);
         // 给图片添加水印文字,水印文字旋转-45
-        markImageByText(logoText, srcImgPath, targerTextPath, -45);
-        System.out.println("给图片添加水印文字结束...");
+//        markImageByText(logoText, srcImgPath, targerTextPath, -45);
+//        System.out.println("给图片添加水印文字结束...");
 
 //        System.out.println("给图片添加水印图片开始...");
 //        setImageMarkOptions(0.3f, 1, 1, null, null);
@@ -181,7 +188,7 @@ public class ImageRemarkUtil {
 
     }
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         String a ="/view/image/244/1234";
         System.out.println(a.substring(16));
         System.out.println(a.substring(12,15));

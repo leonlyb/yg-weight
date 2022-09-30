@@ -61,12 +61,15 @@ public class CarNoImage {
         List<WorkOrderManage> list = carNoImage.workOrderManageService.doGetWorkOrderStatusList(carno);
         if(list.size() > 0){
             //存在完成工单
+            String date =DateUtils.getCurrentDate();
             wom.setWoKy(list.get(0).getWoKy());
             wom.setCompletionStatus(1);
-            wom.setExitDateTime(DateUtils.getCurrentDate());
+            wom.setExitLoadCellNumber(100001);
+            wom.setExitDateTime(date);
             carNoImage.workOrderManageService.doEditWorkOrderManage(wom);
             //更新完成，打水印
-            carNoImage.asyncImageTask.doTask(list.get(0).getVormalVehicleImage(),carno,list.get(0).getWoKy());
+//            carNoImage.asyncImageTask.doTask(list.get(0).getVormalVehicleImage(),carno,list.get(0).getWoKy());
+            carNoImage.asyncImageTask.dogetCarInfo(carno,list.get(0).getWoKy(),date);
 
         }
 

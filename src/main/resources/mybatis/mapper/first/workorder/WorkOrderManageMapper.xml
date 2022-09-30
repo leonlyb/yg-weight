@@ -23,11 +23,12 @@
     <result column="weighmanName" jdbcType="VARCHAR" property="weighmanName" />
     <result column="completionStatus" jdbcType="INTEGER" property="completionStatus" />
     <result column="isPass" jdbcType="INTEGER" property="isPass" />
+    <result column="workStatus" jdbcType="INTEGER" property="workStatus" />
   </resultMap>
   <sql id="Base_Column_List">
     woKy,entranceLoadCellNumber, exitLoadCellNumber, entranceDateTime, exitDateTime,
     carNo, supplierId, driverId, driverInfo, entranceWeight, exitWeight, netWeight, tracingNo, 
-    productListStatus, weighmanName,completionStatus,isPass
+    productListStatus, weighmanName,completionStatus,isPass,workStatus
   </sql>
   <select id="doGetWorkOrderManageList" resultMap="BaseResultMap">
     SELECT
@@ -42,6 +43,9 @@
       </if>
       <if test="completionStatus != null">
           AND completionStatus = #{completionStatus}
+      </if>
+      <if test="workStatus != null">
+          AND workStatus = #{workStatus}
       </if>
        ORDER BY woKy DESC
   </select>
@@ -120,6 +124,9 @@
         <if test="isPass != null">
             isPass,
         </if>
+        <if test="workStatus != null">
+            workStatus,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="entranceLoadCellNumber != null">
@@ -169,6 +176,9 @@
         </if>
         <if test="isPass != null">
             #{isPass,jdbcType=INTEGER},
+        </if>
+        <if test="workStatus != null">
+            #{workStatus,jdbcType=INTEGER},
         </if>
     </trim>
   </insert>
@@ -223,6 +233,9 @@
         </if>
         <if test="isPass != null">
             isPass = #{isPass,jdbcType=INTEGER},
+        </if>
+        <if test="workStatus != null">
+            isPass = #{workStatus,jdbcType=INTEGER},
         </if>
     </set>
     where woKy = #{woKy,jdbcType=INTEGER}

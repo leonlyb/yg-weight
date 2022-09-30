@@ -1,4 +1,4 @@
-package com.example.dechuan.mapper.carimage;
+package com.example.dechuan.mapper.first.carimage;
 
 import com.example.dechuan.model.carimage.CarImage;
 import org.apache.ibatis.annotations.Mapper;

@@ -2,9 +2,8 @@ package com.example.dechuan.service.impl.carimage;
 
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
-import com.example.dechuan.mapper.carimage.CarImageMapper;
+import com.example.dechuan.mapper.first.carimage.CarImageMapper;
 import com.example.dechuan.model.carimage.CarImage;
-import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.carimage.CarImageService;
 import com.example.dechuan.utils.PageUtils;
 import com.github.pagehelper.PageHelper;

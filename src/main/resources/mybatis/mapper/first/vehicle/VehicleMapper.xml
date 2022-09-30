@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dechuan.mapper.first.vehicle.VehicleMapper">
+  <resultMap id="BaseResultMap" type="com.example.dechuan.model.vehicle.Vehicle">
+    <id column="vInKy" jdbcType="INTEGER" property="vInKy" />
+    <result column="carNo" jdbcType="VARCHAR" property="carNo" />
+    <result column="viStatus" jdbcType="INTEGER" property="viStatus" />
+    <result column="vehicleInTime" jdbcType="TIMESTAMP" property="vehicleInTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    vInKy, carNo, viStatus, vehicleInTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from vehicle_interaction
+    where vInKy = #{vinky,jdbcType=INTEGER}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from vehicle_interaction
+    where vInKy = #{vinky,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.dechuan.model.vehicle.Vehicle">
+    insert into vehicle_interaction (vInKy, carNo, viStatus, 
+      vehicleInTime)
+    values (#{vinky,jdbcType=INTEGER}, #{carno,jdbcType=VARCHAR}, #{vistatus,jdbcType=INTEGER}, 
+      #{vehicleintime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.example.dechuan.model.vehicle.Vehicle">
+    insert into vehicle_interaction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carNo != null">
+        carNo,
+      </if>
+      <if test="viStatus != null">
+        viStatus,
+      </if>
+      <if test="vehicleInTime != null">
+        vehicleInTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="viStatus != null">
+        #{viStatus,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleInTime != null">
+        #{vehicleInTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.dechuan.model.vehicle.Vehicle">
+    update vehicle_interaction
+    <set>
+      <if test="carno != null">
+        carNo = #{carno,jdbcType=VARCHAR},
+      </if>
+      <if test="vistatus != null">
+        viStatus = #{vistatus,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleintime != null">
+        vehicleInTime = #{vehicleintime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where vInKy = #{vinky,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.dechuan.model.vehicle.Vehicle">
+    update vehicle_interaction
+    set carNo = #{carno,jdbcType=VARCHAR},
+      viStatus = #{vistatus,jdbcType=INTEGER},
+      vehicleInTime = #{vehicleintime,jdbcType=TIMESTAMP}
+    where vInKy = #{vinky,jdbcType=INTEGER}
+  </update>
+</mapper>

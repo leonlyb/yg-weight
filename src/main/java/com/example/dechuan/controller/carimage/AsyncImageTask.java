@@ -1,6 +1,8 @@
 package com.example.dechuan.controller.carimage;
 
+import com.example.dechuan.mapper.first.vehicle.VehicleMapper;
 import com.example.dechuan.model.carimage.CarImage;
+import com.example.dechuan.model.vehicle.Vehicle;
 import com.example.dechuan.service.carimage.CarImageService;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.ImageRemarkUtil;
@@ -28,6 +30,10 @@ public class AsyncImageTask {
 
     @Autowired
     WorkOrderManageService workOrderManageService;
+
+    @Autowired
+    private VehicleMapper vehicleMapper;
+
 
     @SneakyThrows
     @Async
@@ -67,5 +73,16 @@ public class AsyncImageTask {
     @Async
     public void dogetCarNoTask(String carno, String clImgName, String imgName, int isPass) {
         workOrderManageService.doAutomaticWorkorder(carno,clImgName,imgName,isPass);
+    }
+    @SneakyThrows
+    @Async
+    public void dogetCarInfo( String carno,int woKy,String date) {
+        Vehicle vehicle = new Vehicle();
+        //存log记录
+        vehicle.setCarNo(carno);
+        vehicle.setViStatus(2);
+        vehicle.setWoKy(woKy);
+        vehicle.setVehicleinTime(date);
+        vehicleMapper.insertSelective(vehicle);
     }
 }

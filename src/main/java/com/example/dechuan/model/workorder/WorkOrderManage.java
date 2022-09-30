@@ -95,11 +95,24 @@ public class WorkOrderManage {
      *   是否直通 1-直通 0-非直通
      */
     private Integer isPass;
+    /**
+     *   是否直通 1-直通 0-非直通
+     */
+    private Integer workStatus;
 
     /**
      *   正常图片
      */
     private String vormalVehicleImage;
+
+
+    public Integer getWorkStatus() {
+        return workStatus;
+    }
+
+    public void setWorkStatus(Integer workStatus) {
+        this.workStatus = workStatus;
+    }
 
     public String getVormalVehicleImage() {
         return vormalVehicleImage;

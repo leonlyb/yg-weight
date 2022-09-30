@@ -2,9 +2,11 @@ package com.example.dechuan.service.impl.workorder;
 
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
-import com.example.dechuan.mapper.carimage.CarImageMapper;
+import com.example.dechuan.mapper.first.carimage.CarImageMapper;
+import com.example.dechuan.mapper.first.vehicle.VehicleMapper;
 import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
 import com.example.dechuan.model.carimage.CarImage;
+import com.example.dechuan.model.vehicle.Vehicle;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.DateUtils;
@@ -29,6 +31,8 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
 
     @Autowired
     private WorkOrderManageMapper workOrderManageMapper;
+    @Autowired
+    private VehicleMapper vehicleMapper;
 
     @Autowired
     private CarImageMapper carImageMapper;
@@ -58,12 +62,21 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     @Override
     public int doAutomaticWorkorder(String carno, String clImgName, String imgName,int isPass) {
         WorkOrderManage wo = new WorkOrderManage();
+        Vehicle vehicle = new Vehicle();
         CarImage ci = new CarImage();
+        String date =DateUtils.getCurrentDate();
         wo.setCarNo(carno);
         wo.setEntranceLoadCellNumber(100000);
-        wo.setEntranceDateTime(DateUtils.getCurrentDate());
+        wo.setEntranceDateTime(date);
         wo.setIsPass(isPass);
+        wo.setWorkStatus(0);
         workOrderManageMapper.doAddWorkOrderManage(wo);
+        //存log记录
+        vehicle.setCarNo(carno);
+        vehicle.setViStatus(0);
+        vehicle.setWoKy(wo.getWoKy());
+        vehicle.setVehicleinTime(date);
+        vehicleMapper.insertSelective(vehicle);
         //存储图片路径
         ci.setWoKy(wo.getWoKy());
         ci.setCarNoImage(imgName);
