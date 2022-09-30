@@ -70,11 +70,14 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
         wo.setEntranceDateTime(date);
         wo.setIsPass(isPass);
         wo.setWorkStatus(0);
-        workOrderManageMapper.doAddWorkOrderManage(wo);
-        //存log记录
-        asyncImageTask.insertSelective(carno,wo.getWoKy(),date);
-        //存储图片路径
-        asyncImageTask.doAddImageUrl(wo.getWoKy(),imgName,clImgName);
+        int i = workOrderManageMapper.doAddWorkOrderManage(wo);
+        if(i == 1){
+            //存log记录
+            asyncImageTask.insertSelective(carno,wo.getWoKy(),date);
+            //存储图片路径
+            asyncImageTask.doAddImageUrl(wo.getWoKy(),imgName,clImgName);
+        }
+
         return 1;
     }
 
