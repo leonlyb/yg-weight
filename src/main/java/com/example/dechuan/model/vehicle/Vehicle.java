@@ -36,7 +36,7 @@ public class Vehicle {
     /**
      * 车辆进入时间
      */
-    private Timestamp vehicleinTime;
+    private Timestamp vehicleTime;
 
 
     public Integer getWoKy() {
@@ -70,12 +70,12 @@ public class Vehicle {
     public void setViStatus(Integer viStatus) {
         this.viStatus = viStatus;
     }
-    public String getVehicleinTime() {
-        return DateUtils.formatDate(vehicleinTime, "yyyy-MM-dd HH:mm:ss");
+    public String getVehicleTime() {
+        return DateUtils.formatDate(vehicleTime, "yyyy-MM-dd HH:mm:ss");
     }
 
-        public void setVehicleinTime(String vehicleinTime) {
-            this.vehicleinTime = Timestamp.valueOf(vehicleinTime);
+        public void setVehicleTime(String vehicleTime) {
+            this.vehicleTime = Timestamp.valueOf(vehicleTime);
         }
 
 }
