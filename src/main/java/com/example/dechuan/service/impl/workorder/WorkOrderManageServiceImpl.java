@@ -1,6 +1,7 @@
 package com.example.dechuan.service.impl.workorder;
 
 import com.example.dechuan.controller.carimage.AsyncImageTask;
+import com.example.dechuan.controller.carimage.AsyncImageUrlTask;
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.mapper.first.carimage.CarImageMapper;
@@ -33,9 +34,7 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     @Autowired
     private WorkOrderManageMapper workOrderManageMapper;
     @Autowired
-    private VehicleMapper vehicleMapper;
-    @Autowired
-    private AsyncImageTask asyncImageTask;
+    private AsyncImageUrlTask asyncImageTask;
 
 
     @Override
