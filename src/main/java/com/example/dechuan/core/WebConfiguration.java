@@ -65,6 +65,7 @@ public class WebConfiguration implements WebMvcConfigurer {
         //排除拦截，除了注册登录(此时还没token)，其他都拦截
         excludePath.add("/register");  //登录
         excludePath.add("/user/login");     //注册
+        excludePath.add("/car/image/imagereark");//水印触发
         excludePath.add("/sigin");     //登录
         excludePath.add("/**");
         excludePath.add("/static/**");  //静态资源

@@ -2,6 +2,7 @@ package com.example.dechuan.controller.carimage;
 
 import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.globalconfig.ResultBody;
+import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
 import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.carimage.CarImageService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author eden
@@ -23,6 +26,12 @@ public class CarImageController {
 
     @Autowired
     private CarImageService carImageService;
+
+    @Autowired
+    WorkOrderManageService workOrderManageService;
+
+    @Autowired
+    private AsyncImageTask asyncImageTask;
     /**
      * @Author eden
      * @Description 图片url查询
@@ -34,6 +43,16 @@ public class CarImageController {
     @ResponseBody
     public ResultBody list(CarImage ci, QueryDt qt) {
         return ResultBody.success(carImageService.doGetCarImageList(ci,qt));
+    }
+
+
+    @RequestMapping("/imagereark")
+    @ResponseBody
+    public void imageReark(String carno){
+        List<WorkOrderManage> list = workOrderManageService.doGetWorkOrderStatusList(carno);
+        if(list.size() > 0){
+            asyncImageTask.doTask(list.get(0).getVormalVehicleImage(),carno,list.get(0).getWoKy());
+        }
     }
 
 }
