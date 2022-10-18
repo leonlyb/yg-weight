@@ -21,4 +21,6 @@ public interface WorkOrderManageMapper {
     List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy);
 
     List doGetWorkOrderStatusList(String carno);
+
+    List<WorkOrderManage> doGetWorkOrderManageCheckList(WorkOrderManage workOrderManage);
 }

@@ -1,0 +1,18 @@
+2022-09-21 17:11:17.717 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 11616 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-21 17:11:17.719 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: pro
+2022-09-21 17:11:22.244 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-21 17:11:22.256 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-21 17:11:22.257 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-21 17:11:22.258 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-21 17:11:22.527 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-21 17:11:22.528 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4699 ms
+2022-09-21 17:11:23.903 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-21 17:11:24.369 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-21 17:11:24.387 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-21 17:11:24.411 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 8.022 seconds (JVM running for 11.681)
+2022-09-21 17:11:36.824 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-21 17:11:36.824 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-21 17:11:36.825 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-09-21 17:11:56.245 [DailyAsync-3] INFO  com.example.dechuan.service.camera.CustomMultiThreadingService - <------------192.168.1.247启动-------->
+2022-09-21 17:11:56.245 [DailyAsync-1] INFO  com.example.dechuan.service.camera.CustomMultiThreadingService - <------------192.168.1.244启动-------->
+2022-09-21 17:11:56.275 [DailyAsync-2] INFO  com.example.dechuan.service.camera.CustomMultiThreadingService - <------------192.168.1.240启动-------->

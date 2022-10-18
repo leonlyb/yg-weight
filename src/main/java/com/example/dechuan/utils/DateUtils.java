@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -161,6 +162,21 @@ public class DateUtils {
         long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
         log.info("时间差为:"+hours+"小时"+minutes+"分");
         return hours+"小时"+minutes+"分";
+    }
+
+    public static String getAfterDate(String date) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date dd = df.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dd);
+            calendar.add(Calendar.MINUTE, -2);//减5分钟
+            System.out.println("减2分钟之后：" + df.format(calendar.getTime()));
+            return df.format(calendar.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

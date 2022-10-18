@@ -1,0 +1,224 @@
+2022-09-30 13:59:32.701 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  asyncImageTask (field com.example.dechuan.service.workorder.WorkOrderManageService com.example.dechuan.controller.carimage.AsyncImageTask.workOrderManageService)
+↑     ↓
+|  WorkOrderManageService (field private com.example.dechuan.controller.carimage.AsyncImageTask com.example.dechuan.service.impl.workorder.WorkOrderManageServiceImpl.asyncImageTask)
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-09-30 14:01:33.178 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  asyncImageTask (field com.example.dechuan.service.workorder.WorkOrderManageService com.example.dechuan.controller.carimage.AsyncImageTask.workOrderManageService)
+↑     ↓
+|  WorkOrderManageService (field private com.example.dechuan.controller.carimage.AsyncImageTask com.example.dechuan.service.impl.workorder.WorkOrderManageServiceImpl.asyncImageTask)
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-09-30 14:02:08.605 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  asyncImageTask (field com.example.dechuan.service.workorder.WorkOrderManageService com.example.dechuan.controller.carimage.AsyncImageTask.workOrderManageService)
+↑     ↓
+|  WorkOrderManageService (field private com.example.dechuan.controller.carimage.AsyncImageTask com.example.dechuan.service.impl.workorder.WorkOrderManageServiceImpl.asyncImageTask)
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-09-30 14:03:02.645 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  asyncImageTask (field com.example.dechuan.service.workorder.WorkOrderManageService com.example.dechuan.controller.carimage.AsyncImageTask.workOrderManageService)
+↑     ↓
+|  WorkOrderManageService (field private com.example.dechuan.controller.carimage.AsyncImageTask com.example.dechuan.service.impl.workorder.WorkOrderManageServiceImpl.asyncImageTask)
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-09-30 14:03:53.813 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  asyncImageTask (field com.example.dechuan.service.workorder.WorkOrderManageService com.example.dechuan.controller.carimage.AsyncImageTask.workOrderManageService)
+↑     ↓
+|  WorkOrderManageService (field private com.example.dechuan.controller.carimage.AsyncImageTask com.example.dechuan.service.impl.workorder.WorkOrderManageServiceImpl.asyncImageTask)
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-09-30 14:06:49.610 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  asyncImageTask (field com.example.dechuan.service.workorder.WorkOrderManageService com.example.dechuan.controller.carimage.AsyncImageTask.workOrderManageService)
+↑     ↓
+|  WorkOrderManageService (field private com.example.dechuan.controller.carimage.AsyncImageTask com.example.dechuan.service.impl.workorder.WorkOrderManageServiceImpl.asyncImageTask)
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-09-30 15:59:08.132 [DailyAsync-3] ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler - Unexpected exception occurred invoking async method: public void com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask3(java.lang.String) throws java.lang.InterruptedException
+java.lang.NoClassDefFoundError: Could not initialize class com.example.dechuan.hktv.basics.HikVisionService
+	at com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask3(CustomMultiThreadingService.java:42)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService$$FastClassBySpringCGLIB$$fd820498.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:783)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2022-09-30 15:59:08.132 [DailyAsync-2] ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler - Unexpected exception occurred invoking async method: public void com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask2(java.lang.String) throws java.lang.InterruptedException
+java.lang.NoClassDefFoundError: Could not initialize class com.example.dechuan.hktv.basics.HikVisionService
+	at com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask2(CustomMultiThreadingService.java:36)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService$$FastClassBySpringCGLIB$$fd820498.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:783)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2022-09-30 15:59:08.132 [DailyAsync-1] ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler - Unexpected exception occurred invoking async method: public void com.example.dechuan.service.camera.CustomMultiThreadingService.executeAysncTask1(java.lang.String) throws java.lang.InterruptedException
+java.lang.UnsatisfiedLinkError: Unable to load library 'C:\java\hkdll\hkdll\HCNetSDK': ÕҲ»µ½ָ¶¨
+	at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:145)
+	at com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:188)
+	at com.sun.jna.Library$Handler.<init>(Library.java:123)
+	at com.sun.jna.Native.loadLibrary(Native.java:255)
+	at com.sun.jna.Native.loadLibrary(Native.java:241)
+	at com.example.dechuan.hktv.ClientDemo.HCNetSDK.<clinit>(HCNetSDK.java:38)
+	at com.example.dechuan.hktv.basics.HikVisionService.<clinit>(HikVisionService.java:33)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService.executeAysncTask1(CustomMultiThreadingService.java:30)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService$$FastClassBySpringCGLIB$$fd820498.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:783)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2022-09-30 16:04:26.963 [DailyAsync-3] ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler - Unexpected exception occurred invoking async method: public void com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask3(java.lang.String) throws java.lang.InterruptedException
+java.lang.NoClassDefFoundError: Could not initialize class com.example.dechuan.hktv.basics.HikVisionService
+	at com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask3(CustomMultiThreadingService.java:42)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService$$FastClassBySpringCGLIB$$fd820498.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:783)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2022-09-30 16:04:26.963 [DailyAsync-1] ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler - Unexpected exception occurred invoking async method: public void com.example.dechuan.service.camera.CustomMultiThreadingService.executeAysncTask1(java.lang.String) throws java.lang.InterruptedException
+java.lang.NoClassDefFoundError: Could not initialize class com.example.dechuan.hktv.basics.HikVisionService
+	at com.example.dechuan.service.camera.CustomMultiThreadingService.executeAysncTask1(CustomMultiThreadingService.java:30)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService$$FastClassBySpringCGLIB$$fd820498.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:783)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2022-09-30 16:04:26.963 [DailyAsync-2] ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler - Unexpected exception occurred invoking async method: public void com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask2(java.lang.String) throws java.lang.InterruptedException
+java.lang.UnsatisfiedLinkError: Unable to load library 'C:\java\hkdll\hkdll\HCNetSDK': ÕҲ»µ½ָ¶¨
+	at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:145)
+	at com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:188)
+	at com.sun.jna.Library$Handler.<init>(Library.java:123)
+	at com.sun.jna.Native.loadLibrary(Native.java:255)
+	at com.sun.jna.Native.loadLibrary(Native.java:241)
+	at com.example.dechuan.hktv.ClientDemo.HCNetSDK.<clinit>(HCNetSDK.java:38)
+	at com.example.dechuan.hktv.basics.HikVisionService.<clinit>(HikVisionService.java:33)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService.executeAsyncTask2(CustomMultiThreadingService.java:36)
+	at com.example.dechuan.service.camera.CustomMultiThreadingService$$FastClassBySpringCGLIB$$fd820498.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:783)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)

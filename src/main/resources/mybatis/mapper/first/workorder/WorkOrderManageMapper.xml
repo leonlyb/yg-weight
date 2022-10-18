@@ -50,6 +50,20 @@
        ORDER BY woKy DESC
   </select>
 
+    <select id="doGetWorkOrderManageCheckList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM truckinout_workorder
+        WHERE 1=1
+        <if test="carNo != null and carNo != ''">
+            AND carNo = #{carNo}
+        </if>
+        <if test="entranceDateTime != null">
+            AND entranceDateTime &gt; #{entranceDateTime}
+        </if>
+        ORDER BY woKy DESC
+    </select>
+
     <select id="doGetWorkOrderManageTimeStatusList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

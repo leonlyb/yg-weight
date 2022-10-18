@@ -1,0 +1,170 @@
+2022-09-23 13:12:57.196 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 3972 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 13:12:57.197 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: pro
+2022-09-23 13:13:03.447 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 13:13:03.457 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 13:13:03.458 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 13:13:03.458 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 13:13:03.723 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 13:13:03.723 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6399 ms
+2022-09-23 13:13:05.619 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 13:13:07.184 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 13:13:07.399 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 13:13:07.512 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 10.822 seconds (JVM running for 13.493)
+2022-09-23 13:13:14.096 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 13:13:14.096 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 13:13:14.098 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2022-09-23 13:35:19.855 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 6012 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 13:35:19.857 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: pro
+2022-09-23 13:35:23.133 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 13:35:23.141 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 13:35:23.141 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 13:35:23.141 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 13:35:23.325 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 13:35:23.325 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3413 ms
+2022-09-23 13:35:24.093 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 13:35:24.364 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 13:35:24.417 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 13:35:24.442 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 5.036 seconds (JVM running for 7.633)
+2022-09-23 13:35:31.187 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 13:35:31.187 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 13:35:31.187 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2022-09-23 14:08:06.360 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 12784 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:08:06.361 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: pro
+2022-09-23 14:08:09.663 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 14:08:09.679 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:08:09.679 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:08:09.679 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:08:09.865 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:08:09.865 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3458 ms
+2022-09-23 14:08:10.662 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:08:10.944 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:08:10.961 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 14:08:10.987 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 5.103 seconds (JVM running for 7.503)
+2022-09-23 14:08:13.772 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:08:13.772 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:08:13.773 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-09-23 14:10:06.851 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 16080 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:10:06.852 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: pro
+2022-09-23 14:10:08.338 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 14:10:08.348 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:10:08.349 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:10:08.349 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:10:08.598 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:10:08.598 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1684 ms
+2022-09-23 14:10:09.274 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:10:09.623 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:10:09.655 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 14:10:09.690 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 3.339 seconds (JVM running for 5.638)
+2022-09-23 14:10:12.359 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:10:12.359 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:10:12.360 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-09-23 14:12:41.598 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 16640 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:12:41.599 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: dev
+2022-09-23 14:12:42.859 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+2022-09-23 14:12:42.865 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+2022-09-23 14:12:42.866 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:12:42.866 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:12:43.109 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:12:43.110 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1458 ms
+2022-09-23 14:12:43.847 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:12:44.134 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+2022-09-23 14:12:44.153 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+2022-09-23 14:12:44.180 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 3.103 seconds (JVM running for 5.202)
+2022-09-23 14:13:12.913 [http-nio-8085-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:13:12.913 [http-nio-8085-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:13:12.914 [http-nio-8085-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-09-23 14:41:30.918 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 11496 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:41:30.935 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: dev
+2022-09-23 14:41:36.070 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 14:41:36.085 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:41:36.086 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:41:36.087 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:41:36.320 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:41:36.320 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5220 ms
+2022-09-23 14:41:37.982 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:41:38.934 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:41:39.000 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 14:41:39.099 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 9.728 seconds (JVM running for 12.983)
+2022-09-23 14:42:10.738 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:42:10.738 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:42:10.739 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-09-23 14:42:10.878 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-09-23 14:42:15.502 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-09-23 14:44:21.816 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-09-23 14:44:21.834 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-09-23 14:44:30.858 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 1076 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:44:30.859 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: dev
+2022-09-23 14:44:32.407 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 14:44:32.416 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:44:32.418 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:44:32.418 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:44:32.624 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:44:32.624 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1709 ms
+2022-09-23 14:44:33.509 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:44:33.846 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:44:33.866 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 14:44:33.899 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 3.988 seconds (JVM running for 7.935)
+2022-09-23 14:44:36.674 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:44:36.674 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:44:36.679 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2022-09-23 14:44:36.825 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-09-23 14:44:38.878 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-09-23 14:46:07.021 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-09-23 14:46:07.036 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-09-23 14:47:07.872 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 13936 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:47:07.873 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: dev
+2022-09-23 14:47:09.487 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 14:47:09.496 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:47:09.497 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:47:09.497 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:47:09.754 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:47:09.755 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1815 ms
+2022-09-23 14:47:10.620 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:47:11.029 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:47:11.049 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 14:47:11.074 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 3.693 seconds (JVM running for 6.287)
+2022-09-23 14:47:14.131 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:47:14.131 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:47:14.136 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2022-09-23 14:47:14.253 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-09-23 14:47:17.075 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-09-23 14:52:30.363 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-09-23 14:52:30.375 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-09-23 14:53:50.572 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 13704 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:53:50.573 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: dev
+2022-09-23 14:53:52.148 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 14:53:52.159 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:53:52.160 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:53:52.160 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:53:52.354 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:53:52.354 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1722 ms
+2022-09-23 14:53:53.177 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:53:53.568 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:53:53.592 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 14:53:53.621 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 3.632 seconds (JVM running for 6.358)
+2022-09-23 14:54:10.309 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:54:10.309 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:54:10.311 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2022-09-23 14:54:10.445 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-09-23 14:54:12.600 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-09-23 14:55:23.392 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-09-23 14:55:23.409 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-09-23 14:55:29.218 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Starting YgWeighbridgeApplication using Java 1.8.0_281 on EdenX with PID 9776 (D:\Work\idea\yg-weight\target\classes started by EdenX in D:\Work\idea\yg-weight)
+2022-09-23 14:55:29.220 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - The following profiles are active: dev
+2022-09-23 14:55:30.763 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-09-23 14:55:30.776 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:55:30.776 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-09-23 14:55:30.777 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-23 14:55:30.990 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-09-23 14:55:30.990 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1711 ms
+2022-09-23 14:55:31.915 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-09-23 14:55:32.269 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-09-23 14:55:32.288 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-09-23 14:55:32.313 [main] INFO  com.example.dechuan.YgWeighbridgeApplication - Started YgWeighbridgeApplication in 3.559 seconds (JVM running for 6.375)
+2022-09-23 14:55:35.560 [http-nio-8083-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-23 14:55:35.561 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-09-23 14:55:35.562 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-09-23 14:55:35.661 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-09-23 14:55:37.944 [http-nio-8083-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-09-23 15:14:03.406 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-09-23 15:14:03.434 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

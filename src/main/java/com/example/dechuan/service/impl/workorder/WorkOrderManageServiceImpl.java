@@ -62,22 +62,26 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     @Override
     public int doAutomaticWorkorder(String carno, String clImgName, String imgName,int isPass) {
         WorkOrderManage wo = new WorkOrderManage();
-
-
+        WorkOrderManage workOrderManage = new WorkOrderManage();
         String date =DateUtils.getCurrentDate();
         wo.setCarNo(carno);
         wo.setEntranceLoadCellNumber(100000);
         wo.setEntranceDateTime(date);
         wo.setIsPass(isPass);
         wo.setWorkStatus(0);
-        int i = workOrderManageMapper.doAddWorkOrderManage(wo);
-        if(i == 1){
-            //存log记录
-            asyncImageTask.insertSelective(carno,wo.getWoKy(),date);
-            //存储图片路径
-            asyncImageTask.doAddImageUrl(wo.getWoKy(),imgName,clImgName);
-        }
+        workOrderManage.setCarNo(carno);
+        workOrderManage.setExitDateTime(DateUtils.getAfterDate(date));
+        List<WorkOrderManage> workOrderManages = workOrderManageMapper.doGetWorkOrderManageCheckList(workOrderManage);
+        if(workOrderManages.size() <= 0){
+            int i = workOrderManageMapper.doAddWorkOrderManage(wo);
+            if(i == 1){
+                //存log记录
+                asyncImageTask.insertSelective(carno,wo.getWoKy(),date);
+                //存储图片路径
+                asyncImageTask.doAddImageUrl(wo.getWoKy(),imgName,clImgName);
+            }
 
+        }
         return 1;
     }
 
