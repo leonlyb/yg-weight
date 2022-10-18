@@ -4,6 +4,7 @@ import com.example.dechuan.globalconfig.QueryDt;
 import com.example.dechuan.globalconfig.ResultBody;
 import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
 import com.example.dechuan.model.carimage.CarImage;
+import com.example.dechuan.model.carimage.truckinoutImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.carimage.CarImageService;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
@@ -49,7 +50,7 @@ public class CarImageController {
     @RequestMapping("/imagereark")
     @ResponseBody
     public void imageReark(String carno){
-        List<WorkOrderManage> list = workOrderManageService.doGetWorkOrderStatusList(carno);
+        List<truckinoutImage> list = workOrderManageService.doGetWorkOrderStatusList(carno);
         if(list.size() > 0){
             asyncImageTask.doTask(list.get(0).getVormalVehicleImage(),carno,list.get(0).getWoKy());
         }

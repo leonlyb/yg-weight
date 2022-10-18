@@ -9,6 +9,7 @@ import com.example.dechuan.mapper.first.carimage.CarImageMapper;
 import com.example.dechuan.mapper.first.vehicle.VehicleMapper;
 import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
 import com.example.dechuan.model.carimage.CarImage;
+import com.example.dechuan.model.carimage.truckinoutImage;
 import com.example.dechuan.model.vehicle.Vehicle;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
@@ -101,7 +102,7 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     }
 
     @Override
-    public List<WorkOrderManage> doGetWorkOrderStatusList(String carno) {
+    public List<truckinoutImage> doGetWorkOrderStatusList(String carno) {
         return workOrderManageMapper.doGetWorkOrderStatusList(carno);
     }
 }

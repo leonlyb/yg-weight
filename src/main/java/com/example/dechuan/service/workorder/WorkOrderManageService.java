@@ -2,6 +2,7 @@ package com.example.dechuan.service.workorder;
 
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
+import com.example.dechuan.model.carimage.truckinoutImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 
 import java.util.List;
@@ -26,5 +27,5 @@ public interface WorkOrderManageService {
 
     List<WorkOrderManage> doGetWorkOrderManageTimeStatusList(Integer woKy);
 
-    List<WorkOrderManage> doGetWorkOrderStatusList(String carno);
+    List<truckinoutImage> doGetWorkOrderStatusList(String carno);
 }

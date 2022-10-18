@@ -1,6 +1,7 @@
 package com.example.dechuan.model.workorder;
 
 import com.example.dechuan.utils.DateUtils;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import freemarker.template.utility.DateUtil;
 
 import java.sql.Timestamp;
@@ -103,8 +104,34 @@ public class WorkOrderManage {
     /**
      *   正常图片
      */
-    private String vormalVehicleImage;
+//    private String vormalVehicleImage;
+    /**
+     * 开始时间
+     */
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private Timestamp beginEntranceTime;
+    /**
+     * 结束时间
+     */
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private Timestamp endEntranceTime;
 
+
+    public Timestamp getBeginEntranceTime() {
+        return beginEntranceTime;
+    }
+
+    public void setBeginEntranceTime(Timestamp beginEntranceTime) {
+        this.beginEntranceTime = beginEntranceTime;
+    }
+
+    public Timestamp getEndEntranceTime() {
+        return endEntranceTime;
+    }
+
+    public void setEndEntranceTime(Timestamp endEntranceTime) {
+        this.endEntranceTime = endEntranceTime;
+    }
 
     public Integer getWorkStatus() {
         return workStatus;
@@ -112,14 +139,6 @@ public class WorkOrderManage {
 
     public void setWorkStatus(Integer workStatus) {
         this.workStatus = workStatus;
-    }
-
-    public String getVormalVehicleImage() {
-        return vormalVehicleImage;
-    }
-
-    public void setVormalVehicleImage(String vormalVehicleImage) {
-        this.vormalVehicleImage = vormalVehicleImage;
     }
 
     public Integer getIsPass() {
