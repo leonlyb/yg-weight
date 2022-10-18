@@ -69,6 +69,9 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
         WorkOrderManage wo = new WorkOrderManage();
         WorkOrderManage workOrderManage = new WorkOrderManage();
         String date =DateUtils.getCurrentDate();
+        if(isPass == 1){
+            wo.setEntranceWeight(0.0);
+        }
         wo.setCarNo(carno);
         wo.setEntranceLoadCellNumber(100000);
         wo.setEntranceDateTime(date);
