@@ -70,7 +70,7 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
         wo.setIsPass(isPass);
         wo.setWorkStatus(0);
         workOrderManage.setCarNo(carno);
-        workOrderManage.setExitDateTime(DateUtils.getAfterDate(date));
+        workOrderManage.setEntranceDateTime(DateUtils.getAfterDate(date));
         List<WorkOrderManage> workOrderManages = workOrderManageMapper.doGetWorkOrderManageCheckList(workOrderManage);
         if(workOrderManages.size() <= 0){
             int i = workOrderManageMapper.doAddWorkOrderManage(wo);

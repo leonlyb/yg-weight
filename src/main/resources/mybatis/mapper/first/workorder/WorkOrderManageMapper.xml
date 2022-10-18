@@ -249,7 +249,7 @@
             isPass = #{isPass,jdbcType=INTEGER},
         </if>
         <if test="workStatus != null">
-            isPass = #{workStatus,jdbcType=INTEGER},
+            workStatus = #{workStatus,jdbcType=INTEGER},
         </if>
     </set>
     where woKy = #{woKy,jdbcType=INTEGER}
