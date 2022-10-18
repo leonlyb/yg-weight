@@ -4,6 +4,7 @@ import com.example.dechuan.controller.carimage.AsyncImageTask;
 import com.example.dechuan.controller.carimage.AsyncImageUrlTask;
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
+import com.example.dechuan.hktv.basics.HikVisionService;
 import com.example.dechuan.mapper.first.carimage.CarImageMapper;
 import com.example.dechuan.mapper.first.vehicle.VehicleMapper;
 import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
@@ -15,6 +16,8 @@ import com.example.dechuan.utils.DateUtils;
 import com.example.dechuan.utils.PageUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +34,7 @@ import java.util.List;
 @Service("WorkOrderManageService")
 public class WorkOrderManageServiceImpl implements WorkOrderManageService {
 
+    private static Logger logger = LoggerFactory.getLogger(WorkOrderManageServiceImpl.class);
     @Autowired
     private WorkOrderManageMapper workOrderManageMapper;
     @Autowired
@@ -73,6 +77,7 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
         workOrderManage.setEntranceDateTime(DateUtils.getAfterDate(date));
         List<WorkOrderManage> workOrderManages = workOrderManageMapper.doGetWorkOrderManageCheckList(workOrderManage);
         if(workOrderManages.size() <= 0){
+            logger.debug("2分钟之内数据库中无数据=== 新增");
             int i = workOrderManageMapper.doAddWorkOrderManage(wo);
             if(i == 1){
                 //存log记录
