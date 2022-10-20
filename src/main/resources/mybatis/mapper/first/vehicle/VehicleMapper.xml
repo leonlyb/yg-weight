@@ -18,7 +18,6 @@
     where vInKy = #{vinky,jdbcType=INTEGER}
   </select>
 
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from vehicle_interaction
     where vInKy = #{vinky,jdbcType=INTEGER}

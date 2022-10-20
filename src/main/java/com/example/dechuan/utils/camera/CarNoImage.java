@@ -4,7 +4,7 @@ import com.example.dechuan.controller.camera.CameraController;
 import com.example.dechuan.controller.carimage.AsyncImageTask;
 import com.example.dechuan.globalconfig.PageResult;
 import com.example.dechuan.globalconfig.QueryDt;
-import com.example.dechuan.model.carimage.truckinoutImage;
+import com.example.dechuan.model.carimage.TruckinoutImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.camera.CustomMultiThreadingService;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
@@ -59,7 +59,9 @@ public class CarNoImage {
 //    @ResponseBody
     public static  void closeworkorder(String carno){
         WorkOrderManage wom = new WorkOrderManage();
-        List<truckinoutImage> list = carNoImage.workOrderManageService.doGetWorkOrderStatusList(carno);
+        TruckinoutImage tr = new TruckinoutImage();
+        tr.setCarNo(carno);
+        List<TruckinoutImage> list = carNoImage.workOrderManageService.doGetWorkOrderStatusList(tr);
         if(list.size() > 0){
             //存在完成工单
             String date =DateUtils.getCurrentDate();

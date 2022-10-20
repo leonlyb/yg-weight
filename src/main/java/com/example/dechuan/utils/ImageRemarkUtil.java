@@ -80,8 +80,8 @@ public class ImageRemarkUtil {
      *            目标图片路径
      */
     public static void markImageByText(String logoText, String srcImgPath,
-                                       String targerPath) {
-        markImageByText(logoText, srcImgPath, targerPath, null);
+                                       String targerPath,double entranceWeight,double exitWeight, double netWeight) {
+        markImageByText(logoText, srcImgPath, targerPath, entranceWeight, exitWeight, netWeight,null);
     }
 
     /**
@@ -92,7 +92,7 @@ public class ImageRemarkUtil {
      * @param targerPath
      * @param degree
      */
-    public static void markImageByText(String logoText, String srcImgPath, String targerPath, Integer degree) {
+    public static void markImageByText(String logoText, String srcImgPath, String targerPath, double entranceWeight,double exitWeight, double netWeight,Integer degree) {
 
         InputStream is = null;
         OutputStream os = null;
@@ -130,9 +130,9 @@ public class ImageRemarkUtil {
                     alpha));
             // 8、第一参数->设置的内容，后面两个参数->文字在图片上的坐标位置(x,y)
             g.drawString(logoText, positionWidth, positionHeight);
-            g.drawString("测试:AAA", positionWidth+5, positionHeight+200);
-            g.drawString("毛重:345.56", positionWidth+5, positionHeight+400);
-            g.drawString("净重:10098", positionWidth+5, positionHeight+600);
+            g.drawString("毛重:"+entranceWeight, positionWidth+5, positionHeight+200);
+            g.drawString("皮重:"+exitWeight, positionWidth+5, positionHeight+400);
+            g.drawString("净重:"+netWeight, positionWidth+5, positionHeight+600);
             // 9、释放资源
             g.dispose();
             // 10、生成图片
@@ -173,7 +173,7 @@ public class ImageRemarkUtil {
 
         System.out.println("给图片添加水印文字开始...");
         // 给图片添加水印文字
-        markImageByText(logoText, srcImgPath, targerTextPath);
+//        markImageByText(logoText, srcImgPath, targerTextPath);
         // 给图片添加水印文字,水印文字旋转-45
 //        markImageByText(logoText, srcImgPath, targerTextPath, -45);
 //        System.out.println("给图片添加水印文字结束...");

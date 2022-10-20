@@ -1,6 +1,7 @@
 package com.example.dechuan.mapper.first.carimage;
 
 import com.example.dechuan.model.carimage.CarImage;
+import com.example.dechuan.model.carimage.TruckinoutImage;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -23,4 +24,7 @@ public interface CarImageMapper {
     int updateByPrimaryKey(CarImage record);
 
     List<CarImage> doGetCarImageList(CarImage ci);
+
+    List<TruckinoutImage> doGetWorkOrderStatusList(TruckinoutImage tr);
+
 }

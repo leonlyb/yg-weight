@@ -15,6 +15,10 @@ public class CarImage {
     /**
      *   车牌号图片
      */
+    private String carNo;
+    /**
+     *   车牌号图片
+     */
     private String carNoImage;
 
     /**
@@ -26,6 +30,14 @@ public class CarImage {
      *   水印图片
      */
     private String watermarkImage;
+
+    public String getCarNo() {
+        return carNo;
+    }
+
+    public void setCarNo(String carNo) {
+        this.carNo = carNo;
+    }
 
     public Integer getImKy() {
         return imKy;

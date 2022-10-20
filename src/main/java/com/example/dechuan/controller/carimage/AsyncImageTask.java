@@ -4,6 +4,7 @@ import com.example.dechuan.mapper.first.carimage.CarImageMapper;
 import com.example.dechuan.mapper.first.vehicle.VehicleMapper;
 import com.example.dechuan.model.carimage.CarImage;
 import com.example.dechuan.model.vehicle.Vehicle;
+import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.carimage.CarImageService;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.ImageRemarkUtil;
@@ -41,10 +42,12 @@ public class AsyncImageTask {
 
     @SneakyThrows
     @Async
-    public void doTask(String vormalVehicleImage, String carno,int woKy) {
+    public void doTask(String vormalVehicleImage, String carno,int woKy,double entranceWeight,double exitWeight, double netWeight) {
        log.info("<------------ 要开启新开启新线程了 -------->");
         long t1 = System.currentTimeMillis();
         CarImage ci = new CarImage();
+        WorkOrderManage wo = new WorkOrderManage();
+        wo.setWoKy(woKy);
         ci.setWoKy(woKy);
         String imurl = vormalVehicleImage.substring(12, 15);
         if (imurl.equals("244")) {
@@ -54,7 +57,7 @@ public class AsyncImageTask {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
             }
-            ImageRemarkUtil.markImageByText(carno, srcImgPath, targerTextPath);
+            ImageRemarkUtil.markImageByText(carno, srcImgPath, targerTextPath,entranceWeight,exitWeight,netWeight);
             ci.setWatermarkImage("/view/watermark/image/244/"+vormalVehicleImage.substring(16));
             carImageService.updateByPrimaryKey(ci);
         } else {
@@ -64,10 +67,12 @@ public class AsyncImageTask {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
             }
-            ImageRemarkUtil.markImageByText(carno, srcImgPath, targerTextPath);
+            ImageRemarkUtil.markImageByText(carno, srcImgPath, targerTextPath,entranceWeight,exitWeight,netWeight);
             ci.setWatermarkImage("/view/watermark/image/247/"+vormalVehicleImage.substring(16));
             carImageService.updateByPrimaryKey(ci);
         }
+        wo.setCompletionStatus(1);
+        workOrderManageService.doEditWorkOrderManage(wo);
         long t2 = System.currentTimeMillis();
         log.info("task1 cost {} ms" , t2-t1);
         log.info("<------------ 线程结束啦 -------->");

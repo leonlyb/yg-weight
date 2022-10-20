@@ -8,9 +8,7 @@ import com.example.dechuan.hktv.basics.HikVisionService;
 import com.example.dechuan.mapper.first.carimage.CarImageMapper;
 import com.example.dechuan.mapper.first.vehicle.VehicleMapper;
 import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
-import com.example.dechuan.model.carimage.CarImage;
-import com.example.dechuan.model.carimage.truckinoutImage;
-import com.example.dechuan.model.vehicle.Vehicle;
+import com.example.dechuan.model.carimage.TruckinoutImage;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.service.workorder.WorkOrderManageService;
 import com.example.dechuan.utils.DateUtils;
@@ -38,6 +36,8 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     private static Logger logger = LoggerFactory.getLogger(WorkOrderManageServiceImpl.class);
     @Autowired
     private WorkOrderManageMapper workOrderManageMapper;
+    @Autowired
+    private CarImageMapper carImageMapper;
     @Autowired
     private AsyncImageUrlTask asyncImageTask;
 
@@ -105,7 +105,8 @@ public class WorkOrderManageServiceImpl implements WorkOrderManageService {
     }
 
     @Override
-    public List<truckinoutImage> doGetWorkOrderStatusList(String carno) {
-        return workOrderManageMapper.doGetWorkOrderStatusList(carno);
+    public List<TruckinoutImage> doGetWorkOrderStatusList(TruckinoutImage tr) {
+        return carImageMapper.doGetWorkOrderStatusList(tr);
     }
+
 }

@@ -1,8 +1,11 @@
 package com.example.dechuan.mapper.first.vehicle;
 
+import com.example.dechuan.model.carimage.TruckinoutImage;
 import com.example.dechuan.model.vehicle.Vehicle;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 @Mapper
@@ -22,4 +25,5 @@ public interface VehicleMapper {
     int updateByPrimaryKeySelective(Vehicle record);
 
     int updateByPrimaryKey(Vehicle record);
+
 }

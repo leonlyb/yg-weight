@@ -6,7 +6,7 @@ package com.example.dechuan.model.carimage;
  * @menu
  * @date 2022/10/18 15:18
  */
-public class truckinoutImage {
+public class TruckinoutImage {
 
     /**
      *  工单主键
@@ -22,6 +22,44 @@ public class truckinoutImage {
      *   正常图片
      */
     private String vormalVehicleImage;
+    /**
+     *   毛重
+     */
+    private Double entranceWeight;
+
+    /**
+     *   皮重
+     */
+    private Double exitWeight;
+
+    /**
+     *   净重
+     */
+    private Double netWeight;
+
+    public Double getEntranceWeight() {
+        return entranceWeight;
+    }
+
+    public void setEntranceWeight(Double entranceWeight) {
+        this.entranceWeight = entranceWeight;
+    }
+
+    public Double getExitWeight() {
+        return exitWeight;
+    }
+
+    public void setExitWeight(Double exitWeight) {
+        this.exitWeight = exitWeight;
+    }
+
+    public Double getNetWeight() {
+        return netWeight;
+    }
+
+    public void setNetWeight(Double netWeight) {
+        this.netWeight = netWeight;
+    }
 
     public Integer getWoKy() {
         return woKy;
