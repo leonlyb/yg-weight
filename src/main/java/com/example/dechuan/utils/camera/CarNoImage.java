@@ -66,7 +66,7 @@ public class CarNoImage {
             //存在完成工单
             String date =DateUtils.getCurrentDate();
             wom.setWoKy(list.get(0).getWoKy());
-            wom.setWorkStatus(2);
+            wom.setWorkStatus(4);
             wom.setExitLoadCellNumber(100001);
             wom.setExitDateTime(date);
             carNoImage.workOrderManageService.doEditWorkOrderManage(wom);
