@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dechuan.mapper.first.workorder.HtCarNoMapper">
+  <resultMap id="BaseResultMap" type="com.example.dechuan.model.workorder.HtCarNo">
+    <id column="woKy" jdbcType="INTEGER" property="woKy" />
+    <result column="entranceDateTime" jdbcType="TIMESTAMP" property="entranceDateTime" />
+    <result column="exitDateTime" jdbcType="TIMESTAMP" property="exitDateTime" />
+    <result column="carNo" jdbcType="VARCHAR" property="carNo" />
+  </resultMap>
+
+  <select id="doGetHistoryCarNoList"  resultMap="BaseResultMap">
+    SELECT
+       woKy
+      ,entranceDateTime
+      ,exitDateTime
+      ,carNo
+    FROM truckinout_workorder
+    WHERE 1=1
+      <if test="carNo != null and carNo != ''">
+          AND carNo like concat( '%' , #{carNo}, '%')
+      </if>
+      <if test="beginEntranceTime != null">
+          AND entranceDateTime BETWEEN #{beginEntranceTime} AND #{endEntranceTime}
+      </if>
+      GROUP BY carNo
+  </select>
+</mapper>

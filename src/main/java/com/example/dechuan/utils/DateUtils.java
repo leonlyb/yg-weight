@@ -178,5 +178,18 @@ public class DateUtils {
         }
         return null;
     }
+    //实现日期加一天的方法
+    public static String getAddDay(String s) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cd = Calendar.getInstance();
+            cd.setTime(sdf.parse(s));
+            cd.add(Calendar.DATE, 1);//增加一天
+            //cd.add(Calendar.MONTH, n);//增加一个月
+            return sdf.format(cd.getTime());
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 }

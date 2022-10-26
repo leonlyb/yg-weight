@@ -90,7 +90,7 @@ public class AsyncImageTask {
         Vehicle vehicle = new Vehicle();
         //存log记录
         vehicle.setCarNo(carno);
-        vehicle.setWorkStatus(2);
+        vehicle.setWorkStatus(4);
         vehicle.setWoKy(woKy);
         vehicle.setVehicleTime(date);
         vehicleMapper.insertSelective(vehicle);
