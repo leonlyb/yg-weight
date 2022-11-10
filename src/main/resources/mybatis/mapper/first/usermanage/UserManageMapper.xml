@@ -40,9 +40,9 @@
   </select>
 
   <delete id="doDeleteUserManage" parameterType="java.lang.Integer">
-     DELETE tbeh_dc_user,TBEH_DC_USER_ROLE
+     DELETE tbeh_dc_user,tbeh_dc_user_role
         FROM tbeh_dc_user
-        LEFT JOIN TBEH_DC_USER_ROLE ON tbeh_dc_user.USER_KY = TBEH_DC_USER_ROLE.USER_KY
+        LEFT JOIN tbeh_dc_user_role ON tbeh_dc_user.USER_KY = tbeh_dc_user_role.USER_KY
         WHERE tbeh_dc_user.USER_KY =  #{userKy,jdbcType=INTEGER}
   </delete>
 
@@ -140,7 +140,7 @@
   </update>
 
     <insert id="doAdduserRole" parameterType="com.example.dechuan.model.usermanage.UserRole">
-        insert into TBEH_DC_USER_ROLE
+        insert into tbeh_dc_user_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userKy != null">
                 USER_KY,
@@ -159,7 +159,7 @@
         </trim>
     </insert>
     <delete id="doDeleteUserRole" parameterType="java.lang.Integer">
-    delete from TBEH_DC_USER_ROLE
+    delete from tbeh_dc_user_role
     where USER_KY = #{userKy,jdbcType=INTEGER}
   </delete>
 </mapper>

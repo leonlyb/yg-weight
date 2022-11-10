@@ -17,8 +17,8 @@
             ,R.ROLE_KY
             ,ROLE_NAME
             ,ROLE_CODE
-            FROM       TBEH_DC_USER_ROLE TR
-            LEFT JOIN  TBEH_DC_ROLE R ON TR.ROLE_KY= R.ROLE_KY
+            FROM       tbeh_dc_user_role TR
+            LEFT JOIN  tbeh_dc_role R ON TR.ROLE_KY= R.ROLE_KY
             WHERE USER_KY = #{userKy,jdbcType=INTEGER}
     </select>
 
