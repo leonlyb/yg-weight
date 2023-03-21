@@ -44,14 +44,14 @@ public class CameraController implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         //进厂192.168.1.244
-/*        Thread thread1 = new Thread(new Runnable1());
-        thread1.run();
+   //    Thread thread1 = new Thread(new Runnable1());
+    //    thread1.run();
         //出厂192.168.1.240
-        Thread thread2 = new Thread(new Runnable2());
-        thread2.run();
+    //    Thread thread2 = new Thread(new Runnable2());
+    //    thread2.run();
         //直通192.168.1.247
-        Thread thread3 = new Thread(new Runnable3());
-        thread3.run();*/
+    //    Thread thread3 = new Thread(new Runnable3());
+     //   thread3.run();
     }
 
 
