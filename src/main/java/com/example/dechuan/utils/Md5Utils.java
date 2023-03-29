@@ -70,8 +70,8 @@ public class Md5Utils {
                 hexValue.append("0");  
             hexValue.append(Integer.toHexString(val));  
         }  
-        return hexValue.toString();  
-  
+        return hexValue.toString();
+
     }  
   
     /** 
