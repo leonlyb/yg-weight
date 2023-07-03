@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.spire.xls.FileFormat;
@@ -36,7 +37,7 @@ import javax.servlet.ServletContext;
  * @menu
  * @date
  */
-@Transactional
+
 @Service("WorkorderPrintInfoService")
 public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService {
 
@@ -50,26 +51,20 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
     ServletContext servletContext;
 
     @Override
-    public WorkorderPrintInfo printWorkorder(Integer woKy ) {
+    public WorkorderPrintInfo printWorkorder( Integer woKy ) {
 
-        WorkOrderManage workOrderParame = new WorkOrderManage();
+        ///打印的工单
+        WorkOrderManage workOrder = workOrderMapper.doGetWorkOrderManageTimeStatusList(woKy).get(0);
 
-        workOrderParame.setWoKy(woKy);
-
-        List<WorkOrderManage> workOrderManageList = workOrderMapper.doGetWorkOrderManageList(workOrderParame);
-
-        if( workOrderManageList == null || workOrderManageList.size() < 1 )
+        if( workOrder == null   )
         {
             return null;
         }
-        ///工单
-        WorkOrderManage workOrder = workOrderManageList.get(0);
-
         //创建一个Workbook实例并加载Excel文件
         Workbook workbook = new Workbook();
 
         ///服务站点的根目录
-        String rootPath = servletContext.getRealPath("/");
+        String rootPath =   servletContext.getRealPath("/");
 
         ///模板文件
         String tempFile = "files/wororder_template.xlsx";

@@ -69,7 +69,13 @@
         ORDER BY woKy DESC
     </select>
 
-    <select id="doGetWorkOrderManageTimeStatusList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="getWorkOrder" parameterType="java.lang.Integer" resultType="com.example.dechuan.model.workorder.WorkOrderManage">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM truckinout_workorder WHERE woKy = #{woKy,jdbcType=INTEGER}
+  </select>
+
+  <select id="doGetWorkOrderManageTimeStatusList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from truckinout_workorder
