@@ -72,12 +72,12 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         String rootPath = servletContext.getRealPath("/");
 
         ///模板文件
-        String tempFile = "templates/wororder_template.xlsx";
+        String tempFile = "files/wororder_template.xlsx";
 
         //要保存的 图片文件名
-        String relaImgPath = "templates/bmp/workorder_" + woKy+ ".bmp";
+        String relaImgPath = "files/bmp/workorder_" + woKy+ ".bmp";
         ///要保存的 pdf 文件名
-        String relaPdfPath = "templates/pdf/workorder_" + woKy+ ".pdf";
+        String relaPdfPath = "files/pdf/workorder_" + woKy+ ".pdf";
 
         String fullPdfPath = rootPath + relaPdfPath;
 
