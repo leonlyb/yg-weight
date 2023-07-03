@@ -46,6 +46,9 @@
       <if test="isPass != null">
           AND isPass = #{isPass}
       </if>
+      <if test="productListStatus != null">
+        AND productListStatus = #{productListStatus}
+      </if>
       <if test="beginEntranceTime != null">
           AND entranceDateTime BETWEEN #{beginEntranceTime} AND #{endEntranceTime}
       </if>
