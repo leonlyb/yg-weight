@@ -76,7 +76,7 @@ public class HttpClientUtils {
 
     public static void main(String[] args) {
         RequestParma rp = new RequestParma();
-      doApiPost(rp);
+        doApiPost(rp);
     }
 
 }
