@@ -1,33 +1,19 @@
 package com.example.dechuan.service.impl.workorder;
 
-import com.example.dechuan.globalconfig.PageResult;
-import com.example.dechuan.globalconfig.QueryDt;
-import com.example.dechuan.mapper.first.workorder.HtCarNoMapper;
 import com.example.dechuan.mapper.first.workorder.WorkOrderManageMapper;
 import com.example.dechuan.mapper.first.workorder.WorkorderPrintInfoMapper;
-import com.example.dechuan.model.workorder.HtCarNo;
 import com.example.dechuan.model.workorder.WorkOrderManage;
-import com.example.dechuan.model.workorder.WorkorderPrintInfo;
-import com.example.dechuan.service.workorder.HtCarNoService;
+import com.example.dechuan.model.workorder.WorkorderprintInfo;
 import com.example.dechuan.service.workorder.WorkorderPrintInfoService;
-import com.example.dechuan.utils.PageUtils;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.spire.xls.FileFormat;
 import com.spire.xls.Workbook;
 import com.spire.xls.Worksheet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import com.spire.xls.FileFormat;
-import com.spire.xls.Workbook;
-import org.springframework.util.ResourceUtils;
 
 import javax.servlet.ServletContext;
 
@@ -51,7 +37,7 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
     ServletContext servletContext;
 
     @Override
-    public WorkorderPrintInfo printWorkorder( Integer woKy ) {
+    public WorkorderprintInfo printWorkorder(Integer woKy ) {
 
         ///打印的工单
         WorkOrderManage workOrder = workOrderMapper.doGetWorkOrderManageTimeStatusList(woKy).get(0);
@@ -124,7 +110,7 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
                 workbook.saveToFile( fullImgPath, FileFormat.Bitmap);
             }
         }
-        WorkorderPrintInfo printInfo  = printInfoMapper.getPrintInfo(woKy);
+        WorkorderprintInfo printInfo  = printInfoMapper.getPrintInfo(woKy);
 
         Date date = new Date();// 获取当前时间
 
@@ -132,7 +118,7 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
         if(printInfo == null)
         {
-            printInfo = new WorkorderPrintInfo();
+            printInfo = new WorkorderprintInfo();
 
             printInfo.setWoKy(woKy);
 
@@ -163,13 +149,13 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
     }
 
     @Override
-    public int updatePrintInfo( WorkorderPrintInfo printInfo )
+    public int updatePrintInfo( WorkorderprintInfo printInfo )
     {
         return  printInfoMapper.updatePrintInfo(printInfo);
     }
 
     @Override
-    public int insertPrintInfo( WorkorderPrintInfo printInfo )
+    public int insertPrintInfo( WorkorderprintInfo printInfo )
     {
         return  printInfoMapper.insertPrintInfo(printInfo);
     }

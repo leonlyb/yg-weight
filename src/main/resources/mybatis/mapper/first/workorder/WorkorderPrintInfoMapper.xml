@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dechuan.mapper.first.workorder.WorkorderPrintInfoMapper">
-  <resultMap id="BaseResultMap" type="com.example.dechuan.model.workorder.WorkorderPrintInfo">
+  <resultMap id="BaseResultMap" type="com.example.dechuan.model.workorder.WorkorderprintInfo">
 <!--    <id column="id" jdbcType="INTEGER" property="id" />-->
 <!--    <result column="printCount" jdbcType="INTEGER" property="printCount" />-->
   </resultMap>
   <sql id="Base_Column_List">
      woKy,imgPath,filePath,printTime,printCount, remark
   </sql>
-  <select id="getPrintInfo" parameterType="java.lang.Integer"   resultType="com.example.dechuan.model.workorder.WorkorderPrintInfo" >
+  <select id="getPrintInfo" parameterType="java.lang.Integer"   resultType="com.example.dechuan.model.workorder.WorkorderprintInfo" >
     select 
     <include refid="Base_Column_List" />
     from workorderPrintInfo
     where woKy = #{ woKy }
   </select>
 
-  <update id="updatePrintInfo" parameterType="com.example.dechuan.model.workorder.WorkorderPrintInfo">
+  <update id="updatePrintInfo" parameterType="com.example.dechuan.model.workorder.WorkorderprintInfo">
     update workorderPrintInfo
     <set>
       printTime = #{printTime},
@@ -27,7 +27,7 @@
     where woKy = #{woKy,jdbcType=INTEGER}
   </update>
 
-  <insert id="insertPrintInfo" parameterType="com.example.dechuan.model.workorder.WorkorderPrintInfo"  useGeneratedKeys = "true"   keyProperty = "id">
+  <insert id="insertPrintInfo" parameterType="com.example.dechuan.model.workorder.WorkorderprintInfo" useGeneratedKeys = "true" keyProperty = "id">
     insert into workorderPrintInfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       woKy,

@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jul 04 15:44:38 CST 2023
+@default-com.e-iceblue-https\://repo.e-iceblue.cn/repository/maven-public\ /.lastUpdated=1688456677912
+https\://repo.e-iceblue.cn/repository/maven-public\ /.error=Could not transfer artifact e-iceblue\:spire.xls\:jar\:javadoc\:13.6.5 from/to com.e-iceblue (https\://repo.e-iceblue.cn/repository/maven-public /)\: Illegal character in path at index 49\: https\://repo.e-iceblue.cn/repository/maven-public /e-iceblue/spire.xls/13.6.5/spire.xls-13.6.5-javadoc.jar
+https\://repo.maven.apache.org/maven2/.error=
+https\://repo.maven.apache.org/maven2/.lastUpdated=1688456678242

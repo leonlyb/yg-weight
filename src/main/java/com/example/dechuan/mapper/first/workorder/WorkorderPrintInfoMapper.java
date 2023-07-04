@@ -1,21 +1,19 @@
 package com.example.dechuan.mapper.first.workorder;
 
-import com.example.dechuan.model.workorder.WorkorderPrintInfo;
+import com.example.dechuan.model.workorder.WorkorderprintInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Mapper
 @Repository
 public interface WorkorderPrintInfoMapper {
 
-    WorkorderPrintInfo getPrintInfo(Integer woKy);
+    WorkorderprintInfo getPrintInfo(Integer woKy);
 
 
-    int updatePrintInfo(WorkorderPrintInfo model);
+    int updatePrintInfo(WorkorderprintInfo model);
 
 
-    int insertPrintInfo(WorkorderPrintInfo model);
+    int insertPrintInfo(WorkorderprintInfo model);
 
 }

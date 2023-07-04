@@ -1,12 +1,6 @@
 package com.example.dechuan.service.workorder;
 
-import com.example.dechuan.globalconfig.PageResult;
-import com.example.dechuan.globalconfig.QueryDt;
-import com.example.dechuan.model.workorder.WorkTempo;
-import com.example.dechuan.model.workorder.WorkTempoLog;
-import com.example.dechuan.model.workorder.WorkorderPrintInfo;
-
-import java.util.List;
+import com.example.dechuan.model.workorder.WorkorderprintInfo;
 
 /**
  * @author Leon
@@ -15,9 +9,9 @@ import java.util.List;
  */
 public interface WorkorderPrintInfoService {
 
-       WorkorderPrintInfo printWorkorder(Integer woKy );
+       WorkorderprintInfo printWorkorder(Integer woKy );
 
-       int updatePrintInfo( WorkorderPrintInfo printInfo );
+       int updatePrintInfo( WorkorderprintInfo printInfo );
 
-       int insertPrintInfo( WorkorderPrintInfo printInfo );
+       int insertPrintInfo( WorkorderprintInfo printInfo );
 }

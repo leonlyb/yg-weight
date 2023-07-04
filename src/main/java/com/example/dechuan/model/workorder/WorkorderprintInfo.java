@@ -8,9 +8,7 @@ import com.example.dechuan.utils.DateUtils;
 import java.sql.Timestamp;
 
 
-public class WorkorderPrintInfo {
-
-    private Integer id;
+public class WorkorderprintInfo {
 
     private Integer woKy;
 
@@ -24,13 +22,6 @@ public class WorkorderPrintInfo {
 
     private String remark;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getWoKy() {
         return woKy;
