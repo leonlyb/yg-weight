@@ -1,6 +1,10 @@
 package com.example.dechuan.service.workorder;
 
 import com.example.dechuan.model.workorder.WorkorderprintInfo;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
+
+import java.io.IOException;
 
 /**
  * @author Leon
@@ -9,7 +13,7 @@ import com.example.dechuan.model.workorder.WorkorderprintInfo;
  */
 public interface WorkorderPrintInfoService {
 
-       WorkorderprintInfo printWorkorder(Integer woKy );
+       WorkorderprintInfo printWorkorder(Integer woKy ) throws IOException, InvalidFormatException;
 
        int updatePrintInfo( WorkorderprintInfo printInfo );
 

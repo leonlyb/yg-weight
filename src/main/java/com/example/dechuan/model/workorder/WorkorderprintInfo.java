@@ -1,8 +1,6 @@
 package com.example.dechuan.model.workorder;
 
 
-
-
 import com.example.dechuan.utils.DateUtils;
 
 import java.sql.Timestamp;
@@ -15,6 +13,8 @@ public class WorkorderprintInfo {
     private String imgPath;
 
     private String filePath;
+
+    private String excelPath;
 
     private  Timestamp printTime;
 
@@ -45,6 +45,14 @@ public class WorkorderprintInfo {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getExcelPath() {
+        return excelPath;
+    }
+
+    public void setExcelPath(String excelPath) {
+        this.excelPath = excelPath;
     }
 
     public String getPrintTime() {

@@ -5,16 +5,31 @@ import com.example.dechuan.mapper.first.workorder.WorkorderPrintInfoMapper;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.model.workorder.WorkorderprintInfo;
 import com.example.dechuan.service.workorder.WorkorderPrintInfoService;
-import com.spire.xls.FileFormat;
-import com.spire.xls.Workbook;
-import com.spire.xls.Worksheet;
+//import com.spire.xls.FileFormat;
+//import com.spire.xls.Workbook;
+//import com.spire.xls.Worksheet;
+
+//import jxl.Cell;
+//import jxl.Sheet;
+//import jxl.Workbook;
+//import jxl.WorkbookSettings;
+//import jxl.read.biff.BiffException;
+//import jxl.write.*;
+import com.example.dechuan.utils.JacobExcelUtil;
+import com.example.dechuan.utils.PoiUtil;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 
 /**
@@ -33,83 +48,95 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
     @Autowired
     WorkorderPrintInfoMapper printInfoMapper;
 
-    @Autowired
-    ServletContext servletContext;
-
     @Override
-    public WorkorderprintInfo printWorkorder(Integer woKy ) {
+    public WorkorderprintInfo printWorkorder(Integer woKy ) throws IOException, InvalidFormatException {
 
+        ///服务站点的根目录
+        List<WorkOrderManage> orderList = workOrderMapper.doGetWorkOrderManageTimeStatusList(woKy);
         ///打印的工单
-        WorkOrderManage workOrder = workOrderMapper.doGetWorkOrderManageTimeStatusList(woKy).get(0);
+        WorkOrderManage workOrder =  orderList.get(0);
 
-        if( workOrder == null   )
+        if( workOrder == null )
         {
             return null;
         }
-        //创建一个Workbook实例并加载Excel文件
-        Workbook workbook = new Workbook();
+        ///Resource 完整的目录
+        String rootPath = this.getClass().getResource("/").getPath().substring(1);
 
-        ///服务站点的根目录
-        String rootPath =   servletContext.getRealPath("/");
+        ///要保存的 pdf 目录名
+        String pdfDir = rootPath + "files/pdf/";
+
+        ///要保存的 文件名称
+        String newFileName = "workorder_" + woKy;
+
+        String relaPdfPath = "files/pdf/" +  newFileName + ".pdf";
+
+        String relaImgPath = "files/image/" +  newFileName + ".png";
+
+        String relaExcelPath = "files/Excel/" +  newFileName + ".xlsx";
+
+        ///要保存的 pdf 文件名
+        String  pdfPath =  pdfDir +  newFileName + ".pdf";
 
         ///模板文件
-        String tempFile = "files/wororder_template.xlsx";
+        String tempPath = rootPath +  "files/workorder_temp.xlsx";
 
-        //要保存的 图片文件名
-        String relaImgPath = "files/bmp/workorder_" + woKy+ ".bmp";
-        ///要保存的 pdf 文件名
-        String relaPdfPath = "files/pdf/workorder_" + woKy+ ".pdf";
 
-        String fullPdfPath = rootPath + relaPdfPath;
-
-        File pdfFile = new File(fullPdfPath);
+        File pdfFile = new File(pdfPath);
 
         ///文件不存在
         if( !pdfFile.exists() )  {
-            ///加载模板
-            workbook.loadFromFile( rootPath +  tempFile );
 
-            Worksheet worksheet = workbook.getWorksheets().get(0);
+            File dir = new File(pdfDir);
 
-            ///打印编号 货单号
-            worksheet.setCellValue(6,10, workOrder.getTracingNo() +"" );
-            ///车牌号
-            worksheet.setCellValue(3,7, workOrder.getCarNo() );
-            ///货名
-            worksheet.setCellValue(3,8, workOrder.getDriverInfo() );
-            ///规格
-//            worksheet.setCellValue(3,9, workOrder.getDriverInfo() + ""  );
-            ///毛重（kg）
-            worksheet.setCellValue(3,10, workOrder.getEntranceWeight() + ""  );
-            ///进厂时间
-            worksheet.setCellValue(3,11, workOrder.getEntranceDateTime()  );
+            if (!dir.exists()) {
 
-            ///皮重(kg)
-            worksheet.setCellValue(10,7, workOrder.getExitWeight() + ""  );
-            ///出厂时间
-            worksheet.setCellValue(11,7, workOrder.getExitDateTime()  );
-            ///净重(kg)
-            worksheet.setCellValue(10,9, workOrder.getNetWeight() + ""  );
-            ///司磅员
-            worksheet.setCellValue(11,9, workOrder.getWeighmanName()  );
-
-            workbook.setActiveSheetIndex(0);
-
-            //设置转换后的PDF页面高宽适应工作表的内容大小
-            workbook.getConverterSetting().setSheetFitToPage(true);
-
-            //将生成的文档保存到指定路径
-            workbook.saveToFile( fullPdfPath, FileFormat.PDF);
-
-            ///完整的图片路径
-            String fullImgPath = rootPath + relaImgPath;
-            ///图片文件
-            File imgFile = new File(fullImgPath);
-            /// 没有图片则保存图片
-            if( !imgFile.exists()){
-                workbook.saveToFile( fullImgPath, FileFormat.Bitmap);
+                dir.mkdirs();
             }
+            JacobExcelUtil.jacobToPdf(tempPath, pdfPath, workOrder);
         }
+
+        ///要保存的 excel 目录名
+        String  excelDirPath =  rootPath +  "files/excel/";
+
+        File excelDir = new File(excelDirPath);
+
+        if (!excelDir.exists()) {
+
+            excelDir.mkdirs();
+        }
+
+        ///要保存的 excel文件名
+        String  excelPath =  excelDirPath +  newFileName + ".xlsx";
+
+        File excelFile = new File(excelPath);
+
+        ///要保存的 img 目录名
+        String  imageDir =  rootPath +  "files/image/";
+
+        File imageDirFile = new File(imageDir);
+
+        if (!imageDirFile.exists()) {
+
+            imageDirFile.mkdirs();
+        }
+
+        ///要保存的 image 文件名
+        String  imagePath =  imageDir +  newFileName + ".png";
+
+        File imageFile = new File(imagePath);
+
+        ///文件不存在
+        if( !excelFile.exists() )  {
+
+            PoiUtil.writeExcel(tempPath, excelPath,   workOrder);
+        }
+
+        ///图片文件是否存在
+        if( !imageFile.exists() )  {
+            PoiUtil.createImage( pdfPath, imagePath );
+        }
+
         WorkorderprintInfo printInfo  = printInfoMapper.getPrintInfo(woKy);
 
         Date date = new Date();// 获取当前时间
@@ -123,14 +150,21 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
             printInfo.setWoKy(woKy);
 
             printInfo.setPrintCount(1);
+
             printInfo.setPrintTime( sdf.format(date) );
+
             printInfo.setFilePath( relaPdfPath );
+
             printInfo.setImgPath( relaImgPath );
+
+            printInfo.setExcelPath( relaExcelPath );
+
             printInfoMapper.insertPrintInfo(printInfo);
         }
         else
         {
             Integer pcount = printInfo.getPrintCount();
+
             if(pcount != null)
             {
                 pcount ++;
@@ -147,6 +181,25 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         }
         return  printInfo;
     }
+
+//    boolean saveImg( WritableWorkbook  workbook, File file)
+//    {
+//        // 2. 读取Excel转为BufferedImage
+////        BufferedImage img = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+//        WritableImage wi = new WritableImage(0, 0, img);
+////
+////
+//        Sheet sheet = workbook.getSheet(0);
+//
+//        // 创建BufferedImage
+//        BufferedImage img = new BufferedImage(400, 400, BufferedImage.TYPE_INT_RGB);
+//
+//// 绘制Excel到图片
+//        jxl.Demo.showSheet(sheet, img);
+//
+//// 保存图片
+//        ImageIO.write(img, "png", file);
+//    }
 
     @Override
     public int updatePrintInfo( WorkorderprintInfo printInfo )

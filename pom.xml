@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>spire</artifactId>
+	<artifactId>yg-weight</artifactId>
 	<version>weight</version>
 	<name>yg-weight</name>
 	<description>Demo project for Spring Boot</description>
@@ -18,13 +18,15 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-    <repositories>
+
+
+<!--    <repositories>
         <repository>
             <id>com.e-iceblue</id>
             <name>e-iceblue</name>
             <url> https://repo.e-iceblue.cn/repository/maven-public/</url>
         </repository>
-    </repositories>
+    </repositories>-->
 
 	<dependencies>
 		<dependency>
@@ -45,11 +47,43 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
+        <!--  POI依赖  -->
         <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.27</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jacob</groupId>
+            <artifactId>jacob</artifactId>
+            <version>1.20</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/jacob.jar</systemPath>
+        </dependency>
+
+       <!-- <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>-->
+
+       <!-- <dependency>
             <groupId>e-iceblue</groupId>
             <artifactId>spire.xls</artifactId>
             <version>13.6.5</version>
-        </dependency>
+        </dependency>-->
 
         <!--  html2pdf -->
        <!-- <dependency>

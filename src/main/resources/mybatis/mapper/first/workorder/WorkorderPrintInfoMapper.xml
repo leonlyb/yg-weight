@@ -11,12 +11,12 @@
   <select id="getPrintInfo" parameterType="java.lang.Integer"   resultType="com.example.dechuan.model.workorder.WorkorderprintInfo" >
     select 
     <include refid="Base_Column_List" />
-    from workorderPrintInfo
+    from workorderprintInfo
     where woKy = #{ woKy }
   </select>
 
   <update id="updatePrintInfo" parameterType="com.example.dechuan.model.workorder.WorkorderprintInfo">
-    update workorderPrintInfo
+    update workorderprintInfo
     <set>
       printTime = #{printTime},
       printCount = #{printCount}
@@ -28,7 +28,7 @@
   </update>
 
   <insert id="insertPrintInfo" parameterType="com.example.dechuan.model.workorder.WorkorderprintInfo" useGeneratedKeys = "true" keyProperty = "id">
-    insert into workorderPrintInfo
+    insert into workorderprintInfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       woKy,
       <if test="imgPath != null">
