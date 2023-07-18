@@ -13,7 +13,9 @@ import java.io.IOException;
  */
 public interface WorkorderPrintInfoService {
 
-       WorkorderprintInfo printWorkorder(Integer woKy ) throws IOException, InvalidFormatException;
+       WorkorderprintInfo printWorkorder( Integer woKy ) throws IOException, InvalidFormatException;
+
+       WorkorderprintInfo previewWorkorder( Integer woKy ) throws IOException, InvalidFormatException;
 
        int updatePrintInfo( WorkorderprintInfo printInfo );
 

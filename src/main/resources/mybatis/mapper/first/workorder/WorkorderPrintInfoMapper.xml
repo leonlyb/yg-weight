@@ -6,7 +6,7 @@
 <!--    <result column="printCount" jdbcType="INTEGER" property="printCount" />-->
   </resultMap>
   <sql id="Base_Column_List">
-     woKy,imgPath,filePath,printTime,printCount, remark
+     woKy,imgPath,filePath, excelPath, printTime,printCount, remark
   </sql>
   <select id="getPrintInfo" parameterType="java.lang.Integer"   resultType="com.example.dechuan.model.workorder.WorkorderprintInfo" >
     select 
@@ -37,6 +37,9 @@
       <if test="filePath != null">
         filePath,
       </if>
+      <if test="excelPath != null">
+        excelPath,
+      </if>
       <if test="printTime != null">
         printTime,
       </if>
@@ -56,6 +59,9 @@
       </if>
       <if test="filePath != null">
         #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="excelPath != null">
+        #{excelPath,jdbcType=VARCHAR},
       </if>
 
       <if test="printTime != null">

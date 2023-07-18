@@ -23,7 +23,6 @@ import java.io.IOException;
 @RestController
 @RequestMapping(value = "/work")
 public class WorkorderPrintInfoController {
-
     private static final Logger log = LoggerFactory.getLogger(WorkorderPrintInfoController.class);
 
     @Autowired
@@ -38,4 +37,12 @@ public class WorkorderPrintInfoController {
         return ResultBody.success( printInfo );
     }
 
+    @RequestMapping("/preview")
+    @ResponseBody
+    public ResultBody previewWorkorder(Integer woKy ) throws IOException, InvalidFormatException {
+
+        WorkorderprintInfo printInfo = WorkorderPrintInfoService.previewWorkorder( woKy );
+
+        return ResultBody.success( printInfo );
+    }
 }

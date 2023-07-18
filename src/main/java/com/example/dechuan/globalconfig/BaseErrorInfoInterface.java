@@ -11,4 +11,5 @@ public interface BaseErrorInfoInterface {
 
     /** 错误描述*/
     String getResultMsg();
+
 }

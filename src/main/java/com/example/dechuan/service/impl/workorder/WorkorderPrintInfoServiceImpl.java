@@ -19,9 +19,10 @@ import com.example.dechuan.utils.JacobExcelUtil;
 import com.example.dechuan.utils.PoiUtil;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.awt.image.BufferedImage;
+
 import java.io.File;
 
 import java.io.IOException;
@@ -29,8 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
+
 
 /**
  * @author Leon
@@ -48,8 +48,15 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
     @Autowired
     WorkorderPrintInfoMapper printInfoMapper;
 
+
+//    @Value("${spring.resources.static-locations}")
+//    private String staticPath;
+//    public String getStaticPath() {
+//        return staticPath;
+//    }
+
     @Override
-    public WorkorderprintInfo printWorkorder(Integer woKy ) throws IOException, InvalidFormatException {
+    public WorkorderprintInfo printWorkorder( Integer woKy ) throws IOException, InvalidFormatException {
 
         ///服务站点的根目录
         List<WorkOrderManage> orderList = workOrderMapper.doGetWorkOrderManageTimeStatusList(woKy);
@@ -60,11 +67,61 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         {
             return null;
         }
-        ///Resource 完整的目录
-        String rootPath = this.getClass().getResource("/").getPath().substring(1);
+        WorkorderprintInfo printInfo  = printInfoMapper.getPrintInfo(woKy);
 
-        ///要保存的 pdf 目录名
-        String pdfDir = rootPath + "files/pdf/";
+        if(printInfo == null)
+        {
+            printInfo = previewWorkorder(woKy);
+        }
+        Date date = new Date();// 获取当前时间
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 格式化时间
+
+        String nowDate = sdf.format(date);
+
+        Integer pcount = printInfo.getPrintCount();
+
+        if(pcount != null)
+        {
+            pcount ++;
+        }
+        else
+        {
+            pcount = 1;
+        }
+        printInfo.setPrintCount( pcount );
+
+        printInfo.setPrintTime(  nowDate );
+
+        printInfo.setRemark( printInfo.getRemark() +";" +  nowDate);
+
+        int row =  printInfoMapper.updatePrintInfo(printInfo);
+
+        if( row > 0  && workOrder.getProductListStatus() != 1 ){
+
+            WorkOrderManage newWorkorder = new WorkOrderManage();
+            newWorkorder.setWoKy(woKy);
+            newWorkorder.setProductListStatus(1);
+            workOrderMapper.doEditWorkOrderManage(newWorkorder);
+        }
+        return  printInfo;
+    }
+
+    @Override
+    public WorkorderprintInfo previewWorkorder( Integer woKy ) throws IOException, InvalidFormatException
+    {
+        List<WorkOrderManage> orderList = workOrderMapper.doGetWorkOrderManageTimeStatusList(woKy);
+        ///打印的工单
+        WorkOrderManage workOrder =  orderList.get(0);
+
+        if( workOrder == null )
+        {
+            return null;
+        }
+        ///Resource 完整的目录
+        String rootPath = this.getClass().getResource("/static/").getPath().substring(1);
+
+        this.createDir( rootPath );
 
         ///要保存的 文件名称
         String newFileName = "workorder_" + woKy;
@@ -75,73 +132,46 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
         String relaExcelPath = "files/Excel/" +  newFileName + ".xlsx";
 
-        ///要保存的 pdf 文件名
-        String  pdfPath =  pdfDir +  newFileName + ".pdf";
-
         ///模板文件
         String tempPath = rootPath +  "files/workorder_temp.xlsx";
 
 
+        ///要保存的 excel文件名
+        String  excelPath =  rootPath + relaExcelPath;
+
+        ///excel 文件
+        File excelFile = new File(excelPath);
+        ///文件不存在
+        if( !excelFile.exists() )  {
+            ///根据写入新文件
+            PoiUtil.writeExcel(tempPath, excelPath,  workOrder);
+        }
+
+
+        ///要保存的 pdf 完整文件名
+        String  pdfPath =  rootPath +  relaPdfPath;
+
         File pdfFile = new File(pdfPath);
 
-        ///文件不存在
-        if( !pdfFile.exists() )  {
-
-            File dir = new File(pdfDir);
-
-            if (!dir.exists()) {
-
-                dir.mkdirs();
-            }
-            JacobExcelUtil.jacobToPdf(tempPath, pdfPath, workOrder);
-        }
-
-        ///要保存的 excel 目录名
-        String  excelDirPath =  rootPath +  "files/excel/";
-
-        File excelDir = new File(excelDirPath);
-
-        if (!excelDir.exists()) {
-
-            excelDir.mkdirs();
-        }
-
-        ///要保存的 excel文件名
-        String  excelPath =  excelDirPath +  newFileName + ".xlsx";
-
-        File excelFile = new File(excelPath);
-
-        ///要保存的 img 目录名
-        String  imageDir =  rootPath +  "files/image/";
-
-        File imageDirFile = new File(imageDir);
-
-        if (!imageDirFile.exists()) {
-
-            imageDirFile.mkdirs();
+        ///pdf文件不存在
+        if( !pdfFile.exists()  )  {
+             ///转换成pdf文件
+            JacobExcelUtil.jacobExcelToPDF(excelPath, pdfPath);
+            //JacobExcelUtil.jacobToPdf(tempPath, pdfPath, workOrder);
         }
 
         ///要保存的 image 文件名
-        String  imagePath =  imageDir +  newFileName + ".png";
+        String  imagePath =  rootPath + relaImgPath;
 
         File imageFile = new File(imagePath);
 
-        ///文件不存在
-        if( !excelFile.exists() )  {
-
-            PoiUtil.writeExcel(tempPath, excelPath,   workOrder);
-        }
-
         ///图片文件是否存在
         if( !imageFile.exists() )  {
+
             PoiUtil.createImage( pdfPath, imagePath );
         }
 
         WorkorderprintInfo printInfo  = printInfoMapper.getPrintInfo(woKy);
-
-        Date date = new Date();// 获取当前时间
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 格式化时间
 
         if(printInfo == null)
         {
@@ -149,9 +179,12 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
             printInfo.setWoKy(woKy);
 
-            printInfo.setPrintCount(1);
+            printInfo.setPrintCount(0);
 
-            printInfo.setPrintTime( sdf.format(date) );
+//            Date date = new Date();// 获取当前时间
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 格式化时间
+//            String nowDate = sdf.format(date);
+//            printInfo.setPrintTime( nowDate );
 
             printInfo.setFilePath( relaPdfPath );
 
@@ -159,47 +192,33 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
             printInfo.setExcelPath( relaExcelPath );
 
-            printInfoMapper.insertPrintInfo(printInfo);
-        }
-        else
-        {
-            Integer pcount = printInfo.getPrintCount();
-
-            if(pcount != null)
-            {
-                pcount ++;
-            }
-            else
-            {
-                pcount = 1;
-            }
-            printInfo.setPrintCount( pcount );
-
-            printInfo.setPrintTime( sdf.format(date) );
-
-            printInfoMapper.updatePrintInfo(printInfo);
+            int row = printInfoMapper.insertPrintInfo(printInfo);
         }
         return  printInfo;
     }
 
-//    boolean saveImg( WritableWorkbook  workbook, File file)
-//    {
-//        // 2. 读取Excel转为BufferedImage
-////        BufferedImage img = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
-//        WritableImage wi = new WritableImage(0, 0, img);
-////
-////
-//        Sheet sheet = workbook.getSheet(0);
-//
-//        // 创建BufferedImage
-//        BufferedImage img = new BufferedImage(400, 400, BufferedImage.TYPE_INT_RGB);
-//
-//// 绘制Excel到图片
-//        jxl.Demo.showSheet(sheet, img);
-//
-//// 保存图片
-//        ImageIO.write(img, "png", file);
-//    }
+    void createDir( String rootPath ){
+
+        File targetDir = new File(rootPath + "files/pdf/");
+
+        if (!targetDir.exists()) {
+
+            targetDir.mkdirs();
+        }
+        targetDir = new File(rootPath + "files/image/");
+
+        if (!targetDir.exists()) {
+
+            targetDir.mkdirs();
+        }
+
+        targetDir = new File(rootPath + "files/excel/");
+
+        if (!targetDir.exists()) {
+
+            targetDir.mkdirs();
+        }
+    }
 
     @Override
     public int updatePrintInfo( WorkorderprintInfo printInfo )
