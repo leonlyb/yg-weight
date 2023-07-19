@@ -45,7 +45,11 @@ public class WorkorderPrintInfoController {
 
         WorkorderprintInfo printInfo = WorkorderPrintInfoService.previewWorkorder( woKy );
 
-        return ResultBody.success( printInfo );
+        if(printInfo != null){
+
+            return ResultBody.success( printInfo );
+        }
+        return  ResultBody.error("工单不存在");
     }
 
 }
