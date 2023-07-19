@@ -33,8 +33,10 @@ public class WorkorderPrintInfoController {
     public ResultBody printWorkorder(Integer woKy ) throws IOException, InvalidFormatException {
 
         WorkorderprintInfo printInfo = WorkorderPrintInfoService.printWorkorder(woKy );
-
-        return ResultBody.success( printInfo );
+        if(printInfo != null){
+            return ResultBody.success( printInfo );
+        }
+        return  ResultBody.error("工单不存在或者已经打印过");
     }
 
     @RequestMapping("/preview")
@@ -45,4 +47,5 @@ public class WorkorderPrintInfoController {
 
         return ResultBody.success( printInfo );
     }
+
 }

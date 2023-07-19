@@ -48,13 +48,6 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
     @Autowired
     WorkorderPrintInfoMapper printInfoMapper;
 
-
-//    @Value("${spring.resources.static-locations}")
-//    private String staticPath;
-//    public String getStaticPath() {
-//        return staticPath;
-//    }
-
     @Override
     public WorkorderprintInfo printWorkorder( Integer woKy ) throws IOException, InvalidFormatException {
 
@@ -63,7 +56,7 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         ///打印的工单
         WorkOrderManage workOrder =  orderList.get(0);
 
-        if( workOrder == null )
+        if( workOrder == null || workOrder.getProductListStatus() == 1 )
         {
             return null;
         }
@@ -180,11 +173,6 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
             printInfo.setWoKy(woKy);
 
             printInfo.setPrintCount(0);
-
-//            Date date = new Date();// 获取当前时间
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 格式化时间
-//            String nowDate = sdf.format(date);
-//            printInfo.setPrintTime( nowDate );
 
             printInfo.setFilePath( relaPdfPath );
 
