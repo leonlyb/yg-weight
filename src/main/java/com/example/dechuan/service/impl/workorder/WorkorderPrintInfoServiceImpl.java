@@ -5,16 +5,7 @@ import com.example.dechuan.mapper.first.workorder.WorkorderPrintInfoMapper;
 import com.example.dechuan.model.workorder.WorkOrderManage;
 import com.example.dechuan.model.workorder.WorkorderprintInfo;
 import com.example.dechuan.service.workorder.WorkorderPrintInfoService;
-//import com.spire.xls.FileFormat;
-//import com.spire.xls.Workbook;
-//import com.spire.xls.Worksheet;
 
-//import jxl.Cell;
-//import jxl.Sheet;
-//import jxl.Workbook;
-//import jxl.WorkbookSettings;
-//import jxl.read.biff.BiffException;
-//import jxl.write.*;
 import com.example.dechuan.utils.JacobExcelUtil;
 import com.example.dechuan.utils.PoiUtil;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -29,8 +20,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-
 
 /**
  * @author Leon
@@ -56,7 +45,11 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         ///打印的工单
         WorkOrderManage workOrder =  orderList.get(0);
 
-        if( workOrder == null || workOrder.getProductListStatus() == 1 )
+        Integer printStatus = workOrder.getProductListStatus();
+
+        Integer status = Integer.valueOf(1);
+
+        if( workOrder == null ||  printStatus == status )
         {
             return null;
         }
@@ -86,18 +79,29 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
         printInfo.setPrintTime(  nowDate );
 
-        printInfo.setRemark( printInfo.getRemark() +";" +  nowDate);
+        String remark = printInfo.getRemark();
 
+        if(remark == null){
+
+            remark = nowDate;
+        }
+        else{
+            remark += ";" + nowDate;
+        }
+        printInfo.setRemark(  remark );
 
         /// 0720 lll
 
         int row =  printInfoMapper.updatePrintInfo(printInfo);
 
-        if( row > 0  && workOrder.getProductListStatus() != 1 ){
+        if( row > 0  ){
 
             WorkOrderManage newWorkorder = new WorkOrderManage();
+
             newWorkorder.setWoKy(woKy);
-            newWorkorder.setProductListStatus(1);
+
+            newWorkorder.setProductListStatus(status);
+
             workOrderMapper.doEditWorkOrderManage(newWorkorder);
         }
         return  printInfo;
@@ -131,7 +135,6 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         ///模板文件
         String tempPath = rootPath +  "files/workorder_temp.xlsx";
 
-
         ///要保存的 excel文件名
         String  excelPath =  rootPath + relaExcelPath;
 
@@ -143,7 +146,6 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
             PoiUtil.writeExcel(tempPath, excelPath,  workOrder);
         }
 
-
         ///要保存的 pdf 完整文件名
         String  pdfPath =  rootPath +  relaPdfPath;
 
@@ -153,7 +155,6 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         if( !pdfFile.exists()  )  {
              ///转换成pdf文件
             JacobExcelUtil.jacobExcelToPDF(excelPath, pdfPath);
-            //JacobExcelUtil.jacobToPdf(tempPath, pdfPath, workOrder);
         }
 
         ///要保存的 image 文件名
@@ -166,7 +167,6 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
             PoiUtil.createImage( pdfPath, imagePath );
         }
-
         WorkorderprintInfo printInfo  = printInfoMapper.getPrintInfo(woKy);
 
         if(printInfo == null)
