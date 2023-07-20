@@ -88,6 +88,9 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
         printInfo.setRemark( printInfo.getRemark() +";" +  nowDate);
 
+
+        /// 0720 lll
+
         int row =  printInfoMapper.updatePrintInfo(printInfo);
 
         if( row > 0  && workOrder.getProductListStatus() != 1 ){
