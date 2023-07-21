@@ -33,6 +33,9 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/view/image/247/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\carImg\\192.168.1.247"+"\\");
         registry.addResourceHandler("/view/watermark/image/244/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\watermark\\192.168.1.244"+"\\");
         registry.addResourceHandler("/view/watermark/image/247/**").addResourceLocations("file:"+"D:\\ITCP Web\\hkimg\\watermark\\192.168.1.247"+"\\");
+
+        registry.addResourceHandler("/workorders/**")
+                .addResourceLocations("file:" + "D:\\workorder\\");
     }
 
 

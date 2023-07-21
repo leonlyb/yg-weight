@@ -11,9 +11,13 @@ import com.example.dechuan.utils.PoiUtil;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
+import javax.servlet.ServletContext;
 import java.io.File;
 
 import java.io.IOException;
@@ -36,6 +40,14 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
     @Autowired
     WorkorderPrintInfoMapper printInfoMapper;
+
+    public  String FILE_UPLOAD_DIR;//设置保存pdf、图片等文件的存储路径
+    @Value("${file.upload.dir}") //需要spring注入这个value，因此需要创建bean，使用@component注解
+    public void setFileUploadDir(String fileUploadDir) {
+        FILE_UPLOAD_DIR = fileUploadDir;
+    }
+
+    String pathPatt = "workorders/";
 
     @Override
     public WorkorderprintInfo printWorkorder( Integer woKy ) throws IOException, InvalidFormatException {
@@ -91,7 +103,6 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         printInfo.setRemark(  remark );
 
         /// 0720 lll
-
         int row =  printInfoMapper.updatePrintInfo(printInfo);
 
         if( row > 0  ){
@@ -118,22 +129,32 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         {
             return null;
         }
-        ///Resource 完整的目录
-        String rootPath = this.getClass().getResource("/static/").getPath().substring(1);
 
-        this.createDir( rootPath );
+        ///Resource 完整的目录  D:/workorder/
+        String rootPath =  FILE_UPLOAD_DIR;
+
+        //getStaticLocations();
+        //this.getClass().getResource("/static/").getPath().substring(1);
+
+        Date date = new Date();// 获取当前时间
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM");// 格式化时间
+
+        String currMonth = sdf.format(date) + "/";
+
+        this.createDir( rootPath , currMonth);
 
         ///要保存的 文件名称
         String newFileName = "workorder_" + woKy;
 
-        String relaPdfPath = "files/pdf/" +  newFileName + ".pdf";
+        String relaPdfPath =  currMonth   +  newFileName + ".pdf";
 
-        String relaImgPath = "files/image/" +  newFileName + ".png";
+        String relaImgPath =  currMonth +  newFileName + ".png";
 
-        String relaExcelPath = "files/Excel/" +  newFileName + ".xlsx";
+        String relaExcelPath =  currMonth +  newFileName + ".xlsx";
 
         ///模板文件
-        String tempPath = rootPath +  "files/workorder_temp.xlsx";
+        String tempPath = rootPath +  "workorder_temp.xlsx";
 
         ///要保存的 excel文件名
         String  excelPath =  rootPath + relaExcelPath;
@@ -141,7 +162,8 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
         ///excel 文件
         File excelFile = new File(excelPath);
         ///文件不存在
-        if( !excelFile.exists() )  {
+        if( !excelFile.exists()  )  {
+             //excelFile.delete();
             ///根据写入新文件
             PoiUtil.writeExcel(tempPath, excelPath,  workOrder);
         }
@@ -177,33 +199,33 @@ public class WorkorderPrintInfoServiceImpl implements WorkorderPrintInfoService 
 
             printInfo.setPrintCount(0);
 
-            printInfo.setFilePath( relaPdfPath );
+            printInfo.setFilePath( pathPatt +  relaPdfPath );
 
-            printInfo.setImgPath( relaImgPath );
+            printInfo.setImgPath( pathPatt +  relaImgPath );
 
-            printInfo.setExcelPath( relaExcelPath );
+            printInfo.setExcelPath( pathPatt +  relaExcelPath );
 
             int row = printInfoMapper.insertPrintInfo(printInfo);
         }
         return  printInfo;
     }
 
-    void createDir( String rootPath ){
+    void createDir( String rootPath, String currMonth ){
 
-        File targetDir = new File(rootPath + "files/pdf/");
-
-        if (!targetDir.exists()) {
-
-            targetDir.mkdirs();
-        }
-        targetDir = new File(rootPath + "files/image/");
+        File targetDir = new File(rootPath +  currMonth );
 
         if (!targetDir.exists()) {
 
             targetDir.mkdirs();
         }
+        targetDir = new File(rootPath +  currMonth );
 
-        targetDir = new File(rootPath + "files/excel/");
+        if (!targetDir.exists()) {
+
+            targetDir.mkdirs();
+        }
+
+        targetDir = new File(rootPath +  currMonth );
 
         if (!targetDir.exists()) {
 
